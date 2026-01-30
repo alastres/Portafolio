@@ -72,7 +72,47 @@
 }
 
 :root {
-  /* Deep Blue Theme (Dark Mode Default) */
+  /* Light Mode (Slate-based high contrast) */
+  --background: 210 40% 98%;
+  /* Slate-50 - Adds depth vs white cards */
+  --foreground: 222.2 84% 4.9%;
+
+  --card: 0 0% 100%;
+  /* Pure White */
+  --card-foreground: 222.2 84% 4.9%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+
+  --primary: 221.2 83.2% 53.3%;
+  /* Blue 600 */
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 210 40% 93%;
+  /* Darker than background for visibility */
+  --secondary-foreground: 222.2 47.4% 11.2%;
+
+  --muted: 210 40% 93%;
+  /* Matches secondary */
+  --muted-foreground: 215.4 16.3% 40%;
+  /* Darker for better sizing contrast */
+
+  --accent: 210 40% 93%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 214.3 31.8% 85%;
+  /* Darker border */
+  --input: 214.3 31.8% 85%;
+  --ring: 221.2 83.2% 53.3%;
+
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Dark Mode (Deep Blue/Slate - Original Theme) */
   --background: 222 47% 11%;
   /* #0f172a */
   --foreground: 210 40% 98%;
@@ -85,11 +125,11 @@
   --popover-foreground: 210 40% 98%;
 
   --primary: 217 91% 60%;
-  /* #3b82f6 - Bright Blue */
+  /* Bright Blue */
   --primary-foreground: 222 47% 11%;
 
   --secondary: 217 33% 17%;
-  /* #1e293b - Slate 800 */
+  /* Slate 800 */
   --secondary-foreground: 210 40% 98%;
 
   --muted: 217 33% 17%;
@@ -104,8 +144,6 @@
   --border: 217 33% 17%;
   --input: 217 33% 17%;
   --ring: 224 76% 48%;
-
-  --radius: 0.5rem;
 }
 
 body {
@@ -114,6 +152,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Global transition for theme switching */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
 }
 
 ::selection {

@@ -2,21 +2,46 @@ export interface Project {
   slug: string;
   title: string;
   description: string;
+  version?: string;
   tags: string[];
   link?: string;
   github?: string;
   image?: string;
-  // Extended fields
-  problem?: string;
-  solution?: string;
-  stackDetails?: {
-    frontend: string;
-    backend: string;
-    database: string;
-    infrastructure: string;
+
+  // Metadata for Sidebar
+  timeline?: string;
+  role?: string;
+
+  // Extended Content
+  problem?: {
+    description: string;
+    painPoints: string[];
   };
-  challenges?: string[];
-  learnings?: string[];
+  solution?: {
+    description: string;
+    features: {
+      title: string;
+      description: string;
+      icon?: string;
+    }[];
+  };
+
+  // Tech Stack (Array for Cards)
+  techStack?: {
+    name: string;
+    icon?: any; // We'll handle icons in component mapping
+    category: string; // "Frontend", "Styling"
+  }[];
+
+  challenges?: {
+    title: string;
+    description: string;
+    codeSnippet?: {
+      language: string;
+      code: string;
+      fileName?: string;
+    };
+  }[];
 }
 
 export interface SeoConfig {

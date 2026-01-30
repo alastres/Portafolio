@@ -1,8 +1,8 @@
 export default function Footer() {
     return (
-        <footer className="border-t border-gray-800 bg-[#0a0f1e] py-12 mt-auto">
+        <footer className="border-t border-border bg-background py-12 mt-auto">
             <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-4 sm:flex-row sm:px-6 lg:px-8 max-w-7xl">
-                <p className="text-sm text-gray-500 font-medium">
+                <p className="text-sm text-muted-foreground font-medium">
                     © {new Date().getFullYear()} DevName. All rights reserved.
                 </p>
                 <div className="flex gap-6">
@@ -10,7 +10,7 @@ export default function Footer() {
                         href="https://github.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                     >
                         GitHub
                     </a>
@@ -18,7 +18,7 @@ export default function Footer() {
                         href="https://linkedin.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                     >
                         LinkedIn
                     </a>
@@ -26,7 +26,7 @@ export default function Footer() {
                         href="https://twitter.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                     >
                         Twitter
                     </a>

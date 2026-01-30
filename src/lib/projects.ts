@@ -5,56 +5,177 @@ export const projects: Project[] = [
         slug: 'taskmaster-pro',
         title: 'TaskMaster Pro',
         description: 'Gestor de tareas fullstack con arquitectura profesional y enfoque en equipos reales.',
-        tags: ['React', 'Next.js', 'Node.js', 'TypeScript', 'Prisma'],
-        problem: 'Los equipos de producto a menudo luchan con herramientas de gestión de tareas que son demasiado simples para flujos de trabajo complejos o demasiado complicadas para una adopción rápida. Se necesitaba una solución intermedia que permitiera gestión de roles, estados personalizados y métricas sin la curva de aprendizaje de herramientas enterprise.',
-        solution: 'Desarrollé una plataforma SaaS multi-tenant utilizando Next.js para el frontend y una API RESTful con Node.js/Express. Implementé autenticación segura, roles granulares y un sistema de drag-and-drop optimizado para performance. La arquitectura está desacoplada permitiendo escalar el frontend y backend independientemente.',
-        stackDetails: {
-            frontend: 'React, Next.js (App Router), Tailwind CSS, Zustand, React Query',
-            backend: 'Node.js, Express, TypeScript',
-            database: 'PostgreSQL, Prisma ORM',
-            infrastructure: 'Docker, Vercel (Frontend), Railway (Backend)',
-        },
-        challenges: [
-            'Gestión de estado complejo en el tablero Kanban con actualizaciones en tiempo real.',
-            'Optimización de consultas SQL para dashboards de métricas con gran volumen de datos.',
-            'Implementación de sistema de permisos basado en roles (RBAC) escalable.',
-        ],
-        learnings: [
-            'La importancia de la invalidación de caché optimista para una UX fluida.',
-            'Patrones de diseño para arquitecturas monolíticas modulares en Node.js.',
-            'Manejo eficiente de formularios complejos con validación en ambos lados (Zod).',
-        ],
+        version: 'v1.2',
+        tags: ['React', 'Next.js', 'Node.js', 'PostgreSQL'],
+        image: '/projects/taskmaster-hero.png', // Placeholder
+        link: 'https://taskmaster-demo.com',
         github: 'https://github.com/example/taskmaster-pro',
-        link: 'https://taskmaster-demo.com'
+
+        timeline: '4 Semanas',
+        role: 'Full Stack Developer',
+
+        problem: {
+            description: 'Los equipos de producto a menudo luchan con herramientas de gestión que son polarizantes: o demasiado simples (listas To-Do) o excesivamente complejas (Jira). Esto crea fricción en el onboarding y pérdida de productividad.',
+            painPoints: [
+                'Falta de granularidad en permisos de usuario (RBAC).',
+                'Curva de aprendizaje empinada para miembros no técnicos.',
+                'Dificultad para visualizar métricas de rendimiento en tiempo real.'
+            ]
+        },
+
+        solution: {
+            description: 'Platforma SaaS multi-tenant diseñada para equilibrar potencia y usabilidad. Se priorizó la experiencia de usuario con actualizaciones en tiempo real y una arquitectura modular.',
+            features: [
+                {
+                    title: 'Tablero Kanban Tiempo Real',
+                    description: 'Sincronización instantánea de estados usando WebSockets (Socket.io) para colaboración fluida.',
+                    icon: 'kanban'
+                },
+                {
+                    title: 'Sistema RBAC',
+                    description: 'Control de acceso basado en roles granular para admins, editores y visualizadores.',
+                    icon: 'shield'
+                },
+                {
+                    title: 'Analytics Dashboard',
+                    description: 'Visualización de velocidad de equipo y burndown charts con Recharts.'
+                }
+            ]
+        },
+
+        techStack: [
+            { name: 'Next.js', category: 'Frontend' },
+            { name: 'React Query', category: 'State' },
+            { name: 'Node.js', category: 'Backend' },
+            { name: 'PostgreSQL', category: 'Database' },
+            { name: 'Prisma', category: 'ORM' },
+            { name: 'Tailwind', category: 'Styling' },
+        ],
+
+        challenges: [
+            {
+                title: 'Gestión de Estado Kanban',
+                description: 'Mantener la consistencia del orden de las tareas tras múltiples movimientos de drag-and-drop y sincronizarlos con la DB.',
+                codeSnippet: {
+                    language: 'typescript',
+                    fileName: 'board-store.ts',
+                    code: `interface TaskMove {
+  taskId: string;
+  sourceCol: string;
+  destCol: string;
+  newIndex: number;
+}
+
+// Optimistic update logic
+const moveTaskOptimistic = (move: TaskMove) => {
+  set((state) => {
+    const sourceCol = state.columns[move.sourceCol];
+    const destCol = state.columns[move.destCol];
+    // ... logic to splice task from source and insert to dest
+    return { columns: { ...state.columns, [move.destCol]: newDest }};
+  });
+  // Sync with backend in background
+  api.updateTaskPosition(move).catch(revertState);
+};`
+                }
+            },
+            {
+                title: 'Performance de Tablero',
+                description: 'Renderizado eficiente de cientos de tareas usando virtualización y memoización selectiva.',
+            }
+        ]
     },
     {
         slug: 'reserva-saas',
-        title: 'Sistema de Reservas SaaS',
-        description: 'Plataforma de gestión de citas y disponibilidad para profesionales y pequeños negocios.',
-        tags: ['Next.js', 'PostgreSQL', 'Stripe', 'Tailwind'],
-        problem: 'Pequeños profesionales (nutricionistas, terapeutas, consultores) pierden hasta un 20% de sus ingresos por ineficiencias en la gestión de citas y ausencias ("no-shows"). Las herramientas existentes no ofrecían recordatorios automatizados accesibles ni pagos por adelantado integrados de forma sencilla.',
-        solution: 'Construí una plataforma SaaS que permite a los profesionales configurar su disponibilidad y recibir reservas pagadas. Integré Stripe Connect para gestión de pagos divididos y un sistema de notificaciones cron para recordatorios por email/SMS.',
-        stackDetails: {
-            frontend: 'Next.js 14, React Hook Form, Shadcn UI',
-            backend: 'Next.js Server Actions, Supabase (PostgreSQL)',
-            database: 'PostgreSQL, Supabase Auth',
-            infrastructure: 'Vercel Edge Functions, Cron Jobs',
-        },
-        challenges: [
-            'Manejo de zonas horarias entre el profesional y el cliente final.',
-            'Prevención de reservas duplicadas (Race conditions) en alta concurrencia.',
-            'Integración segura de webhooks de Stripe para confirmar pagos asíncronos.',
-        ],
-        learnings: [
-            'Uso avanzado de Server Actions para reducir la necesidad de una API separada.',
-            'Modelado de bases de datos relacionales para sistemas de calendarización.',
-            'Estrategias de manejo de errores en pagos y transacciones distribuidas.',
-        ],
+        title: 'InvoiceFlow SaaS', // Renamed to match image example slightly or keep original concept
+        description: 'Plataforma de facturación y reservas automatizada para freelancers creativos.',
+        version: 'v2.0',
+        tags: ['Next.js', 'Stripe', 'Supabase'],
+        link: 'https://reserva-saas-demo.com',
         github: 'https://github.com/example/reserva-saas',
-        link: 'https://reserva-saas-demo.com'
+
+        timeline: '8 Semanas',
+        role: 'Solo Developer',
+
+        problem: {
+            description: 'Los freelancers pierden entre 4-6 horas al mes conciliando pagos manualmente y persiguiendo facturas impagas. El seguimiento manual lleva a pérdida de ingresos.',
+            painPoints: [
+                'Datos financieros fragmentados en múltiples cuentas bancarias.',
+                'Alta carga cognitiva recordando quién ha pagado qué.',
+                'Herramientas existentes demasiado complejas (Quickbooks) o simples (Excel).'
+            ]
+        },
+
+        solution: {
+            description: 'Un dashboard unificado que sincroniza feeds bancarios y coteja depósitos con facturas abiertas automáticamente. Sistema "Set and Forget" para recordatorios.',
+            features: [
+                {
+                    title: 'Auto-reconciliación',
+                    description: 'Algoritmo difuso que empareja transacciones con facturas con 95% de precisión.',
+                    icon: 'refresh'
+                },
+                {
+                    title: 'Recordatorios Inteligentes',
+                    description: 'Secuencias de email (Drip) que se detienen automáticamente al detectar pago.',
+                    icon: 'bell'
+                }
+            ]
+        },
+
+        techStack: [
+            { name: 'Next.js 14', category: 'Framework' },
+            { name: 'Tailwind', category: 'Styling' },
+            { name: 'Node.js', category: 'Backend API' },
+            { name: 'PostgreSQL', category: 'Database' },
+            { name: 'AWS', category: 'Hosting' },
+            { name: 'Stripe', category: 'Payments' },
+        ],
+
+        challenges: [
+            {
+                title: 'Handling Webhook Idempotency',
+                description: 'Asegurar que los webhooks de Stripe se procesen exactamente una vez. Retries de red podían causar registros duplicados si no se manejaban correctamente.',
+                codeSnippet: {
+                    language: 'javascript',
+                    fileName: 'webhook-handler.ts',
+                    code: `const handleWebhook = async (req, res) => {
+  const event = req.body;
+  
+  // 1. Check Redis for Idempotency Key
+  const isProcessed = await redis.get(event.id);
+  if (isProcessed) {
+    return res.status(200).send("Already processed");
+  }
+
+  // 2. Process Business Logic
+  try {
+    if (event.type === 'invoice.paid') {
+      await updateInvoiceStatus(event.data.object);
+    }
+    
+    // 3. Mark as processed for 24h
+    await redis.set(event.id, 'processed', 'EX', 86400);
+    res.json({ received: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send();
+  }
+};`
+                }
+            }
+        ]
     }
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
     return projects.find((project) => project.slug === slug);
+}
+
+// Helper to get next/prev projects
+export function getAdjacentProjects(currentSlug: string) {
+    const index = projects.findIndex(p => p.slug === currentSlug);
+    return {
+        previous: index > 0 ? projects[index - 1] : null,
+        next: index < projects.length - 1 ? projects[index + 1] : null
+    };
 }

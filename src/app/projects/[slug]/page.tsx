@@ -73,12 +73,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     };
 
     return (
-        <article className="min-h-screen bg-background pt-32 pb-24">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+        <article className="min-h-screen bg-background pt-40 sm:pt-40 pb-24">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1600px]">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
                     {/* Left Sidebar (Sticky) */}
-                    <aside className="lg:col-span-3 hidden lg:block">
+                    <aside className="lg:col-span-2 hidden lg:block">
                         <div className="sticky top-32 space-y-8">
                             <div>
                                 <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-4">On This Page</h3>
@@ -117,7 +117,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     </aside>
 
                     {/* Main Content */}
-                    <div className="lg:col-span-9 space-y-20">
+                    <div className="lg:col-span-10 space-y-20">
 
                         {/* Header & Hero */}
                         <section id="overview" className="space-y-8">
@@ -153,6 +153,39 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 </div>
                             </div>
 
+                            {/* Mobile Metadata & Navigation */}
+                            <div className="flex flex-col gap-6 lg:hidden border-y border-border py-6">
+                                <div className="flex flex-wrap gap-8">
+                                    {project.timeline && (
+                                        <div>
+                                            <h4 className="flex items-center text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2 gap-2">
+                                                <Calendar className="h-3 w-3" /> Timeline
+                                            </h4>
+                                            <p className="text-sm font-medium text-foreground">{project.timeline}</p>
+                                        </div>
+                                    )}
+                                    {project.role && (
+                                        <div>
+                                            <h4 className="flex items-center text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2 gap-2">
+                                                <User className="h-3 w-3" /> Role
+                                            </h4>
+                                            <p className="text-sm font-medium text-foreground">{project.role}</p>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="flex flex-wrap gap-3 overflow-x-auto pb-2 no-scrollbar mask-gradient">
+                                    {['Overview', 'El Problema', 'La Solución', 'Stack Tecnológico', 'Retos Técnicos'].map((item) => (
+                                        <a
+                                            key={item}
+                                            href={`#${item.toLowerCase().replace(/ /g, '-')}`}
+                                            className="px-4 py-2 rounded-full text-xs font-medium bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors whitespace-nowrap"
+                                        >
+                                            {item}
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+
                             {/* Hero Image Area */}
                             <div className="rounded-xl overflow-hidden border border-border/50 shadow-2xl bg-card">
                                 {/* Fallback pattern if no image */}
@@ -160,7 +193,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     {project.image ? (
                                         <div className="relative w-full h-full">
                                             {/* We would use Next/Image here if we had real assets. Using a placeholder div for now. */}
-                                            <div className="w-full h-full bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center text-gray-700 font-mono">
+                                            <div className="w-full h-full bg-gradient-to-br from-secondary/50 to-muted flex items-center justify-center text-gray-700 font-mono">
                                                 Project Screenshot Mockup
                                             </div>
                                         </div>
@@ -272,8 +305,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                                 </p>
                                             </div>
                                             {challenge.codeSnippet && (
-                                                <div className="bg-[#0d1117] rounded-xl border border-gray-800 overflow-hidden shadow-2xl">
-                                                    <div className="flex items-center justify-between px-4 py-3 bg-[#161b22] border-b border-gray-800">
+                                                <div className="bg-card rounded-xl border border-border overflow-hidden shadow-2xl">
+                                                    <div className="flex items-center justify-between px-4 py-3 bg-muted/50 border-b border-border">
                                                         <div className="flex items-center gap-2">
                                                             <div className="flex gap-1.5">
                                                                 <div className="w-3 h-3 rounded-full bg-red-500/80"></div>

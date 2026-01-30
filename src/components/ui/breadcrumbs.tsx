@@ -14,7 +14,7 @@ export function Breadcrumbs() {
     const segments = pathname.split('/').filter(Boolean);
 
     return (
-        <nav aria-label="Breadcrumb" className="w-full border-t border-border/40 bg-background/50 backdrop-blur-sm">
+        <nav aria-label="Breadcrumb" className="w-full">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-2">
                 <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
                     <li>
@@ -45,7 +45,7 @@ export function Breadcrumbs() {
                                 <ChevronRight className="h-4 w-4 mx-1 text-muted-foreground/50" />
                                 {isLast ? (
                                     <span
-                                        className="font-medium text-foreground"
+                                        className="font-medium text-foreground truncate max-w-[150px] sm:max-w-none block"
                                         aria-current="page"
                                     >
                                         {label}
@@ -53,7 +53,7 @@ export function Breadcrumbs() {
                                 ) : (
                                     <Link
                                         href={href}
-                                        className="hover:text-foreground transition-colors"
+                                        className="hover:text-foreground transition-colors whitespace-nowrap"
                                     >
                                         {label}
                                     </Link>

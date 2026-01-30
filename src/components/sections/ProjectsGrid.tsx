@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { Project } from '@/types';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card-ui';
 import { Badge } from '@/components/ui/badge-ui';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight, MoveRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface ProjectsGridProps {
     projects: Project[];
@@ -12,49 +12,117 @@ interface ProjectsGridProps {
 
 export default function ProjectsGrid({ projects }: ProjectsGridProps) {
     return (
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:gap-10">
-            {projects.map((project) => (
-                <Link key={project.slug} href={`/projects/${project.slug}`} className="block h-full group">
-                    <Card className="h-full bg-card border-border hover:border-border/80 transition-all duration-300 overflow-hidden flex flex-col group-hover:-translate-y-1">
-                        {/* Image Placeholder */}
-                        <div className="h-64 bg-muted border-b border-border relative w-full overflow-hidden">
-                            <div className="absolute inset-0 flex items-center justify-center text-muted-foreground bg-gradient-to-br from-muted/50 to-muted opacity-50 group-hover:scale-105 transition-transform duration-500">
-                                {/* Abstract UI representation */}
-                                <div className="w-3/4 h-3/4 bg-card rounded-lg shadow-xl border border-border opacity-50 flex flex-col p-4">
-                                    <div className="h-4 w-1/3 bg-muted-foreground/20 rounded mb-4" />
-                                    <div className="flex-1 bg-muted-foreground/10 rounded" />
-                                </div>
-                            </div>
-                        </div>
+        <div className="relative py-20 space-y-20 md:space-y-32">
+            {/* Central Line (Desktop) */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-blue-500/50 to-transparent hidden md:block" />
 
-                        <div className="flex flex-col flex-1 p-6">
-                            <div className="flex justify-between items-start mb-4">
-                                <h3 className="text-xl font-bold text-card-foreground group-hover:text-primary transition-colors">
+            {projects.map((project, index) => {
+                const isEven = index % 2 === 0;
+
+                return (
+                    <div key={project.slug} className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+
+                        {/* Timeline Dot (Desktop) */}
+                        <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-background border-2 border-blue-500 hidden md:block shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+
+                        {/* Content Section */}
+                        <div className={cn(
+                            "space-y-6",
+                            isEven ? "md:text-right md:pr-16 order-2 md:order-1" : "md:text-left md:pl-16 order-2"
+                        )}>
+                            <div className={cn(
+                                "flex flex-col gap-2",
+                                isEven ? "md:items-end" : "md:items-start"
+                            )}>
+                                <span className="text-blue-500 text-xs font-bold tracking-[0.2em] uppercase">
+                                    {String(index + 1).padStart(2, '0')} / {project.role || 'Project'}
+                                </span>
+                                <h2 className="text-3xl md:text-4xl font-black text-foreground tracking-tight">
                                     {project.title}
-                                </h3>
-                                <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                                </h2>
                             </div>
 
-                            <p className="text-muted-foreground line-clamp-2 text-sm leading-relaxed mb-6 flex-1">
-                                {project.description}
-                            </p>
+                            <div className={cn("space-y-4 text-muted-foreground", isEven ? "md:mr-0 md:ml-auto" : "")}>
+                                {project.problem && (
+                                    <div>
+                                        <strong className="text-foreground block mb-1">The Challenge:</strong>
+                                        <p className="text-sm leading-relaxed max-w-md ml-auto mr-0">
+                                            {typeof project.problem === 'string' ? project.problem : project.problem.description.substring(0, 150) + '...'}
+                                        </p>
+                                    </div>
+                                )}
 
-                            <div className="flex flex-wrap gap-2">
-                                {project.tags.slice(0, 3).map((tag) => (
-                                    <Badge key={tag} variant="secondary" className="bg-secondary text-secondary-foreground border-border/50">
+                                {project.solution && (
+                                    <div>
+                                        <strong className="text-foreground block mb-1">The Solution:</strong>
+                                        <p className="text-sm leading-relaxed max-w-md ml-auto mr-0">
+                                            {typeof project.solution === 'string' ? project.solution : project.solution.description.substring(0, 150) + '...'}
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className={cn(
+                                "flex flex-wrap gap-2 pt-2",
+                                isEven ? "md:justify-end" : "md:justify-start"
+                            )}>
+                                {project.tags.slice(0, 4).map((tag) => (
+                                    <Badge key={tag} variant="secondary" className="bg-secondary/50 border-border/50 text-xs">
                                         {tag}
                                     </Badge>
                                 ))}
-                                {project.tags.length > 3 && (
-                                    <Badge variant="secondary" className="bg-secondary text-muted-foreground border-border/50">
-                                        +{project.tags.length - 3}
-                                    </Badge>
-                                )}
+                            </div>
+
+                            <div className={cn("pt-4", isEven ? "flex md:justify-end" : "")}>
+                                <Link
+                                    href={`/projects/${project.slug}`}
+                                    className="group inline-flex items-center text-sm font-bold text-foreground hover:text-blue-400 transition-colors uppercase tracking-widest gap-2"
+                                >
+                                    Explore Project Story
+                                    <MoveRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                </Link>
                             </div>
                         </div>
-                    </Card>
-                </Link>
-            ))}
+
+                        {/* Image Section */}
+                        <div className={cn(
+                            "relative group",
+                            isEven ? "md:pl-16 order-1 md:order-2" : "md:pr-16 order-1"
+                        )}>
+                            <Link href={`/projects/${project.slug}`} className="block">
+                                <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-card/5 backdrop-blur-sm transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] group-hover:border-blue-500/30">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent opacity-60 z-10" />
+
+                                    {/* Abstract Placeholder for Image */}
+                                    <div className="w-full h-full bg-gradient-to-br from-blue-900/20 to-purple-900/20 relative flex items-center justify-center">
+                                        <div className="w-[85%] h-[85%] bg-[#0f172a] rounded-lg shadow-2xl border border-white/10 p-4 flex flex-col gap-4 opacity-90 group-hover:opacity-100 transition-opacity transform group-hover:-translate-y-1 duration-500">
+                                            {/* Fake Browser Header */}
+                                            <div className="flex items-center gap-2 mb-2">
+                                                <div className="w-2 h-2 rounded-full bg-red-500/50" />
+                                                <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
+                                                <div className="w-2 h-2 rounded-full bg-green-500/50" />
+                                            </div>
+                                            {/* UI Mockup */}
+                                            <div className="flex-1 flex flex-col gap-3">
+                                                <div className="h-2 w-1/3 bg-white/10 rounded-full" />
+                                                <div className="flex-1 grid grid-cols-12 gap-3">
+                                                    <div className="col-span-3 bg-blue-500/10 rounded h-full" />
+                                                    <div className="col-span-9 bg-white/5 rounded h-full flex flex-col gap-2 p-2">
+                                                        <div className="h-2 w-full bg-white/5 rounded" />
+                                                        <div className="h-2 w-3/4 bg-white/5 rounded" />
+                                                        <div className="h-20 w-full bg-white/5 rounded mt-auto" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        </div>
+
+                    </div>
+                );
+            })}
         </div>
     );
 }

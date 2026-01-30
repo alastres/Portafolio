@@ -69,14 +69,12 @@ export default function Hero() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="flex-1 w-full max-w-xl lg:max-w-none relative"
                     >
-                        {/* Abstract Background Blur */}
+                        {/* Abstract Background Blur - Kept for ambiance */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl -z-10" />
 
                         {/* Laptop Placeholder / IDE Animation */}
-                        <div className="relative group">
+                        <div className="relative group rounded-xl shadow-[0_0_120px_-30px_hsl(var(--primary)/0.5)] hover:shadow-[0_0_150px_-20px_hsl(var(--primary)/0.6)] transition-shadow duration-700">
                             <HeroIDEAnimation />
-                            {/* Glow Effect */}
-                            <div className="absolute inset-0 bg-primary/5 rounded-lg -z-10 blur-2xl transform translate-y-4" />
                         </div>
                     </motion.div>
                 </div>

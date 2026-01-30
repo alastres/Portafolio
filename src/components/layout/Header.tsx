@@ -15,17 +15,8 @@ const navItems = [
 ];
 
 export default function Header() {
-    const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const pathname = usePathname();
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     // Close mobile menu when route changes
     useEffect(() => {
@@ -43,9 +34,9 @@ export default function Header() {
     }, [mobileMenuOpen]);
 
     return (
-        <header className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled || mobileMenuOpen ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-sm' : 'bg-transparent py-4'}`}>
+        <header className="fixed top-0 z-50 w-full bg-background/40 backdrop-blur-xl border-b border-border/40 shadow-sm supports-[backdrop-filter]:bg-background/40 transition-all duration-300">
             <div className="relative">
-                <div className={`container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 max-w-7xl ${scrolled ? 'py-4' : 'py-6'}`}>
+                <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 max-w-7xl py-4">
 
                     {/* Logo */}
                     <div className="flex items-center gap-2 z-50 relative">
@@ -132,7 +123,7 @@ export default function Header() {
             </AnimatePresence>
 
             {/* Mobile Breadcrumbs (Visible when menu closed) */}
-            <div className="md:hidden border-t border-border/40">
+            <div className="md:hidden">
                 <Breadcrumbs />
             </div>
         </header>

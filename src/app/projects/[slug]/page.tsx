@@ -21,10 +21,42 @@ import {
     Globe,
     Layout,
     RefreshCw,
-    Shield
+    Shield,
+    Kanban,
+    CreditCard,
+    Repeat,
+    Bell,
+    BarChart3,
+    CalendarClock,
+    Search,
+    Users,
+    FileText,
+    Palette,
+    Monitor,
+    Mail,
+    Lock
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import {
+    SiReact,
+    SiNextdotjs,
+    SiTypescript,
+    SiNodedotjs,
+    SiPostgresql,
+    SiPrisma,
+    SiTailwindcss,
+    SiVercel,
+    SiStripe,
+    SiExpress,
+    SiShadcnui,
+    SiVite,
+    SiZod,
+    SiFramer,
+    SiReactquery,
+    SiI18Next,
+    SiReacthookform
+} from "react-icons/si";
 
 interface ProjectPageProps {
     params: Promise<{ slug: string }>;
@@ -71,6 +103,54 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             default: return <Cpu className="h-5 w-5" />;
         }
     };
+
+    const getFeatureIcon = (iconName: string | undefined) => {
+        switch (iconName?.toLowerCase()) {
+            case 'kanban': return <Kanban className="h-4 w-4" />;
+            case 'shield': return <Shield className="h-4 w-4" />;
+            case 'calendar': return <Calendar className="h-4 w-4" />;
+            case 'calendar-sync': return <CalendarClock className="h-4 w-4" />;
+            case 'credit-card': return <CreditCard className="h-4 w-4" />;
+            case 'repeat': return <Repeat className="h-4 w-4" />;
+            case 'globe': return <Globe className="h-4 w-4" />;
+            case 'bell': return <Bell className="h-4 w-4" />;
+            case 'chart': return <BarChart3 className="h-4 w-4" />;
+            case 'search': return <Search className="h-4 w-4" />;
+            case 'users': return <Users className="h-4 w-4" />;
+            case 'file': return <FileText className="h-4 w-4" />;
+            case 'palette': return <Palette className="h-4 w-4" />;
+            case 'monitor': return <Monitor className="h-4 w-4" />;
+            case 'priority': return <AlertTriangle className="h-4 w-4" />;
+            default: return <Layers className="h-4 w-4" />;
+        }
+    };
+
+    const getTechIcon = (techIcon: string | undefined) => {
+        const className = "h-5 w-5";
+        switch (techIcon?.toLowerCase()) {
+            case 'react': return <SiReact className={className} />;
+            case 'nextjs': return <SiNextdotjs className={className} />;
+            case 'typescript': return <SiTypescript className={className} />;
+            case 'nodejs': return <SiNodedotjs className={className} />;
+            case 'postgresql': return <SiPostgresql className={className} />;
+            case 'prisma': return <SiPrisma className={className} />;
+            case 'tailwindcss': return <SiTailwindcss className={className} />;
+            case 'vercel': return <SiVercel className={className} />;
+            case 'stripe': return <SiStripe className={className} />;
+            case 'shadcn': return <SiShadcnui className={className} />;
+            case 'express': return <SiExpress className={className} />;
+            case 'vite': return <SiVite className={className} />;
+            case 'zod': return <SiZod className={className} />;
+            case 'framer': return <SiFramer className={className} />;
+            case 'reactquery': return <SiReactquery className={className} />;
+            case 'i18next': return <SiI18Next className={className} />;
+            case 'authjs': return <Lock className={className} />;
+            case 'resend': return <Mail className={className} />;
+            case 'hookform': return <SiReacthookform className={className} />;
+            case 'globe': return <Globe className={className} />;
+            default: return null;
+        }
+    }
 
     return (
         <article className="min-h-screen bg-background pt-40 sm:pt-40 pb-24">
@@ -252,12 +332,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                         {project.solution.features?.map((feature, i) => (
                                             <Card key={i} className="p-5 bg-card border-border hover:border-primary/30 transition-colors">
                                                 <div className="h-8 w-8 rounded bg-primary/10 flex items-center justify-center mb-3 text-primary">
-                                                    <Layers className="h-4 w-4" />
+                                                    {getFeatureIcon(feature.icon)}
                                                 </div>
                                                 <h3 className="font-bold text-foreground mb-2">{feature.title}</h3>
                                                 <p className="text-sm text-muted-foreground leading-relaxed">
                                                     {feature.description}
                                                 </p>
+                                                {feature.details && feature.details.length > 0 && (
+                                                    <ul className="mt-4 space-y-2 border-t border-border/50 pt-4">
+                                                        {feature.details.map((detail, idx) => (
+                                                            <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground/90">
+                                                                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                                                                <span className="leading-relaxed">{detail}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                )}
                                             </Card>
                                         ))}
                                     </div>
@@ -273,7 +363,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     {project.techStack.map((tech, i) => (
                                         <div key={i} className="flex items-center gap-3 p-4 rounded-xl bg-secondary/30 border border-border/50">
                                             <div className="p-2 rounded-md bg-background shadow-sm text-primary">
-                                                {getIcon(tech.category)}
+                                                {tech.icon ? getTechIcon(tech.icon) : getIcon(tech.category)}
                                             </div>
                                             <div>
                                                 <p className="font-bold text-foreground text-sm">{tech.name}</p>

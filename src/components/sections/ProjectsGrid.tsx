@@ -45,7 +45,7 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
                             <div className={cn("space-y-4 text-muted-foreground", isEven ? "md:mr-0 md:ml-auto" : "")}>
                                 {project.problem && (
                                     <div>
-                                        <strong className="text-foreground block mb-1">The Challenge:</strong>
+                                        <strong className="text-foreground block mb-1">El Problema:</strong>
                                         <p className="text-sm leading-relaxed max-w-md ml-auto mr-0">
                                             {typeof project.problem === 'string' ? project.problem : project.problem.description.substring(0, 150) + '...'}
                                         </p>
@@ -54,7 +54,7 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
 
                                 {project.solution && (
                                     <div>
-                                        <strong className="text-foreground block mb-1">The Solution:</strong>
+                                        <strong className="text-foreground block mb-1">La Solución:</strong>
                                         <p className="text-sm leading-relaxed max-w-md ml-auto mr-0">
                                             {typeof project.solution === 'string' ? project.solution : project.solution.description.substring(0, 150) + '...'}
                                         </p>

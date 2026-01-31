@@ -5,51 +5,94 @@ export const projects: Project[] = [
         slug: 'taskmaster-pro',
         title: 'TaskMaster Pro',
         description: 'Gestor de tareas fullstack con arquitectura profesional y enfoque en equipos reales.',
-        version: 'v1.2',
-        tags: ['React', 'Next.js', 'Node.js', 'PostgreSQL'],
+        version: 'v1.0',
+        tags: ['React', 'Vite', 'Node.js', 'PostgreSQL', 'TypeScript'],
         image: '/projects/taskmaster-hero.png', // Placeholder
-        link: 'https://taskmaster-demo.com',
+        link: 'https://task-master-pro-xi-seven.vercel.app/login',
         github: 'https://github.com/example/taskmaster-pro',
 
-        timeline: '4 Semanas',
+        timeline: '2 Semanas',
         role: 'Full Stack Developer',
 
         problem: {
-            description: 'Los equipos de producto a menudo luchan con herramientas de gestión que son polarizantes: o demasiado simples (listas To-Do) o excesivamente complejas (Jira). Esto crea fricción en el onboarding y pérdida de productividad.',
+            description:
+                'Muchos equipos de producto gestionan su trabajo con herramientas que no se adaptan bien a su flujo real, generando fricción operativa, pérdida de visibilidad y problemas de escalabilidad a medida que el equipo crece.',
             painPoints: [
-                'Falta de granularidad en permisos de usuario (RBAC).',
-                'Curva de aprendizaje empinada para miembros no técnicos.',
-                'Dificultad para visualizar métricas de rendimiento en tiempo real.'
+                'Roles y permisos poco flexibles que no reflejan la estructura real del equipo.',
+                'Sobrecarga de información que dificulta la adopción por parte de perfiles no técnicos.',
+                'Falta de visibilidad clara sobre el estado real del trabajo y cuellos de botella.',
+                'Dificultad para escalar proyectos y equipos sin perder control ni trazabilidad.',
+                'Dependencia de múltiples herramientas para cubrir necesidades básicas (tareas, comunicación, seguimiento).'
             ]
         },
 
+
         solution: {
-            description: 'Platforma SaaS multi-tenant diseñada para equilibrar potencia y usabilidad. Se priorizó la experiencia de usuario con actualizaciones en tiempo real y una arquitectura modular.',
+            description: 'Diseñé y desarrollé una plataforma SaaS fullstack que centraliza la gestión de tareas, equipos y proyectos, priorizando una arquitectura limpia y una experiencia de usuario fluida.',
             features: [
                 {
-                    title: 'Tablero Kanban Tiempo Real',
-                    description: 'Sincronización instantánea de estados usando WebSockets (Socket.io) para colaboración fluida.',
+                    title: 'Tablero Kanban',
+                    description: 'Visualización intuitiva de tareas con funcionalidad de arrastrar y soltar (Drag & Drop).',
                     icon: 'kanban'
                 },
                 {
-                    title: 'Sistema RBAC',
-                    description: 'Control de acceso basado en roles granular para admins, editores y visualizadores.',
+                    title: 'Internacionalización (i18n)',
+                    description: 'Soporte completo para español e inglés, con detección automática de idioma.',
+                    icon: 'globe'
+                },
+                {
+                    title: 'Gestión de Proyectos',
+                    description: 'Organiza tus tareas en diferentes proyectos para un mejor seguimiento.',
+                    icon: 'monitor'
+                },
+                {
+                    title: 'Gestión de Equipos',
+                    description: 'Colabora con otros usuarios dentro de proyectos específicos.',
+                    icon: 'users'
+                },
+                {
+                    title: 'Sistema de Notificaciones',
+                    description: 'Mantente al día con las actualizaciones de tus tareas y menciones.',
+                    icon: 'bell'
+                },
+                {
+                    title: 'Autenticación Segura',
+                    description: 'Inicio de sesión y registro basados en JWT con protección de rutas.',
                     icon: 'shield'
                 },
                 {
-                    title: 'Analytics Dashboard',
-                    description: 'Visualización de velocidad de equipo y burndown charts con Recharts.'
+                    title: 'Búsqueda y Filtrado',
+                    description: 'Localiza tareas rápidamente por título, estado o prioridad.',
+                    icon: 'search'
+                },
+                {
+                    title: 'Clasificado automático de prioridad de tareas',
+                    description: 'Se puede activar en la configuración la autogestión de prioridad de tareas (bajo, medio, alto) según el margen de tiempo configurada.',
+                    icon: 'priority'
+                },
+                {
+                    title: 'Diseño Premium',
+                    description: 'Interfaz moderna, responsiva y con animaciones fluidas (Framer Motion).',
+                    icon: 'palette'
                 }
             ]
         },
 
         techStack: [
-            { name: 'Next.js', category: 'Frontend' },
-            { name: 'React Query', category: 'State' },
-            { name: 'Node.js', category: 'Backend' },
-            { name: 'PostgreSQL', category: 'Database' },
-            { name: 'Prisma', category: 'ORM' },
-            { name: 'Tailwind', category: 'Styling' },
+            { name: 'React 18', category: 'Frontend', icon: 'react' },
+            { name: 'Vite', category: 'Frontend', icon: 'vite' },
+            { name: 'TypeScript', category: 'Frontend', icon: 'typescript' },
+            { name: 'Zustand', category: 'State', icon: 'react' }, // Using React as fallback/proxy for now
+            { name: 'TanStack Query', category: 'Data', icon: 'reactquery' },
+            { name: 'TailwindCSS', category: 'Styling', icon: 'tailwindcss' },
+            { name: 'Radix UI', category: 'UI', icon: 'shadcn' },
+            { name: 'Framer Motion', category: 'Animations', icon: 'framer' },
+            { name: 'i18next', category: 'i18n', icon: 'i18next' },
+            { name: 'Node.js', category: 'Backend', icon: 'nodejs' },
+            { name: 'Express', category: 'Backend', icon: 'express' },
+            { name: 'PostgreSQL', category: 'Database', icon: 'postgresql' },
+            { name: 'Prisma', category: 'ORM', icon: 'prisma' },
+            { name: 'Zod', category: 'Validation', icon: 'zod' },
         ],
 
         challenges: [
@@ -87,48 +130,145 @@ const moveTaskOptimistic = (move: TaskMove) => {
     },
     {
         slug: 'reserva-saas',
-        title: 'InvoiceFlow SaaS', // Renamed to match image example slightly or keep original concept
-        description: 'Plataforma de facturación y reservas automatizada para freelancers creativos.',
-        version: 'v2.0',
-        tags: ['Next.js', 'Stripe', 'Supabase'],
-        link: 'https://reserva-saas-demo.com',
+        title: 'Plataforma de Reservas SaaS', // Renamed to match image example slightly or keep original concept
+        description: 'Sistema de reservas online con pagos integrados para profesionales y pequeños negocios de servicios.',
+        version: 'v1.0',
+        tags: ['Next.js', 'Stripe', 'PostgreSQL', 'Prisma', 'Tailwind', 'shadcn/ui', 'typescript'],
+        image: '/projects/reserva-saas-hero.png', // Placeholder
+        link: 'https://reservation-system-delta.vercel.app/es',
         github: 'https://github.com/example/reserva-saas',
 
-        timeline: '8 Semanas',
-        role: 'Solo Developer',
+        timeline: '3 Semanas',
+        role: 'Full Stack Developer',
 
         problem: {
-            description: 'Los freelancers pierden entre 4-6 horas al mes conciliando pagos manualmente y persiguiendo facturas impagas. El seguimiento manual lleva a pérdida de ingresos.',
+            description: 'Muchos profesionales de servicios (clases, consultas, sesiones creativas) gestionan sus reservas de forma manual a través de WhatsApp, email o calendarios no sincronizados, lo que genera errores, pérdidas de tiempo y citas desaprovechadas.',
             painPoints: [
-                'Datos financieros fragmentados en múltiples cuentas bancarias.',
-                'Alta carga cognitiva recordando quién ha pagado qué.',
-                'Herramientas existentes demasiado complejas (Quickbooks) o simples (Excel).'
+                'Reservas desorganizadas entre múltiples canales.',
+                'Cancelaciones y no-shows sin control.',
+                'Falta de pagos anticipados o señalización.',
+                'Herramientas genéricas poco adaptadas a su flujo real.'
             ]
         },
 
         solution: {
-            description: 'Un dashboard unificado que sincroniza feeds bancarios y coteja depósitos con facturas abiertas automáticamente. Sistema "Set and Forget" para recordatorios.',
+            description: 'Diseñé y desarrollé una plataforma SaaS que centraliza la gestión de reservas, clientes y pagos en un único sistema, permitiendo a los profesionales automatizar su agenda y reducir fricción operativa.',
             features: [
                 {
-                    title: 'Auto-reconciliación',
-                    description: 'Algoritmo difuso que empareja transacciones con facturas con 95% de precisión.',
-                    icon: 'refresh'
+                    title: 'Autenticación y Control de Acceso',
+                    description:
+                        'Sistema de autenticación flexible y seguro que soporta múltiples métodos de acceso y separa claramente los roles de administradores, proveedores y clientes.',
+                    details: [
+                        'Login con Google OAuth, Email/Password y Magic Links.',
+                        'Verificación OTP en registros por email.',
+                        'RBAC con portales diferenciados (Admin, Provider, Client).',
+                        'Protecciones activas contra abuso: rate limiting, CAPTCHA y honeypots.'
+                    ],
+                    icon: 'shield'
                 },
+
                 {
-                    title: 'Recordatorios Inteligentes',
-                    description: 'Secuencias de email (Drip) que se detienen automáticamente al detectar pago.',
+                    title: 'Motor de Reservas Avanzado',
+                    description:
+                        'Motor de reservas configurable que permite a los profesionales definir servicios, disponibilidad y reglas complejas sin fricción para el cliente final.',
+                    details: [
+                        'Servicios flexibles: duración, precio, capacidad (1-on-1 o grupos).',
+                        'Disponibilidad híbrida con reglas semanales y excepciones por fecha.',
+                        'Buffers automáticos entre citas para evitar solapamientos.',
+                        'Gestión de concurrencia por servicio y límites globales.'
+                    ],
+                    icon: 'calendar'
+                },
+
+                {
+                    title: 'Sincronización con Google Calendar',
+                    description:
+                        'Sincronización bidireccional con Google Calendar para evitar dobles reservas y mantener la agenda siempre actualizada.',
+                    details: [
+                        'Importación automática de eventos externos.',
+                        'Bloqueo de horarios ocupados en tiempo real.',
+                        'Actualización automática ante cancelaciones o reprogramaciones.'
+                    ],
+                    icon: 'calendar-sync'
+                },
+
+                {
+                    title: 'Pagos y Monetización Integrada',
+                    description:
+                        'Sistema de pagos completo con Stripe que permite cobros anticipados, payouts automáticos y un modelo SaaS escalable.',
+                    details: [
+                        'Pagos upfront para confirmar reservas.',
+                        'Stripe Connect Express para que cada proveedor cobre directamente.',
+                        'Soporte para comisiones de plataforma por transacción.',
+                        'Planes de suscripción mensual o anual para proveedores.'
+                    ],
+                    icon: 'credit-card'
+                },
+
+                {
+                    title: 'Gestión de Reservas Recurrentes',
+                    description:
+                        'Soporte nativo para reservas periódicas, ideal para clases, terapias y servicios continuos.',
+                    details: [
+                        'Configuración semanal o mensual.',
+                        'Generación automática de sesiones futuras.',
+                        'Gestión centralizada de cancelaciones y cambios.'
+                    ],
+                    icon: 'repeat'
+                },
+
+                {
+                    title: 'Internacionalización (i18n)',
+                    description:
+                        'Plataforma preparada para audiencias internacionales con soporte completo multi-idioma.',
+                    details: [
+                        'Interfaz totalmente traducida a inglés y español.',
+                        'Detección automática de idioma mediante middleware.',
+                        'Emails y mensajes de error localizados.'
+                    ],
+                    icon: 'globe'
+                },
+
+                {
+                    title: 'Automatización y Notificaciones',
+                    description:
+                        'Sistema de automatización que reduce tareas manuales y mantiene informados a clientes y proveedores.',
+                    details: [
+                        'Recordatorios automáticos 24h y 1h antes de la cita.',
+                        'Emails transaccionales para confirmaciones y cancelaciones.',
+                        'Cron jobs ejecutados de forma serverless.'
+                    ],
                     icon: 'bell'
+                },
+
+                {
+                    title: 'Analíticas y Panel de Control',
+                    description:
+                        'Dashboard interactivo para que los proveedores entiendan el rendimiento de su negocio.',
+                    details: [
+                        'Métricas de ingresos y volumen de reservas.',
+                        'Servicios más populares.',
+                        'Visualizaciones claras mediante gráficos interactivos.'
+                    ],
+                    icon: 'chart'
                 }
             ]
+
         },
 
         techStack: [
-            { name: 'Next.js 14', category: 'Framework' },
-            { name: 'Tailwind', category: 'Styling' },
-            { name: 'Node.js', category: 'Backend API' },
-            { name: 'PostgreSQL', category: 'Database' },
-            { name: 'AWS', category: 'Hosting' },
-            { name: 'Stripe', category: 'Payments' },
+            { name: 'Next.js 14', category: 'Framework', icon: 'nextjs' },
+            { name: 'TypeScript', category: 'Language', icon: 'typescript' },
+            { name: 'PostgreSQL', category: 'Database', icon: 'postgresql' },
+            { name: 'Prisma', category: 'ORM', icon: 'prisma' },
+            { name: 'Auth.js', category: 'Auth', icon: 'authjs' },
+            { name: 'Stripe Connect', category: 'Payments', icon: 'stripe' },
+            { name: 'Resend', category: 'Email', icon: 'resend' },
+            { name: 'TailwindCSS', category: 'Styling', icon: 'tailwindcss' },
+            { name: 'Shadcn/UI', category: 'UI', icon: 'shadcn' },
+            { name: 'Zod', category: 'Validation', icon: 'zod' },
+            { name: 'React Hook Form', category: 'Forms', icon: 'hookform' },
+            { name: 'next-intl', category: 'i18n', icon: 'globe' },
         ],
 
         challenges: [

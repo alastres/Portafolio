@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Hero from '@/components/sections/Hero';
 import ProjectsGrid from '@/components/sections/ProjectsGrid';
 import { projects } from '@/lib/projects';
+import PropuestaValor from '@/components/sections/PropuestaValor';
 import { Button } from '@/components/ui/button-ui';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card-ui';
 import { Code2, Database, Cloud, ArrowRight, Check } from 'lucide-react';
@@ -30,6 +31,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <PropuestaValor />
 
       {/* Featured Projects */}
       <section className="relative py-32 bg-muted/30 -mt-20 pt-32" style={{ clipPath: 'polygon(0 5rem, 100% 0, 100% 100%, 0 100%)' }}>

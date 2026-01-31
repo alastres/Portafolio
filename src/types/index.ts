@@ -22,6 +22,7 @@ export interface Project {
     features: {
       title: string;
       description: string;
+      details?: string[];
       icon?: string;
     }[];
   };
@@ -29,7 +30,7 @@ export interface Project {
   // Tech Stack (Array for Cards)
   techStack?: {
     name: string;
-    icon?: any; // We'll handle icons in component mapping
+    icon?: string;
     category: string; // "Frontend", "Styling"
   }[];
 

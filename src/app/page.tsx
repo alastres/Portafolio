@@ -3,6 +3,7 @@ import Hero from '@/components/sections/Hero';
 import ProjectsGrid from '@/components/sections/ProjectsGrid';
 import { projects } from '@/lib/projects';
 import PropuestaValor from '@/components/sections/PropuestaValor';
+import CTA from '@/components/sections/CTA';
 import { Button } from '@/components/ui/button-ui';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card-ui';
 import { Code2, Database, Cloud, ArrowRight, Check } from 'lucide-react';
@@ -95,38 +96,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA with Angled Enclosure */}
-      <section className="py-40 relative overflow-hidden bg-muted/30" style={{ clipPath: 'polygon(0 10%, 100% 0, 100% 100%, 0 100%)' }}>
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-cyan-600/5"></div>
-
-        {/* Decorative Circle */}
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[600px] h-[600px] border border-primary/5 rounded-full opacity-50 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[800px] h-[800px] border border-primary/5 rounded-full opacity-50 pointer-events-none" />
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center relative z-10">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground mb-8 leading-tight">
-            Listo para construir el <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">futuro digital</span>?
-          </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-2xl mx-auto font-light">
-            Estoy disponible para proyectos freelance y consultoría. Transformemos esa idea compleja en una realidad elegante.
-          </p>
-          <div className="flex justify-center">
-            <Link href="/contact">
-              <div className="relative group cursor-pointer">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-200 animate-tilt"></div>
-                <button className="relative inline-flex h-16 w-64 items-center justify-center overflow-hidden rounded-full p-[2px] transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-                  <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#3B82F6_0%,#06B6D4_50%,#3B82F6_100%)]" />
-                  <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-background px-8 py-1 text-xl font-bold text-foreground backdrop-blur-3xl transition-all group-hover:bg-background/90">
-                    Contáctame <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </button>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CTA />
     </>
   );
 }

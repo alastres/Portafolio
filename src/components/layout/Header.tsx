@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button-ui';
 import { Terminal, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { Breadcrumbs } from '@/components/ui/breadcrumbs';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
@@ -78,10 +77,7 @@ export default function Header() {
                     </div>
                 </div>
 
-                {/* Breadcrumbs - Desktop */}
-                <div className="hidden md:block w-full">
-                    <Breadcrumbs />
-                </div>
+
             </div>
 
             {/* Mobile Menu Overlay */}
@@ -114,18 +110,12 @@ export default function Header() {
                             </Link>
                         </nav>
 
-                        <div className="mt-8">
-                            <p className="text-sm text-muted-foreground mb-4">Ubicación actual:</p>
-                            <Breadcrumbs />
-                        </div>
+
                     </motion.div>
                 )}
             </AnimatePresence>
 
-            {/* Mobile Breadcrumbs (Visible when menu closed) */}
-            <div className="md:hidden">
-                <Breadcrumbs />
-            </div>
+
         </header>
     );
 }

@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import { constructMetadata } from '@/lib/seo';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { Breadcrumbs } from '@/components/ui/breadcrumbs';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -39,7 +40,14 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main className="flex-grow relative">
+            <div className="absolute top-20 left-0 w-full z-30 pointer-events-none">
+              <div className="pointer-events-auto">
+                <Breadcrumbs />
+              </div>
+            </div>
+            {children}
+          </main>
           <Footer />
           <ThemeToggle />
         </ThemeProvider>

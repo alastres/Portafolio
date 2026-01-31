@@ -54,7 +54,7 @@ export default function Home() {
 
           <div className="mt-16 text-center sm:hidden">
             <Button asChild variant="ghost" className="text-primary hover:bg-primary/10 w-full">
-              <Link href="/projects">Explorar Portfolio Completo <ArrowRight className="ml-2 h-4 w-4" /></Link>
+              <Link href="/projects">Explorar Portafolio Completo <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
         </div>

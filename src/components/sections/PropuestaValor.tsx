@@ -29,7 +29,7 @@ const features = [
 
 export default function PropuestaValor() {
     return (
-        <section className="py-24 bg-background relative overflow-hidden">
+        <section id="propuesta-valor" className="py-24 bg-background relative overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
 
                 <div className="text-center max-w-3xl mx-auto mb-16">

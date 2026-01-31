@@ -58,6 +58,8 @@ import {
     SiReacthookform
 } from "react-icons/si";
 
+import ProjectSlider from '@/components/ui/project-slider';
+
 interface ProjectPageProps {
     params: Promise<{ slug: string }>;
 }
@@ -267,23 +269,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                             </div>
 
                             {/* Hero Image Area */}
-                            <div className="rounded-xl overflow-hidden border border-border/50 shadow-2xl bg-card">
-                                {/* Fallback pattern if no image */}
-                                <div className="aspect-video w-full bg-secondary/50 flex items-center justify-center relative group">
-                                    {project.image ? (
-                                        <div className="relative w-full h-full">
-                                            {/* We would use Next/Image here if we had real assets. Using a placeholder div for now. */}
-                                            <div className="w-full h-full bg-gradient-to-br from-secondary/50 to-muted flex items-center justify-center text-gray-700 font-mono">
-                                                Project Screenshot Mockup
-                                            </div>
-                                        </div>
-                                    ) : (
+                            <div className="rounded-xl overflow-hidden shadow-2xl bg-card">
+                                {(project.gallery && project.gallery.length > 0) ? (
+                                    <ProjectSlider images={project.gallery} />
+                                ) : project.image ? (
+                                    <ProjectSlider images={[project.image]} />
+                                ) : (
+                                    <div className="aspect-video w-full bg-secondary/50 flex items-center justify-center border border-border/50">
                                         <div className="text-center p-12">
-                                            <Layout className="h-16 w-16 text-muted-foreground mx-auto mb-4 opacity-50" />
-                                            <p className="text-muted-foreground">Preview Image Placeholder</p>
+                                            <Layers className="h-16 w-16 text-muted-foreground mx-auto mb-4 opacity-50" />
+                                            <p className="text-muted-foreground">No image available</p>
                                         </div>
-                                    )}
-                                </div>
+                                    </div>
+                                )}
                             </div>
                         </section>
 

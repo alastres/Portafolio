@@ -7,6 +7,7 @@ export interface Project {
   link?: string;
   github?: string;
   image?: string;
+  gallery?: string[];
 
   // Metadata for Sidebar
   timeline?: string;

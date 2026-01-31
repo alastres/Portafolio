@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
+    { label: 'Propuesta de Valor', href: '/#propuesta-valor' },
     { label: 'Proyectos', href: '/projects' },
     { label: 'Stack', href: '/#stack' },
     { label: 'Sobre mí', href: '/about' },

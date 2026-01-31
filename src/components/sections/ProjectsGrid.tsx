@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import BlurImage from '@/components/ui/blur-image';
 import { Project } from '@/types';
 import { Badge } from '@/components/ui/badge-ui';
 import { ArrowRight, MoveRight } from 'lucide-react';
@@ -93,29 +95,41 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
                                 <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-card/5 backdrop-blur-sm transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] group-hover:border-blue-500/30">
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent opacity-60 z-10" />
 
-                                    {/* Abstract Placeholder for Image */}
-                                    <div className="w-full h-full bg-gradient-to-br from-blue-900/20 to-purple-900/20 relative flex items-center justify-center">
-                                        <div className="w-[85%] h-[85%] bg-[#0f172a] rounded-lg shadow-2xl border border-white/10 p-4 flex flex-col gap-4 opacity-90 group-hover:opacity-100 transition-opacity transform group-hover:-translate-y-1 duration-500">
-                                            {/* Fake Browser Header */}
-                                            <div className="flex items-center gap-2 mb-2">
-                                                <div className="w-2 h-2 rounded-full bg-red-500/50" />
-                                                <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
-                                                <div className="w-2 h-2 rounded-full bg-green-500/50" />
-                                            </div>
-                                            {/* UI Mockup */}
-                                            <div className="flex-1 flex flex-col gap-3">
-                                                <div className="h-2 w-1/3 bg-white/10 rounded-full" />
-                                                <div className="flex-1 grid grid-cols-12 gap-3">
-                                                    <div className="col-span-3 bg-blue-500/10 rounded h-full" />
-                                                    <div className="col-span-9 bg-white/5 rounded h-full flex flex-col gap-2 p-2">
-                                                        <div className="h-2 w-full bg-white/5 rounded" />
-                                                        <div className="h-2 w-3/4 bg-white/5 rounded" />
-                                                        <div className="h-20 w-full bg-white/5 rounded mt-auto" />
+                                    {project.image ? (
+                                        <div className="relative w-full h-full">
+                                            <BlurImage
+                                                src={project.image}
+                                                alt={project.title}
+                                                fill
+                                                className="object-cover object-top"
+                                                sizes="(max-width: 768px) 100vw, 50vw"
+                                            />
+                                        </div>
+                                    ) : (
+                                        /* Abstract Placeholder for Image */
+                                        <div className="w-full h-full bg-gradient-to-br from-blue-900/20 to-purple-900/20 relative flex items-center justify-center">
+                                            <div className="w-[85%] h-[85%] bg-[#0f172a] rounded-lg shadow-2xl border border-white/10 p-4 flex flex-col gap-4 opacity-90 group-hover:opacity-100 transition-opacity transform group-hover:-translate-y-1 duration-500">
+                                                {/* Fake Browser Header */}
+                                                <div className="flex items-center gap-2 mb-2">
+                                                    <div className="w-2 h-2 rounded-full bg-red-500/50" />
+                                                    <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
+                                                    <div className="w-2 h-2 rounded-full bg-green-500/50" />
+                                                </div>
+                                                {/* UI Mockup */}
+                                                <div className="flex-1 flex flex-col gap-3">
+                                                    <div className="h-2 w-1/3 bg-white/10 rounded-full" />
+                                                    <div className="flex-1 grid grid-cols-12 gap-3">
+                                                        <div className="col-span-3 bg-blue-500/10 rounded h-full" />
+                                                        <div className="col-span-9 bg-white/5 rounded h-full flex flex-col gap-2 p-2">
+                                                            <div className="h-2 w-full bg-white/5 rounded" />
+                                                            <div className="h-2 w-3/4 bg-white/5 rounded" />
+                                                            <div className="h-20 w-full bg-white/5 rounded mt-auto" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
                             </Link>
                         </div>

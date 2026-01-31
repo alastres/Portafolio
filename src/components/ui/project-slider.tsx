@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import Image from 'next/image';
+import BlurImage from '@/components/ui/blur-image';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button-ui';
 
@@ -14,6 +15,7 @@ interface ProjectSliderProps {
 export default function ProjectSlider({ images }: ProjectSliderProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
+    const [autoplay, setAutoplay] = useState(true);
 
     const slideVariants = {
         enter: (direction: number) => ({
@@ -48,12 +50,26 @@ export default function ProjectSlider({ images }: ProjectSliderProps) {
         setCurrentIndex(newIndex);
     };
 
+    useEffect(() => {
+        if (!autoplay) return;
+
+        const timer = setInterval(() => {
+            paginate(1);
+        }, 3000);
+
+        return () => clearInterval(timer);
+    }, [currentIndex, autoplay]);
+
     if (!images || images.length === 0) return null;
 
     return (
         <div className="space-y-4">
             {/* Main Slider Display */}
-            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/50 bg-muted/30 shadow-2xl group">
+            <div
+                className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/50 bg-muted/30 shadow-2xl group"
+                onMouseEnter={() => setAutoplay(false)}
+                onMouseLeave={() => setAutoplay(true)}
+            >
                 <AnimatePresence initial={false} custom={direction}>
                     <motion.div
                         key={currentIndex}
@@ -80,7 +96,7 @@ export default function ProjectSlider({ images }: ProjectSliderProps) {
                         }}
                         className="absolute inset-0 flex items-center justify-center bg-black/5"
                     >
-                        <Image
+                        <BlurImage
                             src={images[currentIndex]}
                             alt={`Slide ${currentIndex + 1}`}
                             fill
@@ -134,7 +150,7 @@ export default function ProjectSlider({ images }: ProjectSliderProps) {
                                     : "border-transparent opacity-60 hover:opacity-100"
                             )}
                         >
-                            <Image
+                            <BlurImage
                                 src={img}
                                 alt={`Thumb ${idx + 1}`}
                                 fill

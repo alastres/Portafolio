@@ -2,21 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Terminal, Code, FolderOpen } from 'lucide-react';
 
 const CODE_LINES: string[] = [
-  "const developer = {",
-  "  name: 'Tu Nombre',",
-  "  skills: ['React', 'JavaScript', 'CSS'],",
-  "  passion: 'Crear experiencias web',",
-  "  status: 'Disponible para proyectos'",
+  "const desarrollador = {",
+  "  nombre: 'Adrian Roidel Lastres Marinas',",
+  "  habilidades: ['React', 'JavaScript', 'CSS', 'Node.js'],",
+  "  pasión: 'Creación y refactorización de soluciones web'",
+  "  estado: 'Disponible para proyectos'",
   "};",
   "",
-  "function buildAmazingThings() {",
-  "  return developer.skills.map(skill => {",
-  "    return `${skill} + creatividad = 🚀`;",
+  "function construirCosasIncreibles() {",
+  "  return desarrollador.habilidades.map(habilidad => {",
+  "    return `${habilidad} + creatividad = 🚀`;",
   "  });",
   "}",
   "",
   "// ¡Construyamos algo increíble juntos!",
-  "buildAmazingThings();"
+  "construirCosasIncreibles();"
 ];
 
 const HeroIDEAnimation: React.FC = () => {
@@ -98,34 +98,34 @@ const HeroIDEAnimation: React.FC = () => {
 
   return (
 
-    <div className="w-full">
+    <div className="w-full text-xs md:text-sm">
       {/* IDE Window */}
-      <div className="bg-slate-800 rounded-lg shadow-2xl overflow-hidden border border-slate-700">
+      <div className="bg-slate-800 rounded-md md:rounded-lg shadow-2xl overflow-hidden border border-slate-700">
         {/* Window Header */}
-        <div className="bg-slate-900 px-4 py-3 flex items-center justify-between border-b border-slate-700">
+        <div className="bg-slate-900 px-3 py-2 md:px-4 md:py-3 flex items-center justify-between border-b border-slate-700">
           <div className="flex items-center gap-2">
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div className="flex gap-1.5 md:gap-2">
+              <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-500"></div>
+              <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-green-500"></div>
             </div>
-            <div className="ml-4 flex items-center gap-2 text-slate-400 text-sm">
-              <Code size={16} />
+            <div className="ml-2 md:ml-4 flex items-center gap-2 text-slate-400">
+              <Code size={14} className="md:w-4 md:h-4" />
               <span>portfolio.ts</span>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <FolderOpen size={16} className="text-slate-400" />
-            <Terminal size={16} className="text-slate-400" />
+          <div className="flex items-center gap-2 md:gap-3">
+            <FolderOpen size={14} className="text-slate-400 md:w-4 md:h-4" />
+            <Terminal size={14} className="text-slate-400 md:w-4 md:h-4" />
           </div>
         </div>
 
         {/* IDE Content */}
-        <div className="flex h-80 overflow-hidden bg-[#0a0f1e]">
+        <div className="flex h-64 md:h-80 overflow-hidden bg-[#0a0f1e]">
           {/* Line Numbers */}
-          <div className="bg-slate-900 px-4 py-6 text-slate-600 text-sm font-mono select-none overflow-y-auto scrollbar-hide border-r border-slate-700/50">
+          <div className="bg-slate-900 px-2 py-4 md:px-4 md:py-6 text-slate-600 font-mono select-none overflow-y-auto scrollbar-hide border-r border-slate-700/50 text-right min-w-[2.5rem] md:min-w-[3.5rem]">
             {displayedLines.map((_, index) => (
-              <div key={index} className="leading-6 text-right">
+              <div key={index} className="leading-6">
                 {index + 1}
               </div>
             ))}
@@ -134,13 +134,13 @@ const HeroIDEAnimation: React.FC = () => {
           {/* Code Area */}
           <div
             id="code-container"
-            className="flex-1 p-6 font-mono text-sm overflow-y-auto scroll-smooth"
+            className="flex-1 min-w-0 p-3 md:p-6 font-mono overflow-y-auto scroll-smooth overflow-x-auto"
             style={{
               scrollbarWidth: 'thin',
               scrollbarColor: '#475569 #1e293b'
             }}
           >
-            <pre className="text-slate-300">
+            <pre className="text-slate-300 w-max min-w-full">
               {displayedLines.map((line, index) => (
                 <div key={index} className="leading-6">
                   {line.split('').map((char, charIndex) => {

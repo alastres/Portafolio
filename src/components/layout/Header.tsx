@@ -63,7 +63,7 @@ export default function Header() {
                     {/* CTA & Mobile Toggle */}
                     <div className="flex items-center gap-4 z-50 relative">
                         <Button asChild size="sm" className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground border-0 shadow-lg shadow-primary/20">
-                            <Link href="/contact">Hablemos</Link>
+                            <Link href="/contact">Trabajemos juntos</Link>
                         </Button>
 
                         {/* Mobile Toggle Button */}
@@ -106,7 +106,7 @@ export default function Header() {
                                 className="text-lg font-medium text-primary hover:text-primary/80 transition-colors py-2"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
-                                Hablemos
+                                Trabajemos juntos
                             </Link>
                         </nav>
 

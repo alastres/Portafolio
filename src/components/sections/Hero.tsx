@@ -101,6 +101,9 @@ export default function Hero() {
                     <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-full border border-border/50">
                         <CheckCircle2 className="h-5 w-5 text-primary" /> Código mantenible
                     </div>
+                    <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-full border border-border/50">
+                        <CheckCircle2 className="h-5 w-5 text-primary" /> Especializado en escalar MVPs a productos
+                    </div>
                 </motion.div>
 
             </div>

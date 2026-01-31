@@ -7,8 +7,10 @@ export const projects: Project[] = [
         description: 'Gestor de tareas fullstack con arquitectura profesional y enfoque en equipos reales.',
         version: 'v1.0',
         tags: ['React', 'Vite', 'Node.js', 'PostgreSQL', 'TypeScript'],
-        image: '/images/taskmasterpro/chrome-capture-2026-01-31 (1).png',
+        image: '/images/taskmasterpro/PromoTaskManagerPro.png',
         gallery: [
+            '/images/taskmasterpro/PromoTaskManagerPro.png',
+            '/images/taskmasterpro/PromoTaskManagerPro2.png',
             '/images/taskmasterpro/chrome-capture-2026-01-31 (1).png',
             '/images/taskmasterpro/chrome-capture-2026-01-31 (2).png',
             '/images/taskmasterpro/chrome-capture-2026-01-31 (3).png',
@@ -144,8 +146,10 @@ const moveTaskOptimistic = (move: TaskMove) => {
         description: 'Sistema de reservas online con pagos integrados para profesionales y pequeños negocios de servicios.',
         version: 'v1.0',
         tags: ['Next.js', 'Stripe', 'PostgreSQL', 'Prisma', 'Tailwind', 'shadcn/ui', 'typescript'],
-        image: '/images/scheduler/chrome-capture-2026-01-31 (9).png',
+        image: '/images/scheduler/PromoScheduler.png',
         gallery: [
+            '/images/scheduler/PromoScheduler.png',
+            '/images/scheduler/PromoScheduler2.png',
             '/images/scheduler/chrome-capture-2026-01-31 (9).png',
             '/images/scheduler/chrome-capture-2026-01-31 (10).png',
             '/images/scheduler/chrome-capture-2026-01-31 (11).png',

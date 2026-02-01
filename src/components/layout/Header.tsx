@@ -44,7 +44,7 @@ export default function Header() {
                             <Terminal className="h-5 w-5 text-primary" />
                         </div>
                         <Link href="/" className="text-xl font-bold tracking-tight text-foreground">
-                            DevName
+                            Alas3s
                         </Link>
                     </div>
 

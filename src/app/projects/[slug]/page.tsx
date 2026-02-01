@@ -75,7 +75,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
     const project = getProjectBySlug(slug);
 
     if (!project) {
-        return constructMetadata({ title: 'Project Not Found', description: 'Project not found' });
+        return constructMetadata({ title: 'Proyecto no encontrado', description: 'Proyecto no encontrado' });
     }
 
     return constructMetadata({
@@ -163,9 +163,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     <aside className="lg:col-span-2 hidden lg:block">
                         <div className="sticky top-32 space-y-8">
                             <div>
-                                <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-4">On This Page</h3>
+                                <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-4">En esta página</h3>
                                 <nav className="flex flex-col space-y-3">
-                                    {['Overview', 'El Problema', 'La Solución', 'Stack Tecnológico', 'Retos Técnicos'].map((item) => (
+                                    {['Resumen', 'El Problema', 'La Solución', 'Stack Tecnológico', 'Retos Técnicos'].map((item) => (
                                         <a
                                             key={item}
                                             href={`#${item.toLowerCase().replace(/ /g, '-')}`}
@@ -181,7 +181,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 {project.timeline && (
                                     <div>
                                         <h4 className="flex items-center text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2 gap-2">
-                                            <Calendar className="h-3 w-3" /> Timeline
+                                            <Calendar className="h-3 w-3" /> Cronología
                                         </h4>
                                         <p className="text-sm font-medium text-foreground">{project.timeline}</p>
                                     </div>
@@ -189,7 +189,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 {project.role && (
                                     <div>
                                         <h4 className="flex items-center text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2 gap-2">
-                                            <User className="h-3 w-3" /> Role
+                                            <User className="h-3 w-3" /> Rol
                                         </h4>
                                         <p className="text-sm font-medium text-foreground">{project.role}</p>
                                     </div>
@@ -202,12 +202,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     <div className="lg:col-span-10 space-y-20">
 
                         {/* Header & Hero */}
-                        <section id="overview" className="space-y-8">
+                        <section id="resumen" className="space-y-8">
                             <div className="space-y-6">
                                 <div className="flex items-center gap-3">
                                     {project.version && (
                                         <Badge variant="outline" className="text-primary border-primary/30 bg-primary/5 uppercase tracking-wider font-bold h-7">
-                                            SAAS PRODUCT {project.version}
+                                            PRODUCTO SAAS {project.version}
                                         </Badge>
                                     )}
                                 </div>
@@ -221,14 +221,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     {project.link && (
                                         <Button asChild size="lg" className="h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8">
                                             <Link href={project.link} target="_blank">
-                                                View Live Demo <ArrowRight className="ml-2 h-4 w-4" />
+                                                Ver Demo <ArrowRight className="ml-2 h-4 w-4" />
                                             </Link>
                                         </Button>
                                     )}
                                     {project.github && (
                                         <Button asChild variant="outline" size="lg" className="h-12 border-border text-foreground hover:bg-muted font-medium px-8">
                                             <Link href={project.github} target="_blank">
-                                                <Github className="mr-2 h-4 w-4" /> Source Code
+                                                <Github className="mr-2 h-4 w-4" /> Repositorio
                                             </Link>
                                         </Button>
                                     )}
@@ -241,7 +241,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     {project.timeline && (
                                         <div>
                                             <h4 className="flex items-center text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2 gap-2">
-                                                <Calendar className="h-3 w-3" /> Timeline
+                                                <Calendar className="h-3 w-3" /> Cronología
                                             </h4>
                                             <p className="text-sm font-medium text-foreground">{project.timeline}</p>
                                         </div>
@@ -249,14 +249,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     {project.role && (
                                         <div>
                                             <h4 className="flex items-center text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2 gap-2">
-                                                <User className="h-3 w-3" /> Role
+                                                <User className="h-3 w-3" /> Rol
                                             </h4>
                                             <p className="text-sm font-medium text-foreground">{project.role}</p>
                                         </div>
                                     )}
                                 </div>
                                 <div className="flex flex-wrap gap-3 overflow-x-auto pb-2 no-scrollbar mask-gradient">
-                                    {['Overview', 'El Problema', 'La Solución', 'Stack Tecnológico', 'Retos Técnicos'].map((item) => (
+                                    {['Resumen', 'El Problema', 'La Solución', 'Stack Tecnológico', 'Retos Técnicos'].map((item) => (
                                         <a
                                             key={item}
                                             href={`#${item.toLowerCase().replace(/ /g, '-')}`}
@@ -278,7 +278,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     <div className="aspect-video w-full bg-secondary/50 flex items-center justify-center border border-border/50">
                                         <div className="text-center p-12">
                                             <Layers className="h-16 w-16 text-muted-foreground mx-auto mb-4 opacity-50" />
-                                            <p className="text-muted-foreground">No image available</p>
+                                            <p className="text-muted-foreground">Imagen no disponible</p>
                                         </div>
                                     </div>
                                 )}
@@ -422,7 +422,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     href={`/projects/${previous.slug}`}
                                     className="group flex flex-col items-start gap-1"
                                 >
-                                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest group-hover:text-primary transition-colors">Previous Project</span>
+                                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest group-hover:text-primary transition-colors">Proyecto Anterior</span>
                                     <h4 className="text-lg font-bold text-foreground flex items-center gap-2 group-hover:underline">
                                         <ArrowLeft className="h-4 w-4" /> {previous.title}
                                     </h4>
@@ -434,7 +434,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     href={`/projects/${next.slug}`}
                                     className="group flex flex-col items-end gap-1 text-right"
                                 >
-                                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest group-hover:text-primary transition-colors">Next Project</span>
+                                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest group-hover:text-primary transition-colors">Siguiente Proyecto</span>
                                     <h4 className="text-lg font-bold text-foreground flex items-center gap-2 group-hover:underline">
                                         {next.title} <ArrowRight className="h-4 w-4" />
                                     </h4>

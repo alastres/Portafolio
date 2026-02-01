@@ -1,162 +1,209 @@
 'use client';
 
 import { Button } from '@/components/ui/button-ui';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card-ui';
-import { Badge } from '@/components/ui/badge-ui';
-import { Lightbulb, Puzzle, Rocket, Code2, Database, Cloud, Terminal, Layers, Layout, ArrowRight, CheckCircle2 } from 'lucide-react';
+import {
+    Brain,
+    Puzzle,
+    Zap
+} from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 export default function AboutPage() {
-    return (
-        <section className="bg-background min-h-screen pt-32 pb-20 overflow-hidden">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+    const fadeIn = {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5 }
+    };
 
-                {/* Hero Section */}
-                <div className="max-w-4xl mb-24">
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-[1.1]">
-                        Construyendo Productos, <br />
-                        <span className="text-primary">No Solo Funcionalidades.</span>
+    return (
+        <section className="bg-background min-h-screen pt-32 pb-24 overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+
+                {/* 1. Hero / Introduction */}
+                <motion.div
+                    initial="initial"
+                    animate="animate"
+                    variants={fadeIn}
+                    className="mb-24 md:mb-32"
+                >
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-foreground mb-6 leading-[1.1] tracking-tight">
+                        Construyendo productos, <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+                            no solo funcionalidades.
+                        </span>
                     </h1>
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="w-1 h-12 bg-primary rounded-full"></div>
-                        <p className="text-xl md:text-2xl text-muted-foreground font-light">
-                            El código es la herramienta. El valor es el producto.
+
+                    <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 mb-8 border-l-4 border-primary pl-6">
+                        <div>
+                            <h2 className="text-xl md:text-2xl font-bold text-foreground">Adrian</h2>
+                            <p className="text-muted-foreground font-medium">Ingeniero Informático & Full-Stack Developer</p>
+                        </div>
+                    </div>
+
+                    <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-3xl">
+                        Conecto la ingeniería con el producto. El código es la herramienta; el valor está en el impacto real que el producto genera en usuarios y negocio.
+                    </p>
+                </motion.div>
+
+                {/* 2. Bloque "Sobre mí" */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="grid md:grid-cols-12 gap-12 mb-32 items-start"
+                >
+                    <div className="md:col-span-4">
+                        <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-widest sticky top-32">Sobre mí</h2>
+                    </div>
+                    <div className="md:col-span-8 space-y-6 text-lg text-muted-foreground leading-relaxed">
+                        <p>
+                            <span className="text-foreground font-semibold">No escribo código por escribir.</span> Diseño y construyo productos web escalables, mantenibles y alineados con objetivos reales de negocio, priorizando experiencia de usuario, simplicidad técnica y crecimiento sostenible.
+                        </p>
+                        <p>
+                            Como Ingeniero Informático, tengo la base académica para entender sistemas complejos. A nivel profesional, mi enfoque es totalmente pragmático: construir soluciones que funcionen en producción, escalen con el tiempo y resuelvan problemas reales.
+                        </p>
+                        <p>
+                            He trabajado en productos tipo SaaS, MVPs y plataformas en producción, enfrentando retos de arquitectura, colaboración, escalabilidad y evolución continua del producto.
                         </p>
                     </div>
-                    <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                        Conecto la brecha entre el código y el valor de negocio. Mi enfoque prioriza la experiencia de usuario y la lógica de negocio sobre la complejidad técnica innecesaria, asegurando que resolvemos los problemas correctos. No solo escribo funciones; construyo sistemas escalables que impulsan el crecimiento.
-                    </p>
-                </div>
+                </motion.div>
 
-                {/* Core Pillars */}
-                <div className="mb-32">
-                    <h2 className="text-3xl font-bold text-foreground mb-2">Pilares Fundamentales</h2>
-                    <p className="text-muted-foreground mb-10">Cómo abordo cada proyecto para asegurar escalabilidad y market fit.</p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* 3. Pilares Fundamentales */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-32"
+                >
+                    <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-widest mb-10 block md:hidden">Pilares</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
                             {
-                                icon: Lightbulb,
+                                icon: Brain,
                                 title: "Mentalidad de Producto",
-                                desc: "Entender el 'Por qué' antes del 'Cómo'. Cada línea de código debe servir a un objetivo de negocio o una necesidad del usuario."
+                                desc: "Entender el por qué antes del cómo. Cada decisión técnica se evalúa por su impacto en el producto final y en el usuario."
                             },
                             {
                                 icon: Puzzle,
                                 title: "Resolución de Problemas",
-                                desc: "Pensamiento de primeros principios aplicado a la arquitectura. Descomponer sistemas complejos en componentes manejables y escalables."
+                                desc: "Pensamiento estructurado y arquitectura pragmática. Descomponer problemas complejos en soluciones claras, mantenibles y escalables."
                             },
                             {
-                                icon: Rocket,
+                                icon: Zap,
                                 title: "Ejecución Ágil",
-                                desc: "Iterar rápido sin romper cosas. Enfoque en entrega de valor continuo manteniendo la calidad del código para futuras iteraciones."
+                                desc: "Iteración rápida sin sacrificar calidad. Construir, medir y mejorar de forma continua, manteniendo el código limpio y preparado para crecer."
                             }
                         ].map((item, idx) => (
-                            <Card key={idx} className="bg-card border-border hover:border-primary/30 transition-all duration-300">
-                                <CardHeader>
-                                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                                        <item.icon className="h-6 w-6 text-primary" />
-                                    </div>
-                                    <CardTitle className="text-foreground text-xl mb-2">{item.title}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <CardDescription className="text-muted-foreground text-base leading-relaxed">
-                                        {item.desc}
-                                    </CardDescription>
-                                </CardContent>
-                            </Card>
+                            <div key={idx} className="bg-secondary/20 p-8 rounded-2xl border border-border/50 hover:border-primary/30 transition-colors">
+                                <item.icon className="h-8 w-8 text-primary mb-6" />
+                                <h3 className="text-xl font-bold text-foreground mb-3">{item.title}</h3>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    {item.desc}
+                                </p>
+                            </div>
                         ))}
                     </div>
-                </div>
+                </motion.div>
 
-                {/* The Process */}
-                <div className="mb-32 max-w-4xl mx-auto">
-                    <h2 className="text-3xl font-bold text-foreground mb-2">El Proceso</h2>
-                    <p className="text-muted-foreground mb-16">De la idea abstracta al producto desplegado.</p>
-
-                    <div className="relative">
-                        {/* Vertical Line */}
-                        <div className="absolute left-[20px] md:left-1/2 top-4 bottom-4 w-0.5 bg-border -translate-x-1/2 hidden md:block"></div>
-                        <div className="absolute left-[20px] top-4 bottom-4 w-0.5 bg-border -translate-x-1/2 md:hidden"></div>
-
-                        {[
-                            {
-                                title: "Descubrimiento y Estrategia",
-                                desc: "Definiendo requerimientos y flujos de usuario. No se escribe código hasta saber qué significa el éxito.",
-                                align: "left"
-                            },
-                            {
-                                title: "Arquitectura y Diseño",
-                                desc: "Diseñando esquemas de bases de datos y estructuras de API escalables que soporten el crecimiento.",
-                                align: "right"
-                            },
-                            {
-                                title: "Desarrollo Ágil",
-                                desc: "Construyendo funcionalidades en sprints. El feedback constante asegura que siempre avanzamos hacia la meta.",
-                                align: "left"
-                            },
-                            {
-                                title: "Despliegue y Escala",
-                                desc: "Pipelines automatizados para entregas seguras. Monitoreo proactivo para detectar problemas antes que los usuarios.",
-                                align: "right"
-                            }
-                        ].map((step, idx) => (
-                            <div key={idx} className={`relative flex flex-col md:flex-row items-center mb-16 ${step.align === 'left' ? '' : 'md:flex-row-reverse'}`}>
-                                {/* Timeline Dot */}
-                                <div className="absolute left-[20px] md:left-1/2 -translate-x-1/2 w-4 h-4 bg-background border-[3px] border-primary rounded-full z-10"></div>
-
-                                {/* Content Box */}
-                                <div className={`ml-12 md:ml-0 md:w-1/2 ${step.align === 'left' ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'} flex-1`}>
-                                    <h3 className="text-xl font-bold text-foreground mb-2">{step.title}</h3>
-                                    <div className={`bg-card border border-border p-6 rounded-xl inline-block ${step.align === 'left' ? 'rounded-tr-xl' : 'rounded-tl-xl'}`}>
-                                        <p className="text-muted-foreground">{step.desc}</p>
+                {/* 4. Proceso de Trabajo */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-32"
+                >
+                    <div className="grid md:grid-cols-12 gap-12">
+                        <div className="md:col-span-4">
+                            <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-widest sticky top-32">Proceso de Trabajo</h2>
+                        </div>
+                        <div className="md:col-span-8 space-y-12">
+                            {[
+                                {
+                                    step: "01",
+                                    title: "Descubrimiento y Estrategia",
+                                    desc: "Definición clara de objetivos, usuarios y métricas de éxito. Nada se construye sin entender primero el problema."
+                                },
+                                {
+                                    step: "02",
+                                    title: "Arquitectura y Diseño",
+                                    desc: "Diseño de estructuras de datos, APIs y sistemas preparados para escalar y adaptarse al crecimiento futuro."
+                                },
+                                {
+                                    step: "03",
+                                    title: "Desarrollo Ágil",
+                                    desc: "Construcción iterativa con feedback constante. Código limpio, testado y documentado."
+                                },
+                                {
+                                    step: "04",
+                                    title: "Despliegue y Escalado",
+                                    desc: "Pipelines CI/CD, monitorización y mejora continua. El trabajo no termina en el commit, termina en producción."
+                                }
+                            ].map((process, idx) => (
+                                <div key={idx} className="group flex gap-6 items-start border-b border-border/40 pb-12 last:border-0 last:pb-0">
+                                    <span className="text-4xl font-black text-border group-hover:text-primary/20 transition-colors">
+                                        {process.step}
+                                    </span>
+                                    <div>
+                                        <h3 className="text-2xl font-bold text-foreground mb-3">{process.title}</h3>
+                                        <p className="text-muted-foreground text-lg leading-relaxed">
+                                            {process.desc}
+                                        </p>
                                     </div>
                                 </div>
-                                <div className="hidden md:block md:w-1/2"></div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Tech Stack */}
-                <div className="mb-32 text-center">
-                    <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-widest mb-10">Tecnologías que Utilizo</h3>
-                    <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-                        {[
-                            { icon: Code2, label: "React" },
-                            { icon: Terminal, label: "Node.js" },
-                            { icon: Database, label: "PostgreSQL" },
-                            { icon: Cloud, label: "AWS" },
-                            { icon: Layout, label: "Tailwind" },
-                            { icon: Layers, label: "TypeScript" },
-                        ].map((tech, idx) => (
-                            <div key={idx} className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
-                                <tech.icon className="h-6 w-6" />
-                                <span className="font-medium text-lg">{tech.label}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* CTA */}
-                <Card className="bg-card border-border max-w-4xl mx-auto overflow-hidden relative group">
-                    <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <Rocket className="w-48 h-48 text-primary -rotate-12 transform translate-x-16 -translate-y-8" />
-                    </div>
-                    <CardContent className="p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
-                        <div>
-                            <h2 className="text-3xl font-bold text-foreground mb-3">¿Listo para construir tu MVP?</h2>
-                            <p className="text-muted-foreground text-lg max-w-md">
-                                Convierte tu concepto en un producto real. Actualmente estoy disponible para nuevos proyectos.
-                            </p>
+                            ))}
                         </div>
-                        <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 h-12 text-base shadow-lg shadow-primary/20">
-                            <Link href="/contact">
-                                Empezar un Proyecto
-                            </Link>
-                        </Button>
-                    </CardContent>
-                </Card>
+                    </div>
+                </motion.div>
+
+                {/* 5. Tecnologías */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-32 border-y border-border/50 py-16"
+                >
+                    <div className="text-center mb-10">
+                        <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Stack Tecnológico</h2>
+                    </div>
+                    <div className="flex flex-wrap justify-center gap-x-12 gap-y-8 grayscale hover:grayscale-0 transition-all duration-500">
+                        {[
+                            "React", "Next.js", "Node.js", "PostgreSQL", "AWS", "Tailwind", "TypeScript"
+                        ].map((tech, idx) => (
+                            <span key={idx} className="text-xl md:text-2xl font-bold text-foreground/80 hover:text-primary cursor-default transition-colors">
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* 6. CTA Final */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="bg-card border border-border rounded-3xl p-8 md:p-16 text-center relative overflow-hidden"
+                >
+                    <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
+                        <Zap className="w-96 h-96 -rotate-12" />
+                    </div>
+
+                    <div className="relative z-10 max-w-2xl mx-auto space-y-8">
+                        <h2 className="text-3xl md:text-4xl font-black text-foreground">
+                            ¿Listo para construir algo impactante?
+                        </h2>
+                        <p className="text-xl text-muted-foreground leading-relaxed">
+                            Especializado en MVPs, productos SaaS y mejora de sistemas existentes. Hablemos de cómo la ingeniería puede impulsar tu producto.
+                        </p>
+                        <div className="flex justify-center pt-4">
+                            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 h-14 rounded-full shadow-xl shadow-primary/20 transition-all hover:scale-105">
+                                <Link href="/contact">
+                                    Contactar ahora
+                                </Link>
+                            </Button>
+                        </div>
+                    </div>
+                </motion.div>
 
             </div>
         </section>

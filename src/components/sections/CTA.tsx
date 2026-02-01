@@ -79,7 +79,7 @@ export default function CTA() {
                         </Link>
 
                         <Link href="mailto:adrian47388@gmail.com">
-                            <Button variant="ghost" className="text-lg px-6 py-6 h-auto rounded-full hover:bg-white/5 data-[state=open]:bg-transparent">
+                            <Button variant="ghost" className="text-lg px-6 py-6 h-auto rounded-full text-foreground hover:text-primary hover:bg-secondary data-[state=open]:bg-transparent transition-colors">
                                 <Mail className="mr-2 h-5 w-5" />
                                 adrian47388@gmail.com
                             </Button>

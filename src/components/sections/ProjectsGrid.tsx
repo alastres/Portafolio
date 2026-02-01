@@ -80,7 +80,7 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
                                     href={`/projects/${project.slug}`}
                                     className="group inline-flex items-center text-sm font-bold text-foreground hover:text-blue-400 transition-colors uppercase tracking-widest gap-2"
                                 >
-                                    Explore Project Story
+                                    Explorar Historia del Proyecto
                                     <MoveRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </div>

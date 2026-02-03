@@ -31,13 +31,13 @@ export default function CTA() {
     return (
         <section ref={containerRef} className="py-32 relative overflow-hidden bg-background">
             {/* Background Gradients */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
-            <div className="absolute top-0 left-0 w-full h-full bg-grid-white/[0.02] -z-10" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(59,130,246,0.1),rgba(255,255,255,0))] dark:bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
+            <div className="absolute top-0 left-0 w-full h-full bg-grid-black/[0.05] dark:bg-grid-white/[0.02] -z-10" />
 
             <div className="container mx-auto px-4 max-w-5xl relative z-10">
                 <motion.div
                     style={{ opacity, y }}
-                    className="relative rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-sm p-8 sm:p-16 text-center"
+                    className="relative rounded-3xl overflow-hidden border border-black/5 dark:border-white/10 bg-gradient-to-b from-black/5 to-black/0 dark:from-white/5 dark:to-white/0 backdrop-blur-sm p-8 sm:p-16 text-center"
                 >
                     {/* Animated Glow behind the card */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-blue-500/20 blur-[100px] -z-10 rounded-full pointer-events-none" />
@@ -45,7 +45,7 @@ export default function CTA() {
                     <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 tracking-tight text-foreground">
                         <Trans i18nKey="cta.title">
                             ¿Listo para crear <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 pr-2">
                                 algo extraordinario?
                             </span>
                         </Trans>
@@ -75,9 +75,9 @@ export default function CTA() {
                                         `,
                                     }}
                                 />
-                                <div className="relative bg-background/80 hover:bg-background/90 backdrop-blur-xl rounded-full px-8 py-4 flex items-center gap-3 transition-colors border border-white/10 group-hover:border-blue-500/50">
+                                <div className="relative bg-background/80 hover:bg-background/90 backdrop-blur-xl rounded-full px-8 py-4 flex items-center gap-3 transition-colors border border-black/5 dark:border-white/10 group-hover:border-blue-500/50">
                                     <span className="font-bold text-lg text-foreground">{t('cta.button')}</span>
-                                    <Send className="w-5 h-5 text-blue-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                                    <Send className="w-5 h-5 text-blue-500 dark:text-blue-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                                 </div>
                             </motion.div>
                         </Link>
@@ -96,8 +96,8 @@ export default function CTA() {
                             <circle cx="100" cy="100" r="99.5" stroke="url(#paint0_linear)" />
                             <defs>
                                 <linearGradient id="paint0_linear" x1="100" y1="0" x2="100" y2="200" gradientUnits="userSpaceOnUse">
-                                    <stop stopColor="white" stopOpacity="0.5" />
-                                    <stop offset="1" stopColor="white" stopOpacity="0" />
+                                    <stop stopColor="currentColor" className="text-black dark:text-white" stopOpacity="0.5" />
+                                    <stop offset="1" stopColor="currentColor" className="text-black dark:text-white" stopOpacity="0" />
                                 </linearGradient>
                             </defs>
                         </svg>

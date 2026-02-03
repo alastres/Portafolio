@@ -1,6 +1,7 @@
 {
     "header": {
         "home": "Home",
+        "value": "Value proposition",
         "about": "About",
         "projects": "Projects",
         "contact": "Contact"

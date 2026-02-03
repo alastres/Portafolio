@@ -15,7 +15,8 @@ export default function Header() {
     const { t } = useTranslation('translation');
 
     const navItems = [
-        { label: t('header.home'), href: '/#propuesta-valor' },
+        { label: t('header.home'), href: '/' },
+        { label: t('header.value'), href: '/#propuesta-valor' },
         { label: t('header.projects'), href: '/projects' },
         { label: 'Stack', href: '/#stack' }, // Assuming 'Stack' is common or you need a key
         { label: t('header.about'), href: '/about' },

@@ -7,15 +7,25 @@ import { Project } from '@/types';
 import { Badge } from '@/components/ui/badge-ui';
 import { ArrowRight, MoveRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useTranslation } from 'react-i18next';
+import type { Locale } from '@/i18n-config';
 
 interface ProjectsGridProps {
     projects: Project[];
+    lang: Locale;
+    dict: any;
 }
 
-export default function ProjectsGrid({ projects }: ProjectsGridProps) {
-    const { t } = useTranslation('translation');
+function resolveKey(key: string, dict: any): string {
+    const keys = key.split('.');
+    let result = dict;
+    for (const k of keys) {
+        result = result?.[k];
+        if (!result) return key;
+    }
+    return typeof result === 'string' ? result : key;
+}
 
+export default function ProjectsGrid({ projects, lang, dict }: ProjectsGridProps) {
     return (
         <div className="relative py-20 space-y-20 md:space-y-32">
             {/* Central Line (Desktop) */}
@@ -40,32 +50,32 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
                                 isEven ? "md:items-end" : "md:items-start"
                             )}>
                                 <span className="text-blue-500 text-xs font-bold tracking-[0.2em] uppercase">
-                                    {String(index + 1).padStart(2, '0')} / {t(project.role || 'home.projects.number')}
+                                    {String(index + 1).padStart(2, '0')} / {lang === 'es' ? 'Proyecto' : 'Project'}
                                 </span>
                                 <h2 className="text-3xl md:text-4xl font-black text-foreground tracking-tight">
-                                    {t(project.title)}
+                                    {resolveKey(project.title, dict)}
                                 </h2>
                             </div>
 
                             <div className={cn("space-y-4 text-muted-foreground", isEven ? "md:mr-0 md:ml-auto" : "")}>
                                 {project.problem && (
                                     <div>
-                                        <strong className="text-foreground block mb-1">{t('projects.problem')}</strong>
+                                        <strong className="text-foreground block mb-1">{resolveKey('projects.problem', dict)}</strong>
                                         <p className="text-sm leading-relaxed max-w-md ml-auto mr-0">
-                                            {project.problem && (typeof project.problem === 'string'
-                                                ? t(project.problem)
-                                                : t(project.problem.description).substring(0, 150) + '...')}
+                                            {typeof project.problem === 'string'
+                                                ? resolveKey(project.problem, dict)
+                                                : resolveKey(project.problem.description, dict).substring(0, 150) + '...'}
                                         </p>
                                     </div>
                                 )}
 
                                 {project.solution && (
                                     <div>
-                                        <strong className="text-foreground block mb-1">{t('projects.solution')}</strong>
+                                        <strong className="text-foreground block mb-1">{resolveKey('projects.solution', dict)}</strong>
                                         <p className="text-sm leading-relaxed max-w-md ml-auto mr-0">
-                                            {project.solution && (typeof project.solution === 'string'
-                                                ? t(project.solution)
-                                                : t(project.solution.description).substring(0, 150) + '...')}
+                                            {typeof project.solution === 'string'
+                                                ? resolveKey(project.solution, dict)
+                                                : resolveKey(project.solution.description, dict).substring(0, 150) + '...'}
                                         </p>
                                     </div>
                                 )}
@@ -84,10 +94,10 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
 
                             <div className={cn("pt-4", isEven ? "flex md:justify-end" : "")}>
                                 <Link
-                                    href={`/projects/${project.slug}`}
+                                    href={`/${lang}/projects/${project.slug}`}
                                     className="group inline-flex items-center text-sm font-bold text-foreground hover:text-blue-400 transition-colors uppercase tracking-widest gap-2"
                                 >
-                                    {t('projects.explore')}
+                                    {lang === 'es' ? 'Ver Proyecto' : 'View Project'}
                                     <MoveRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </div>

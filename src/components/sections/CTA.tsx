@@ -5,10 +5,14 @@ import Link from 'next/link';
 import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from 'framer-motion';
 import { ArrowRight, Mail, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button-ui';
-import { useTranslation, Trans } from 'react-i18next';
+import type { Locale } from '@/i18n-config';
 
-export default function CTA() {
-    const { t } = useTranslation('translation');
+interface CTAProps {
+    lang: Locale;
+    dict: any;
+}
+
+export default function CTA({ lang, dict }: CTAProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -41,22 +45,19 @@ export default function CTA() {
                 >
                     {/* Animated Glow behind the card */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-blue-500/20 blur-[100px] -z-10 rounded-full pointer-events-none" />
-
                     <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 tracking-tight text-foreground">
-                        <Trans i18nKey="cta.title">
-                            ¿Listo para crear <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 pr-2">
-                                algo extraordinario?
-                            </span>
-                        </Trans>
+                        {dict.cta.title}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+                            {dict.cta.subtitle}
+                        </span>
                     </h2>
 
                     <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-                        {t('cta.description')}
+                        {dict.cta.description}
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <Link href="/contact" passHref>
+                        <Link href={`/${lang}/contact`} passHref>
                             <motion.div
                                 onMouseMove={handleMouseMove}
                                 className="group relative rounded-full p-[1px] overflow-hidden cursor-pointer"
@@ -76,7 +77,7 @@ export default function CTA() {
                                     }}
                                 />
                                 <div className="relative bg-background/80 hover:bg-background/90 backdrop-blur-xl rounded-full px-8 py-4 flex items-center gap-3 transition-colors border border-black/5 dark:border-white/10 group-hover:border-blue-500/50">
-                                    <span className="font-bold text-lg text-foreground">{t('cta.button')}</span>
+                                    <span className="font-bold text-lg text-foreground">{dict.cta.button}</span>
                                     <Send className="w-5 h-5 text-blue-500 dark:text-blue-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                                 </div>
                             </motion.div>

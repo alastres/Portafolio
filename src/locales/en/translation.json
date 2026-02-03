@@ -8,7 +8,7 @@
     },
     "hero": {
         "badge": "AVAILABLE FOR NEW PROJECTS",
-        "title": "Building and optimizing <1>web products</1> ready to scale",
+        "title": "Building and optimizing web products ready to scale",
         "description": "Fullstack Developer specializing in React, Next.js, and Node.js. I help startups and product teams launch, improve, and maintain real applications in production.",
         "btn_contact": "Let's work together",
         "btn_projects": "View projects",
@@ -48,7 +48,7 @@
         },
         "stack": {
             "label": "Tech Stack",
-            "title": "<1>High Performance</1> Tools",
+            "title": "High Performance Tools",
             "description": "I carefully select each piece of technology to ensure speed, security, and scalability."
         }
     },
@@ -226,7 +226,8 @@
         }
     },
     "cta": {
-        "title": "Ready to create <1/> <2>something extraordinary?</2>",
+        "title": "Ready to create something",
+        "subtitle": " extraordinary?",
         "description": "Don't let your next big idea stay on paper. Let's transform complex visions into high-impact digital experiences.",
         "button": "Start Project"
     },
@@ -235,13 +236,15 @@
     },
     "about": {
         "hero": {
-            "title": "Building products, <1/> <2>not just features.</2>",
+            "title_part1": "Building products, ",
+            "title_part2": "not just features.",
             "role": "Software Engineer & Full-Stack Developer",
             "description": "I bridge engineering with product. Code is the tool; value lies in the real impact the product generates for users and business."
         },
         "me": {
             "label": "About me",
-            "p1": "<0>I don't write code just for the sake of it.</0> I design and build scalable, maintainable web products aligned with real business goals, prioritizing user experience, technical simplicity, and sustainable growth.",
+            "p0": "I don't write code just for the sake of it.",
+            "p1": " I design and build scalable, maintainable web products aligned with real business goals, prioritizing user experience, technical simplicity, and sustainable growth.",
             "p2": "As a Software Engineer, I have the academic foundation to understand complex systems. Professionally, my approach is totally pragmatic: building solutions that work in production, scale over time, and solve real problems.",
             "p3": "I have worked on SaaS products, MVPs, and production platforms, facing challenges in architecture, collaboration, scalability, and continuous product evolution."
         },
@@ -309,8 +312,10 @@
     },
     "contact": {
         "badge": "Contact",
-        "page_title": "Let's build a product <1/> <2>with real impact</2>",
-        "page_desc": "I collaborate on freelance and consulting projects, helping to transform ideas into real, scalable products aligned with business goals. <1/> If you have an MVP, a SaaS product, or a system that needs to evolve, let's talk.",
+        "page_title_part1": "Let's build a product",
+        "page_title_part2": "with real impact",
+        "page_desc_part1": "I collaborate on freelance and consulting projects, helping to transform ideas into real, scalable products aligned with business goals. If you have an MVP, a SaaS product, or a system that needs to evolve, ",
+        "page_desc_highlight": "let's talk.",
         "direct_label": "Prefer something direct:",
         "social": {
             "github_desc": "Real code and production systems",
@@ -331,6 +336,8 @@
         "success": "Message sent successfully",
         "success_desc": "Thanks for contacting me. I'll get back to you soon.",
         "error": "Error sending message",
-        "error_desc": "Please try again later."
+        "error_desc": "Please try again later.",
+        "or_connect": "Or connect with me on",
+        "email": "Email"
     }
 }

@@ -4,7 +4,7 @@ import { SeoConfig } from '@/types';
 export function constructMetadata({
     title,
     description,
-    url = 'https://example.com',
+    url = process.env.NEXT_PUBLIC_APP_URL || 'https://portfolio-adrian-lastra.vercel.app',
     image = '/og-image.jpg',
 }: SeoConfig): Metadata {
     return {

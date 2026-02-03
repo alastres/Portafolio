@@ -7,23 +7,28 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LanguageSwitcher } from '@/components/language-switcher';
-import { useTranslation } from 'react-i18next';
+import type { Locale } from '@/i18n-config';
 
-export default function Header() {
+interface HeaderProps {
+    lang: Locale;
+    dict: any;
+}
+
+export default function Header({ lang, dict }: HeaderProps) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const pathname = usePathname();
-    const { t } = useTranslation('translation');
 
     const navItems = [
-        { label: t('header.home'), href: '/' },
-        { label: t('header.value'), href: '/#propuesta-valor' },
-        { label: t('header.projects'), href: '/projects' },
-        { label: 'Stack', href: '/#stack' }, // Assuming 'Stack' is common or you need a key
-        { label: t('header.about'), href: '/about' },
+        { label: dict.header.home, href: `/${lang}` },
+        { label: dict.header.value, href: `/${lang}/#propuesta-valor` },
+        { label: dict.header.projects, href: `/${lang}/projects` },
+        { label: 'Stack', href: `/${lang}/#stack` },
+        { label: dict.header.about, href: `/${lang}/about` },
     ];
 
     // Close mobile menu when route changes
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMobileMenuOpen(false);
     }, [pathname]);
 
@@ -47,7 +52,7 @@ export default function Header() {
                         <div className="bg-primary/10 p-2 rounded-lg border border-primary/20">
                             <Terminal className="h-5 w-5 text-primary" />
                         </div>
-                        <Link href="/" className="text-xl font-bold tracking-tight text-foreground">
+                        <Link href={`/${lang}`} className="text-xl font-bold tracking-tight text-foreground">
                             Alas3s
                         </Link>
                     </div>
@@ -67,9 +72,9 @@ export default function Header() {
 
                     {/* CTA & Mobile Toggle */}
                     <div className="flex items-center gap-4 z-50 relative">
-                        <LanguageSwitcher />
+                        <LanguageSwitcher currentLang={lang} />
                         <Button asChild size="sm" className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground border-0 shadow-lg shadow-primary/20">
-                            <Link href="/contact">{t('header.contact')}</Link>
+                            <Link href={`/${lang}/contact`}>{dict.header.contact}</Link>
                         </Button>
 
                         {/* Mobile Toggle Button */}
@@ -108,11 +113,11 @@ export default function Header() {
                                 </Link>
                             ))}
                             <Link
-                                href="/contact"
+                                href={`/${lang}/contact`}
                                 className="text-lg font-medium text-primary hover:text-primary/80 transition-colors py-2"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
-                                {t('header.contact')}
+                                {dict.header.contact}
                             </Link>
                         </nav>
 

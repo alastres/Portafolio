@@ -1,11 +1,15 @@
-'use client';
-
 import ProjectsGrid from '@/components/sections/ProjectsGrid';
 import { projects } from '@/lib/projects';
-import { useTranslation } from 'react-i18next';
+import { getDictionary } from '@/lib/get-dictionary';
+import type { Locale } from '@/i18n-config';
 
-export default function ProjectsPage() {
-    const { t } = useTranslation('translation');
+export default async function ProjectsPage({
+    params,
+}: {
+    params: Promise<{ lang: Locale }>;
+}) {
+    const { lang } = await params;
+    const dict = await getDictionary(lang);
 
     return (
         <div className="relative min-h-screen w-full bg-background overflow-hidden transition-colors duration-500">
@@ -18,18 +22,18 @@ export default function ProjectsPage() {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                     <header className="mb-32 text-center md:text-center max-w-4xl mx-auto">
                         <div className="inline-block mb-4 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-[0.2em] uppercase">
-                            {t('projects_page.badge')}
+                            {dict.projects_page.badge}
                         </div>
                         <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter text-foreground mb-8 leading-[0.9]">
-                            {t('projects_page.title')} <br className="hidden sm:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-sky-600 dark:from-blue-400 dark:via-cyan-400 dark:to-sky-400">{t('projects_page.highlight')}</span>
+                            {dict.projects_page.title} <br className="hidden sm:block" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-sky-600 dark:from-blue-400 dark:via-cyan-400 dark:to-sky-400">{dict.projects_page.highlight}</span>
                         </h1>
                         <p className="text-xl sm:text-2xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
-                            {t('projects_page.description')}
+                            {dict.projects_page.description}
                         </p>
                     </header>
 
-                    <ProjectsGrid projects={projects} />
+                    <ProjectsGrid projects={projects} lang={lang} dict={dict} />
                 </div>
             </section>
         </div>

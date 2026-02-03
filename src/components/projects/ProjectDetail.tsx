@@ -5,7 +5,6 @@ import { Project } from '@/types';
 import { Button } from '@/components/ui/button-ui';
 import { Badge } from '@/components/ui/badge-ui';
 import { Card } from '@/components/ui/card-ui';
-import { useTranslation } from 'react-i18next';
 import {
     Github,
     ArrowLeft,
@@ -36,7 +35,7 @@ import {
     Mail,
     Lock
 } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import type { Locale } from '@/i18n-config';
 import {
     SiReact,
     SiNextdotjs,
@@ -63,10 +62,22 @@ interface ProjectDetailProps {
     project: Project;
     previous?: Project | null;
     next?: Project | null;
+    lang: Locale;
+    dict: any;
 }
 
-export default function ProjectDetail({ project, previous, next }: ProjectDetailProps) {
-    const { t } = useTranslation('translation');
+function resolveKey(key: string, dict: any): string {
+    const keys = key.split('.');
+    let result = dict;
+    for (const k of keys) {
+        result = result?.[k];
+        if (!result) return key;
+    }
+    return typeof result === 'string' ? result : key;
+}
+
+export default function ProjectDetail({ project, previous, next, lang, dict }: ProjectDetailProps) {
+    const t = (key: string) => resolveKey(key, dict);
 
     // Helper to render icons based on text map
     const getIcon = (name: string) => {
@@ -405,7 +416,7 @@ export default function ProjectDetail({ project, previous, next }: ProjectDetail
                         <div className="flex justify-between border-t border-border pt-16 gap-6">
                             {previous ? (
                                 <Link
-                                    href={`/projects/${previous.slug}`}
+                                    href={`/${lang}/projects/${previous.slug}`}
                                     className="group flex flex-col items-start gap-1"
                                 >
                                     <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest group-hover:text-primary transition-colors">{t('project_page.prev_project')}</span>
@@ -417,7 +428,7 @@ export default function ProjectDetail({ project, previous, next }: ProjectDetail
 
                             {next ? (
                                 <Link
-                                    href={`/projects/${next.slug}`}
+                                    href={`/${lang}/projects/${next.slug}`}
                                     className="group flex flex-col items-end gap-1 text-right"
                                 >
                                     <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest group-hover:text-primary transition-colors">{t('project_page.next_project')}</span>

@@ -149,7 +149,7 @@ const HeroIDEAnimation: React.FC = () => {
                     );
                     const isString = line.includes("'") && char === "'" ||
                       (line.substring(0, charIndex).includes("'") &&
-                        !line.substring(0, charIndex).split("'").length % 2 === 0);
+                        !(line.substring(0, charIndex).split("'").length % 2 === 0));
                     const isComment = line.trim().startsWith('//');
 
                     let color = 'text-slate-300';

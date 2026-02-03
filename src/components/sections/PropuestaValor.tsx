@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Target, Layers, Zap, MessageSquareText } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card-ui';
-import { useTranslation } from 'react-i18next';
+import type { Locale } from '@/i18n-config';
 
 const features = [
     {
@@ -28,9 +28,22 @@ const features = [
     }
 ];
 
-export default function PropuestaValor() {
-    const { t } = useTranslation('translation');
+interface PropuestaValorProps {
+    lang: Locale;
+    dict: any;
+}
 
+function resolveKey(key: string, dict: any): string {
+    const keys = key.split('.');
+    let result = dict;
+    for (const k of keys) {
+        result = result?.[k];
+        if (!result) return key;
+    }
+    return typeof result === 'string' ? result : key;
+}
+
+export default function PropuestaValor({ lang, dict }: PropuestaValorProps) {
     return (
         <section id="propuesta-valor" className="py-24 bg-background relative overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -43,7 +56,7 @@ export default function PropuestaValor() {
                         transition={{ duration: 0.5 }}
                         className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4"
                     >
-                        {t('value_prop.title')}
+                        {dict.value_prop.title}
                     </motion.h2>
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
@@ -69,10 +82,10 @@ export default function PropuestaValor() {
                                         {feature.icon}
                                     </div>
                                     <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
-                                        {t(feature.titleKey)}
+                                        {resolveKey(feature.titleKey, dict)}
                                     </h3>
                                     <p className="text-muted-foreground leading-relaxed text-sm">
-                                        {t(feature.descKey)}
+                                        {resolveKey(feature.descKey, dict)}
                                     </p>
                                 </CardContent>
                             </Card>

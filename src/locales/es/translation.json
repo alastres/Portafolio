@@ -8,7 +8,7 @@
     },
     "hero": {
         "badge": "DISPONIBLE PARA NUEVOS PROYECTOS",
-        "title": "Construyo y optimizo <1>productos web</1> listos para escalar",
+        "title": "Construyo y optimizo productos web listos para escalar",
         "description": "Fullstack Developer especializado en React, Next.js y Node.js. Ayudo a startups y equipos de producto a lanzar, mejorar y mantener aplicaciones reales en producción.",
         "btn_contact": "Trabajemos juntos",
         "btn_projects": "Ver proyectos",
@@ -48,7 +48,7 @@
         },
         "stack": {
             "label": "Tech Stack",
-            "title": "Herramientas de <1>Alto Rendimiento</1>",
+            "title": "Herramientas de Alto Rendimiento",
             "description": "Selecciono cuidadosamente cada pieza de tecnología para garantizar velocidad, seguridad y escalabilidad."
         }
     },
@@ -226,7 +226,8 @@
         }
     },
     "cta": {
-        "title": "¿Listo para crear <1/> <2>algo extraordinario?</2>",
+        "title": "¿Listo para crear algo",
+        "subtitle": " extraordinario?",
         "description": "No dejes que tu próxima gran idea se quede en el papel. Transformemos visiones complejas en experiencias digitales de alto impacto.",
         "button": "Iniciar Proyecto"
     },
@@ -235,13 +236,15 @@
     },
     "about": {
         "hero": {
-            "title": "Construyendo productos, <1/> <2>no solo funcionalidades.</2>",
+            "title_part1": "Construyendo productos, ",
+            "title_part2": "no solo funcionalidades.",
             "role": "Ingeniero Informático & Full-Stack Developer",
             "description": "Conecto la ingeniería con el producto. El código es la herramienta; el valor está en el impacto real que el producto genera en usuarios y negocio."
         },
         "me": {
             "label": "Sobre mí",
-            "p1": "<0>No escribo código por escribir.</0> Diseño y construyo productos web escalables, mantenibles y alineados con objetivos reales de negocio, priorizando experiencia de usuario, simplicidad técnica y crecimiento sostenible.",
+            "p0": "No escribo código por escribir.",
+            "p1": " Diseño y construyo productos web escalables, mantenibles y alineados con objetivos reales de negocio, priorizando experiencia de usuario, simplicidad técnica y crecimiento sostenible.",
             "p2": "Como Ingeniero Informático, tengo la base académica para entender sistemas complejos. A nivel profesional, mi enfoque es totalmente pragmático: construir soluciones que funcionen en producción, escalen con el tiempo y resuelvan problemas reales.",
             "p3": "He trabajado en productos tipo SaaS, MVPs y plataformas en producción, enfrentando retos de arquitectura, colaboración, escalabilidad y evolución continua del producto."
         },
@@ -309,8 +312,10 @@
     },
     "contact": {
         "badge": "Contacto",
-        "page_title": "Construyamos un producto <1/> <2>con impacto real</2>",
-        "page_desc": "Colaboro en proyectos freelance y de consultoría, ayudando a transformar ideas en productos reales, escalables y alineados con objetivos de negocio. <1/> Si tienes un MVP, un producto SaaS o un sistema que necesita evolucionar, hablemos.",
+        "page_title_part1": "Construyamos un producto",
+        "page_title_part2": "con impacto real",
+        "page_desc_part1": "Colaboro en proyectos freelance y de consultoría, ayudando a transformar ideas en productos reales, escalables y alineados con objetivos de negocio. Si tienes un MVP, un producto SaaS o un sistema que necesita evolucionar, ",
+        "page_desc_highlight": "hablemos.",
         "direct_label": "Prefieres algo directo:",
         "social": {
             "github_desc": "Código real y sistemas en producción",
@@ -331,6 +336,8 @@
         "success": "Mensaje enviado correctamente",
         "success_desc": "Gracias por contactarme. Te responderé pronto.",
         "error": "Error al enviar el mensaje",
-        "error_desc": "Por favor, inténtalo de nuevo más tarde."
+        "error_desc": "Por favor, inténtalo de nuevo más tarde.",
+        "or_connect": "O conéctate conmigo en",
+        "email": "Email"
     }
 }

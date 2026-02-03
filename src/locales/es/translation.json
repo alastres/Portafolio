@@ -6,6 +6,18 @@
         "projects": "Proyectos",
         "contact": "Contacto"
     },
+    "cv": {
+        "button": "make build-cv",
+        "terminal_title": "build-cv.sh",
+        "steps": {
+            "init": "Inicializando entorno de construcción...",
+            "compile": "Compilando experiencia profesional...",
+            "link": "Vinculando habilidades técnicas...",
+            "optimize": "Optimizando recursos...",
+            "generate": "Generando archivo PDF..."
+        },
+        "success": "¡Construcción exitosa!"
+    },
     "hero": {
         "badge": "DISPONIBLE PARA NUEVOS PROYECTOS",
         "title": "Construyo y optimizo productos web listos para escalar",

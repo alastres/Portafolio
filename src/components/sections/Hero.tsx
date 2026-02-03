@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge-ui';
 import Link from 'next/link';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import HeroIDEAnimation from '@/components/ui/hero-ide-animation';
+import CVDownloader from '@/components/ui/cv-downloader';
 import type { Locale } from '@/i18n-config';
 
 interface HeroProps {
@@ -87,6 +88,15 @@ export default function Hero({ lang, dict }: HeroProps) {
                                 </Link>
                             </Button>
                         </div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
+                            className="mt-8 flex justify-center lg:justify-start"
+                        >
+                            <CVDownloader dict={dict} />
+                        </motion.div>
                     </motion.div>
 
                     {/* Right Column: IDE Animation */}

@@ -6,6 +6,18 @@
         "projects": "Projects",
         "contact": "Contact"
     },
+    "cv": {
+        "button": "make build-cv",
+        "terminal_title": "build-cv.sh",
+        "steps": {
+            "init": "Initializing build environment...",
+            "compile": "Compiling professional experience...",
+            "link": "Linking technical skills...",
+            "optimize": "Optimizing assets...",
+            "generate": "Generating PDF output..."
+        },
+        "success": "Build successful!"
+    },
     "hero": {
         "badge": "AVAILABLE FOR NEW PROJECTS",
         "title": "Building and optimizing web products ready to scale",

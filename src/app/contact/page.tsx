@@ -4,13 +4,56 @@ import { Button } from '@/components/ui/button-ui';
 import { Card, CardContent } from '@/components/ui/card-ui';
 import { Input } from '@/components/ui/input-ui';
 import { Textarea } from '@/components/ui/textarea-ui';
-import { Mail, Github, Linkedin, Twitter, ArrowRight } from 'lucide-react';
+import { Mail, Github, Linkedin, Twitter, ArrowRight, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import AnimatedBackgroundVectors from '@/components/ui/animated-background-vectors';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 export default function ContactPage() {
+    const [isLoading, setIsLoading] = useState(false);
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        setIsLoading(true);
+
+        const formData = new FormData(e.currentTarget);
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message'),
+        };
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                toast.success('Mensaje enviado correctamente', {
+                    description: 'Gracias por contactarme. Te responderé pronto.',
+                });
+                (e.target as HTMLFormElement).reset();
+            } else {
+                toast.error('Error al enviar el mensaje', {
+                    description: 'Por favor, inténtalo de nuevo más tarde.',
+                });
+            }
+        } catch (error) {
+            toast.error('Error al enviar el mensaje', {
+                description: 'Por favor, inténtalo de nuevo más tarde.',
+            });
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
     return (
         <section className="py-24 sm:py-32 pt-32 sm:pt-40 min-h-screen relative overflow-hidden">
             <AnimatedBackgroundVectors />
@@ -127,23 +170,29 @@ export default function ContactPage() {
                         <p className="text-muted-foreground">Ayúdame a entender qué quieres construir o resolver.</p>
                     </div>
 
-                    <form className="space-y-8">
+                    <form onSubmit={handleSubmit} className="space-y-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="space-y-3">
                                 <label htmlFor="name" className="text-sm font-bold text-foreground">Tu Nombre</label>
                                 <Input
                                     id="name"
+                                    name="name"
+                                    required
                                     placeholder="Ej. Ana García"
                                     className="h-12 border-border bg-secondary/30 focus:bg-background focus:border-primary transition-all"
+                                    disabled={isLoading}
                                 />
                             </div>
                             <div className="space-y-3">
                                 <label htmlFor="email" className="text-sm font-bold text-foreground">Tu Email</label>
                                 <Input
                                     id="email"
+                                    name="email"
                                     type="email"
+                                    required
                                     placeholder="ana@empresa.com"
                                     className="h-12 border-border bg-secondary/30 focus:bg-background focus:border-primary transition-all"
+                                    disabled={isLoading}
                                 />
                             </div>
                         </div>
@@ -152,8 +201,11 @@ export default function ContactPage() {
                             <label htmlFor="message" className="text-sm font-bold text-foreground">Tu Mensaje</label>
                             <Textarea
                                 id="message"
+                                name="message"
+                                required
                                 placeholder="¿Qué problema quieres resolver? ¿En qué punto estás ahora y qué te gustaría construir o mejorar?"
                                 className="min-h-[180px] border-border bg-secondary/30 focus:bg-background focus:border-primary transition-all resize-none p-4 leading-relaxed"
+                                disabled={isLoading}
                             />
                         </div>
 
@@ -162,9 +214,26 @@ export default function ContactPage() {
                                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                                 Respondo personalmente a todos los mensajes.
                             </p>
-                            <Button size="lg" className="w-full md:w-auto order-1 md:order-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 h-14 text-base shadow-lg shadow-primary/20 hover:scale-105 transition-all">
-                                Iniciar conversación <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
+
+                            <div className="flex flex-col items-end gap-2 order-1 md:order-2 w-full md:w-auto">
+                                <Button
+                                    type="submit"
+                                    size="lg"
+                                    disabled={isLoading}
+                                    className="w-full md:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 h-14 text-base shadow-lg shadow-primary/20 hover:scale-105 transition-all"
+                                >
+                                    {isLoading ? (
+                                        <>
+                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                            Enviando...
+                                        </>
+                                    ) : (
+                                        <>
+                                            Iniciar conversación <ArrowRight className="ml-2 h-4 w-4" />
+                                        </>
+                                    )}
+                                </Button>
+                            </div>
                         </div>
                     </form>
                 </motion.div>

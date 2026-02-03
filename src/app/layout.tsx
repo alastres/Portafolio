@@ -7,6 +7,7 @@ import { constructMetadata } from '@/lib/seo';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { Breadcrumbs } from '@/components/ui/breadcrumbs';
+import { Toaster } from "@/components/ui/sonner"
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -50,6 +51,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <ThemeToggle />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

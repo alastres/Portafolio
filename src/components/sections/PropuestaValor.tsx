@@ -3,31 +3,34 @@
 import { motion } from 'framer-motion';
 import { Target, Layers, Zap, MessageSquareText } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card-ui';
+import { useTranslation } from 'react-i18next';
 
 const features = [
     {
         icon: <Target className="h-8 w-8 text-primary" />,
-        title: "Mentalidad de producto, no solo código",
-        description: "No me limito a implementar features. Analizo el problema, el contexto del negocio y propongo soluciones técnicas que tengan sentido hoy y a largo plazo."
+        titleKey: "value_prop.product_mindset.title",
+        descKey: "value_prop.product_mindset.desc"
     },
     {
         icon: <Layers className="h-8 w-8 text-primary" />,
-        title: "Arquitectura clara y código que escala",
-        description: "Diseño aplicaciones pensadas para crecer: estructuras limpias, separación de responsabilidades y decisiones técnicas que evitan refactors costosos en el futuro."
+        titleKey: "value_prop.architecture.title",
+        descKey: "value_prop.architecture.desc"
     },
     {
         icon: <Zap className="h-8 w-8 text-primary" />,
-        title: "Rapidez sin sacrificar calidad",
-        description: "Trabajo con herramientas modernas que me permiten avanzar rápido sin comprometer estabilidad, seguridad ni performance."
+        titleKey: "value_prop.speed.title",
+        descKey: "value_prop.speed.desc"
     },
     {
         icon: <MessageSquareText className="h-8 w-8 text-primary" />,
-        title: "Comunicación clara y directa",
-        description: "Trato con founders, PMs y diseñadores de forma transparente. Explico decisiones técnicas sin jerga innecesaria y alineo expectativas desde el inicio."
+        titleKey: "value_prop.communication.title",
+        descKey: "value_prop.communication.desc"
     }
 ];
 
 export default function PropuestaValor() {
+    const { t } = useTranslation('translation');
+
     return (
         <section id="propuesta-valor" className="py-24 bg-background relative overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -40,7 +43,7 @@ export default function PropuestaValor() {
                         transition={{ duration: 0.5 }}
                         className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4"
                     >
-                        Lo que puedes esperar al trabajar conmigo
+                        {t('value_prop.title')}
                     </motion.h2>
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
@@ -66,10 +69,10 @@ export default function PropuestaValor() {
                                         {feature.icon}
                                     </div>
                                     <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
-                                        {feature.title}
+                                        {t(feature.titleKey)}
                                     </h3>
                                     <p className="text-muted-foreground leading-relaxed text-sm">
-                                        {feature.description}
+                                        {t(feature.descKey)}
                                     </p>
                                 </CardContent>
                             </Card>

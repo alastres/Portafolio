@@ -6,17 +6,20 @@ import { Terminal, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const navItems = [
-    { label: 'Propuesta de Valor', href: '/#propuesta-valor' },
-    { label: 'Proyectos', href: '/projects' },
-    { label: 'Stack', href: '/#stack' },
-    { label: 'Sobre mí', href: '/about' },
-];
+import { LanguageSwitcher } from '@/components/language-switcher';
+import { useTranslation } from 'react-i18next';
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const pathname = usePathname();
+    const { t } = useTranslation('translation');
+
+    const navItems = [
+        { label: t('header.home'), href: '/#propuesta-valor' },
+        { label: t('header.projects'), href: '/projects' },
+        { label: 'Stack', href: '/#stack' }, // Assuming 'Stack' is common or you need a key
+        { label: t('header.about'), href: '/about' },
+    ];
 
     // Close mobile menu when route changes
     useEffect(() => {
@@ -63,8 +66,9 @@ export default function Header() {
 
                     {/* CTA & Mobile Toggle */}
                     <div className="flex items-center gap-4 z-50 relative">
+                        <LanguageSwitcher />
                         <Button asChild size="sm" className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground border-0 shadow-lg shadow-primary/20">
-                            <Link href="/contact">Trabajemos juntos</Link>
+                            <Link href="/contact">{t('header.contact')}</Link>
                         </Button>
 
                         {/* Mobile Toggle Button */}
@@ -107,7 +111,7 @@ export default function Header() {
                                 className="text-lg font-medium text-primary hover:text-primary/80 transition-colors py-2"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
-                                Trabajemos juntos
+                                {t('header.contact')}
                             </Link>
                         </nav>
 

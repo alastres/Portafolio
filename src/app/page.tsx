@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Hero from '@/components/sections/Hero';
 import ProjectsGrid from '@/components/sections/ProjectsGrid';
@@ -7,8 +9,10 @@ import CTA from '@/components/sections/CTA';
 import { Button } from '@/components/ui/button-ui';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card-ui';
 import { Code2, Database, Cloud, ArrowRight, Check } from 'lucide-react';
+import { useTranslation, Trans } from 'react-i18next';
 
 export default function Home() {
+  const { t } = useTranslation('translation');
   const featuredProjects = projects.slice(0, 2);
 
   const skills = [
@@ -39,14 +43,14 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className="flex flex-col sm:flex-row justify-between items-end mb-16">
             <div className="relative">
-              <span className="absolute -top-6 -left-4 text-6xl text-primary/10 font-black -z-10 select-none">01</span>
-              <h2 className="text-4xl font-black tracking-tighter text-foreground mb-4 relative">Proyectos destacados</h2>
+              <span className="absolute -top-6 -left-4 text-6xl text-primary/10 font-black -z-10 select-none">{t('home.projects.number')}</span>
+              <h2 className="text-4xl font-black tracking-tighter text-foreground mb-4 relative">{t('home.projects.title')}</h2>
               <p className="text-xl text-muted-foreground font-light max-w-lg">
-                Una selección de mis trabajos más recientes y complejos, diseñados para escalar.
+                {t('home.projects.description')}
               </p>
             </div>
             <Link href="/projects" className="hidden sm:flex items-center text-sm font-bold tracking-widest uppercase text-primary hover:text-primary/80 transition-colors">
-              Ver todos <ArrowRight className="ml-2 h-4 w-4" />
+              {t('home.projects.view_all')} <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>
 
@@ -54,7 +58,7 @@ export default function Home() {
 
           <div className="mt-16 text-center sm:hidden">
             <Button asChild variant="ghost" className="text-primary hover:bg-primary/10 w-full">
-              <Link href="/projects">Explorar Portafolio Completo <ArrowRight className="ml-2 h-4 w-4" /></Link>
+              <Link href="/projects">{t('home.projects.view_full')} <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
         </div>
@@ -64,10 +68,14 @@ export default function Home() {
       <section id="stack" className="py-32 bg-background relative -mt-20 pt-32" style={{ clipPath: 'polygon(0 0, 100% 5rem, 100% 100%, 0 100%)' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-20">
-            <span className="text-sm font-bold text-primary tracking-[0.3em] uppercase block mb-3">Tech Stach</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground mb-6">Herramientas de <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500">Alto Rendimiento</span></h2>
+            <span className="text-sm font-bold text-primary tracking-[0.3em] uppercase block mb-3">{t('home.stack.label')}</span>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground mb-6">
+              <Trans i18nKey="home.stack.title">
+                Herramientas de <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500">Alto Rendimiento</span>
+              </Trans>
+            </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light">
-              Selecciono cuidadosamente cada pieza de tecnología para garantizar velocidad, seguridad y escalabilidad.
+              {t('home.stack.description')}
             </p>
           </div>
 

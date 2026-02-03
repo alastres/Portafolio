@@ -1,9 +1,14 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
+
 export default function Footer() {
+    const { t } = useTranslation('translation');
     return (
         <footer className="border-t border-border bg-background py-12 mt-auto">
             <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-4 sm:flex-row sm:px-6 lg:px-8 max-w-7xl">
                 <p className="text-sm text-muted-foreground font-medium">
-                    © {new Date().getFullYear()} Alas3s. All rights reserved.
+                    © {new Date().getFullYear()} Alas3s. {t('footer.rights')}
                 </p>
                 <div className="flex gap-6">
                     <a

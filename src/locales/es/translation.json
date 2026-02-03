@@ -1,0 +1,335 @@
+{
+    "header": {
+        "home": "Inicio",
+        "about": "Sobre mí",
+        "projects": "Proyectos",
+        "contact": "Contacto"
+    },
+    "hero": {
+        "badge": "DISPONIBLE PARA NUEVOS PROYECTOS",
+        "title": "Construyo y optimizo <1>productos web</1> listos para escalar",
+        "description": "Fullstack Developer especializado en React, Next.js y Node.js. Ayudo a startups y equipos de producto a lanzar, mejorar y mantener aplicaciones reales en producción.",
+        "btn_contact": "Trabajemos juntos",
+        "btn_projects": "Ver proyectos",
+        "stats": {
+            "saas": "Proyectos SaaS completos",
+            "architecture": "Arquitectura limpia",
+            "maintainable": "Código mantenible",
+            "mvp": "Especializado en escalar MVPs a productos"
+        }
+    },
+    "value_prop": {
+        "title": "Lo que puedes esperar al trabajar conmigo",
+        "product_mindset": {
+            "title": "Mentalidad de producto, no solo código",
+            "desc": "No me limito a implementar features. Analizo el problema, el contexto del negocio y propongo soluciones técnicas que tengan sentido hoy y a largo plazo."
+        },
+        "architecture": {
+            "title": "Arquitectura clara y código que escala",
+            "desc": "Diseño aplicaciones pensadas para crecer: estructuras limpias, separación de responsabilidades y decisiones técnicas que evitan refactors costosos en el futuro."
+        },
+        "speed": {
+            "title": "Rapidez sin sacrificar calidad",
+            "desc": "Trabajo con herramientas modernas que me permiten avanzar rápido sin comprometer estabilidad, seguridad ni performance."
+        },
+        "communication": {
+            "title": "Comunicación clara y directa",
+            "desc": "Trato con founders, PMs y diseñadores de forma transparente. Explico decisiones técnicas sin jerga innecesaria y alineo expectativas desde el inicio."
+        }
+    },
+    "home": {
+        "projects": {
+            "number": "01",
+            "title": "Proyectos destacados",
+            "description": "Una selección de mis trabajos más recientes y complejos, diseñados para escalar.",
+            "view_all": "Ver todos",
+            "view_full": "Explorar Portafolio Completo"
+        },
+        "stack": {
+            "label": "Tech Stack",
+            "title": "Herramientas de <1>Alto Rendimiento</1>",
+            "description": "Selecciono cuidadosamente cada pieza de tecnología para garantizar velocidad, seguridad y escalabilidad."
+        }
+    },
+    "projects": {
+        "problem": "El Problema:",
+        "solution": "La Solución:",
+        "explore": "Explorar Historia del Proyecto",
+        "taskmaster-pro": {
+            "title": "TaskMaster Pro",
+            "description": "Gestor de tareas fullstack con arquitectura profesional y enfoque en equipos reales.",
+            "timeline": "2 Semanas",
+            "role": "Full Stack Developer",
+            "problem": {
+                "description": "Muchos equipos de producto gestionan su trabajo con herramientas que no se adaptan bien a su flujo real, generando fricción operativa, pérdida de visibilidad y problemas de escalabilidad a medida que el equipo crece.",
+                "painPoints": [
+                    "Roles y permisos poco flexibles que no reflejan la estructura real del equipo.",
+                    "Sobrecarga de información que dificulta la adopción por parte de perfiles no técnicos.",
+                    "Falta de visibilidad clara sobre el estado real del trabajo y cuellos de botella.",
+                    "Dificultad para escalar proyectos y equipos sin perder control ni trazabilidad.",
+                    "Dependencia de múltiples herramientas para cubrir necesidades básicas (tareas, comunicación, seguimiento)."
+                ]
+            },
+            "solution": {
+                "description": "Diseñé y desarrollé una plataforma SaaS fullstack que centraliza la gestión de tareas, equipos y proyectos, priorizando una arquitectura limpia y una experiencia de usuario fluida.",
+                "features": [
+                    {
+                        "title": "Tablero Kanban",
+                        "description": "Visualización intuitiva de tareas con funcionalidad de arrastrar y soltar (Drag & Drop)."
+                    },
+                    {
+                        "title": "Internacionalización (i18n)",
+                        "description": "Soporte completo para español e inglés, con detección automática de idioma."
+                    },
+                    {
+                        "title": "Gestión de Proyectos",
+                        "description": "Organiza tus tareas en diferentes proyectos para un mejor seguimiento."
+                    },
+                    {
+                        "title": "Gestión de Equipos",
+                        "description": "Colabora con otros usuarios dentro de proyectos específicos."
+                    },
+                    {
+                        "title": "Sistema de Notificaciones",
+                        "description": "Mantente al día con las actualizaciones de tus tareas y menciones."
+                    },
+                    {
+                        "title": "Autenticación Segura",
+                        "description": "Inicio de sesión y registro basados en JWT con protección de rutas."
+                    },
+                    {
+                        "title": "Búsqueda y Filtrado",
+                        "description": "Localiza tareas rápidamente por título, estado o prioridad."
+                    },
+                    {
+                        "title": "Clasificado automático de prioridad de tareas",
+                        "description": "Se puede activar en la configuración la autogestión de prioridad de tareas (bajo, medio, alto) según el margen de tiempo configurada."
+                    },
+                    {
+                        "title": "Diseño Premium",
+                        "description": "Interfaz moderna, responsiva y con animaciones fluidas (Framer Motion)."
+                    }
+                ]
+            },
+            "challenges": [
+                {
+                    "title": "Gestión de Estado Kanban",
+                    "description": "Mantener la consistencia del orden de las tareas tras múltiples movimientos de drag-and-drop y sincronizarlos con la DB."
+                },
+                {
+                    "title": "Performance de Tablero",
+                    "description": "Renderizado eficiente de cientos de tareas usando virtualización y memoización selectiva."
+                }
+            ]
+        },
+        "reserva-saas": {
+            "title": "Plataforma de Reservas SaaS",
+            "description": "Sistema de reservas online con pagos integrados para profesionales y pequeños negocios de servicios.",
+            "timeline": "3 Semanas",
+            "role": "Full Stack Developer",
+            "problem": {
+                "description": "Muchos profesionales de servicios (clases, consultas, sesiones creativas) gestionan sus reservas de forma manual a través de WhatsApp, email o calendarios no sincronizados, lo que genera errores, pérdidas de tiempo y citas desaprovechadas.",
+                "painPoints": [
+                    "Reservas desorganizadas entre múltiples canales.",
+                    "Cancelaciones y no-shows sin control.",
+                    "Falta de pagos anticipados o señalización.",
+                    "Herramientas genéricas poco adaptadas a su flujo real."
+                ]
+            },
+            "solution": {
+                "description": "Diseñé y desarrollé una plataforma SaaS que centraliza la gestión de reservas, clientes y pagos en un único sistema, permitiendo a los profesionales automatizar su agenda y reducir fricción operativa.",
+                "features": [
+                    {
+                        "title": "Autenticación y Control de Acceso",
+                        "description": "Sistema de autenticación flexible y seguro que soporta múltiples métodos de acceso y separa claramente los roles de administradores, proveedores y clientes.",
+                        "details": [
+                            "Login con Google OAuth, Email/Password y Magic Links.",
+                            "Verificación OTP en registros por email.",
+                            "RBAC con portales diferenciados (Admin, Provider, Client).",
+                            "Protecciones activas contra abuso: rate limiting, CAPTCHA y honeypots."
+                        ]
+                    },
+                    {
+                        "title": "Motor de Reservas Avanzado",
+                        "description": "Motor de reservas configurable que permite a los profesionales definir servicios, disponibilidad y reglas complejas sin fricción para el cliente final.",
+                        "details": [
+                            "Servicios flexibles: duración, precio, capacidad (1-on-1 o grupos).",
+                            "Disponibilidad híbrida con reglas semanales y excepciones por fecha.",
+                            "Buffers automáticos entre citas para evitar solapamientos.",
+                            "Gestión de concurrencia por servicio y límites globales."
+                        ]
+                    },
+                    {
+                        "title": "Sincronización con Google Calendar",
+                        "description": "Sincronización bidireccional con Google Calendar para evitar dobles reservas y mantener la agenda siempre actualizada.",
+                        "details": [
+                            "Importación automática de eventos externos.",
+                            "Bloqueo de horarios ocupados en tiempo real.",
+                            "Actualización automática ante cancelaciones o reprogramaciones."
+                        ]
+                    },
+                    {
+                        "title": "Pagos y Monetización Integrada",
+                        "description": "Sistema de pagos completo con Stripe que permite cobros anticipados, payouts automáticos y un modelo SaaS escalable.",
+                        "details": [
+                            "Pagos upfront para confirmar reservas.",
+                            "Stripe Connect Express para que cada proveedor cobre directamente.",
+                            "Soporte para comisiones de plataforma por transacción.",
+                            "Planes de suscripción mensual o anual para proveedores."
+                        ]
+                    },
+                    {
+                        "title": "Gestión de Reservas Recurrentes",
+                        "description": "Soporte nativo para reservas periódicas, ideal para clases, terapias y servicios continuos.",
+                        "details": [
+                            "Configuración semanal o mensual.",
+                            "Generación automática de sesiones futuras.",
+                            "Gestión centralizada de cancelaciones y cambios."
+                        ]
+                    },
+                    {
+                        "title": "Internacionalización (i18n)",
+                        "description": "Plataforma preparada para audiencias internacionales con soporte completo multi-idioma.",
+                        "details": [
+                            "Interfaz totalmente traducida a inglés y español.",
+                            "Detección automática de idioma mediante middleware.",
+                            "Emails y mensajes de error localizados."
+                        ]
+                    },
+                    {
+                        "title": "Automatización y Notificaciones",
+                        "description": "Sistema de automatización que reduce tareas manuales y mantiene informados a clientes y proveedores.",
+                        "details": [
+                            "Recordatorios automáticos 24h y 1h antes de la cita.",
+                            "Emails transaccionales para confirmaciones y cancelaciones.",
+                            "Cron jobs ejecutados de forma serverless."
+                        ]
+                    },
+                    {
+                        "title": "Analíticas y Panel de Control",
+                        "description": "Dashboard interactivo para que los proveedores entiendan el rendimiento de su negocio.",
+                        "details": [
+                            "Métricas de ingresos y volumen de reservas.",
+                            "Servicios más populares.",
+                            "Visualizaciones claras mediante gráficos interactivos."
+                        ]
+                    }
+                ]
+            },
+            "challenges": [
+                {
+                    "title": "Handling Webhook Idempotency",
+                    "description": "Asegurar que los webhooks de Stripe se procesen exactamente una vez. Retries de red podían causar registros duplicados si no se manejaban correctamente."
+                }
+            ]
+        }
+    },
+    "cta": {
+        "title": "¿Listo para crear <1/> <2>algo extraordinario?</2>",
+        "description": "No dejes que tu próxima gran idea se quede en el papel. Transformemos visiones complejas en experiencias digitales de alto impacto.",
+        "button": "Iniciar Proyecto"
+    },
+    "footer": {
+        "rights": "Todos los derechos reservados."
+    },
+    "about": {
+        "hero": {
+            "title": "Construyendo productos, <1/> <2>no solo funcionalidades.</2>",
+            "role": "Ingeniero Informático & Full-Stack Developer",
+            "description": "Conecto la ingeniería con el producto. El código es la herramienta; el valor está en el impacto real que el producto genera en usuarios y negocio."
+        },
+        "me": {
+            "label": "Sobre mí",
+            "p1": "<0>No escribo código por escribir.</0> Diseño y construyo productos web escalables, mantenibles y alineados con objetivos reales de negocio, priorizando experiencia de usuario, simplicidad técnica y crecimiento sostenible.",
+            "p2": "Como Ingeniero Informático, tengo la base académica para entender sistemas complejos. A nivel profesional, mi enfoque es totalmente pragmático: construir soluciones que funcionen en producción, escalen con el tiempo y resuelvan problemas reales.",
+            "p3": "He trabajado en productos tipo SaaS, MVPs y plataformas en producción, enfrentando retos de arquitectura, colaboración, escalabilidad y evolución continua del producto."
+        },
+        "pillars": {
+            "label": "Pilares",
+            "product": {
+                "title": "Mentalidad de Producto",
+                "desc": "Entender el por qué antes del cómo. Cada decisión técnica se evalúa por su impacto en el producto final y en el usuario."
+            },
+            "problem": {
+                "title": "Resolución de Problemas",
+                "desc": "Pensamiento estructurado y arquitectura pragmática. Descomponer problemas complejos en soluciones claras, mantenibles y escalables."
+            },
+            "agile": {
+                "title": "Ejecución Ágil",
+                "desc": "Iteración rápida sin sacrificar calidad. Construir, medir y mejorar de forma continua, manteniendo el código limpio y preparado para crecer."
+            }
+        },
+        "process": {
+            "label": "Proceso de Trabajo",
+            "s1": {
+                "title": "Descubrimiento y Estrategia",
+                "desc": "Definición clara de objetivos, usuarios y métricas de éxito. Nada se construye sin entender primero el problema."
+            },
+            "s2": {
+                "title": "Arquitectura y Diseño",
+                "desc": "Diseño de estructuras de datos, APIs y sistemas preparados para escalar y adaptarse al crecimiento futuro."
+            },
+            "s3": {
+                "title": "Desarrollo Ágil",
+                "desc": "Construcción iterativa con feedback constante. Código limpio, testado y documentado."
+            },
+            "s4": {
+                "title": "Despliegue y Escalado",
+                "desc": "Pipelines CI/CD, monitorización y mejora continua. El trabajo no termina en el commit, termina en producción."
+            }
+        },
+        "stack_label": "Stack Tecnológico",
+        "cta": {
+            "title": "¿Listo para construir algo impactante?",
+            "description": "Especializado en MVPs, productos SaaS y mejora de sistemas existentes. Hablemos de cómo la ingeniería puede impulsar tu producto.",
+            "button": "Contactar ahora"
+        }
+    },
+    "projects_page": {
+        "badge": "Portafolio 2026",
+        "title": "Proyectos",
+        "highlight": "destacados",
+        "description": "Aquí encontrarás una colección de proyectos que han demostrado ser exitosos en el mundo empresarial."
+    },
+    "project_page": {
+        "on_this_page": "En esta página",
+        "summary": "Resumen",
+        "problem": "El Problema",
+        "solution": "La Solución",
+        "stack": "Stack Tecnológico",
+        "challenges": "Retos Técnicos",
+        "timeline": "Cronología",
+        "role": "Rol",
+        "view_demo": "Ver Demo",
+        "repository": "Repositorio",
+        "prev_project": "Proyecto Anterior",
+        "next_project": "Siguiente Proyecto",
+        "image_unavailable": "Imagen no disponible"
+    },
+    "contact": {
+        "badge": "Contacto",
+        "page_title": "Construyamos un producto <1/> <2>con impacto real</2>",
+        "page_desc": "Colaboro en proyectos freelance y de consultoría, ayudando a transformar ideas en productos reales, escalables y alineados con objetivos de negocio. <1/> Si tienes un MVP, un producto SaaS o un sistema que necesita evolucionar, hablemos.",
+        "direct_label": "Prefieres algo directo:",
+        "social": {
+            "github_desc": "Código real y sistemas en producción",
+            "linkedin_desc": "Trayectoria y enfoque a producto",
+            "twitter_desc": "Reflexiones sobre arquitectura y dev"
+        },
+        "title": "Cuéntame sobre tu producto",
+        "description": "Ayúdame a entender qué quieres construir o resolver.",
+        "name_label": "Tu Nombre",
+        "email_label": "Tu Email",
+        "message_label": "Tu Mensaje",
+        "name_placeholder": "Ej. Ana García",
+        "email_placeholder": "ana@empresa.com",
+        "message_placeholder": "¿Qué problema quieres resolver? ¿En qué punto estás ahora y qué te gustaría construir o mejorar?",
+        "response_promise": "Respondo personalmente a todos los mensajes.",
+        "send_btn": "Iniciar conversación",
+        "sending": "Enviando...",
+        "success": "Mensaje enviado correctamente",
+        "success_desc": "Gracias por contactarme. Te responderé pronto.",
+        "error": "Error al enviar el mensaje",
+        "error_desc": "Por favor, inténtalo de nuevo más tarde."
+    }
+}

@@ -1,0 +1,335 @@
+{
+    "header": {
+        "home": "Home",
+        "about": "About",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "hero": {
+        "badge": "AVAILABLE FOR NEW PROJECTS",
+        "title": "Building and optimizing <1>web products</1> ready to scale",
+        "description": "Fullstack Developer specializing in React, Next.js, and Node.js. I help startups and product teams launch, improve, and maintain real applications in production.",
+        "btn_contact": "Let's work together",
+        "btn_projects": "View projects",
+        "stats": {
+            "saas": "Complete SaaS Projects",
+            "architecture": "Clean Architecture",
+            "maintainable": "Maintainable Code",
+            "mvp": "Specialized in scaling MVPs to products"
+        }
+    },
+    "value_prop": {
+        "title": "What to expect when working with me",
+        "product_mindset": {
+            "title": "Product mindset, not just code",
+            "desc": "I don't just implement features. I analyze the problem, the business context, and propose technical solutions that make sense today and for the long term."
+        },
+        "architecture": {
+            "title": "Clear architecture and scalable code",
+            "desc": "I design applications built to grow: clean structures, separation of concerns, and technical decisions that avoid costly refactors in the future."
+        },
+        "speed": {
+            "title": "Speed without sacrificing quality",
+            "desc": "I work with modern tools that allow me to move fast without compromising stability, security, or performance."
+        },
+        "communication": {
+            "title": "Clear and direct communication",
+            "desc": "I deal with founders, PMs, and designers transparently. I explain technical decisions without unnecessary jargon and align expectations from the start."
+        }
+    },
+    "home": {
+        "projects": {
+            "number": "01",
+            "title": "Featured Projects",
+            "description": "A selection of my most recent and complex work, designed to scale.",
+            "view_all": "View all",
+            "view_full": "Explore Full Portfolio"
+        },
+        "stack": {
+            "label": "Tech Stack",
+            "title": "<1>High Performance</1> Tools",
+            "description": "I carefully select each piece of technology to ensure speed, security, and scalability."
+        }
+    },
+    "projects": {
+        "problem": "The Problem:",
+        "solution": "The Solution:",
+        "explore": "Explore Project Story",
+        "taskmaster-pro": {
+            "title": "TaskMaster Pro",
+            "description": "Fullstack task manager with professional architecture and a focus on real teams.",
+            "timeline": "2 Weeks",
+            "role": "Full Stack Developer",
+            "problem": {
+                "description": "Many product teams manage work with tools that don't fit their real flow, causing operational friction, lost visibility, and scalability issues as the team grows.",
+                "painPoints": [
+                    "Inflexible roles and permissions that don't reflect the real team structure.",
+                    "Information overload that hinders adoption by non-technical profiles.",
+                    "Lack of clear visibility into the real status of work and bottlenecks.",
+                    "Difficulty scaling projects and teams without losing control or traceability.",
+                    "Dependency on multiple tools to cover basic needs (tasks, communication, tracking)."
+                ]
+            },
+            "solution": {
+                "description": "I designed and developed a SaaS fullstack platform that centralizes task, team, and project management, prioritizing clean architecture and a fluid user experience.",
+                "features": [
+                    {
+                        "title": "Kanban Board",
+                        "description": "Intuitive task visualization with drag-and-drop functionality."
+                    },
+                    {
+                        "title": "Internationalization (i18n)",
+                        "description": "Full support for Spanish and English, with automatic language detection."
+                    },
+                    {
+                        "title": "Project Management",
+                        "description": "Organize your tasks into different projects for better tracking."
+                    },
+                    {
+                        "title": "Team Management",
+                        "description": "Collaborate with other users within specific projects."
+                    },
+                    {
+                        "title": "Notification System",
+                        "description": "Stay up to date with updates on your tasks and mentions."
+                    },
+                    {
+                        "title": "Secure Authentication",
+                        "description": "JWT-based login and registration with route protection."
+                    },
+                    {
+                        "title": "Search and Filtering",
+                        "description": "Quickly locate tasks by title, status, or priority."
+                    },
+                    {
+                        "title": "Automatic Task Priority Classification",
+                        "description": "Auto-management of task priority (low, medium, high) can be enabled in settings based on the configured time margin."
+                    },
+                    {
+                        "title": "Premium Design",
+                        "description": "Modern, responsive interface with fluid animations (Framer Motion)."
+                    }
+                ]
+            },
+            "challenges": [
+                {
+                    "title": "Kanban State Management",
+                    "description": "Maintaining task order consistency after multiple drag-and-drop moves and syncing with the DB."
+                },
+                {
+                    "title": "Board Performance",
+                    "description": "Efficient rendering of hundreds of tasks using virtualization and selective memoization."
+                }
+            ]
+        },
+        "reserva-saas": {
+            "title": "SaaS Booking Platform",
+            "description": "Online booking system with integrated payments for professionals and small service businesses.",
+            "timeline": "3 Weeks",
+            "role": "Full Stack Developer",
+            "problem": {
+                "description": "Many service professionals (classes, consultations, creative sessions) manage their bookings manually via WhatsApp, email, or unsynchronized calendars, creating errors, wasted time, and missed appointments.",
+                "painPoints": [
+                    "Disorganized bookings across multiple channels.",
+                    "Uncontrolled cancellations and no-shows.",
+                    "Lack of upfront payments or deposits.",
+                    "Generic tools poorly adapted to their real workflow."
+                ]
+            },
+            "solution": {
+                "description": "I designed and developed a SaaS platform that centralizes the management of bookings, clients, and payments in a single system, allowing professionals to automate their schedule and reduce operational friction.",
+                "features": [
+                    {
+                        "title": "Authentication and Access Control",
+                        "description": "Flexible and secure authentication system supporting multiple access methods and clearly separating Admin, Provider, and Client roles.",
+                        "details": [
+                            "Login with Google OAuth, Email/Password, and Magic Links.",
+                            "OTP verification for email registrations.",
+                            "RBAC with differentiated portals.",
+                            "Active abuse protections: rate limiting, CAPTCHA, and honeypots."
+                        ]
+                    },
+                    {
+                        "title": "Advanced Booking Engine",
+                        "description": "Configurable booking engine allowing professionals to define services, availability, and complex rules without friction for the end client.",
+                        "details": [
+                            "Flexible services: duration, price, capacity (1-on-1 or groups).",
+                            "Hybrid availability with weekly rules and date exceptions.",
+                            "Automatic buffers between appointments to avoid overlaps.",
+                            "Concurrency management per service and global limits."
+                        ]
+                    },
+                    {
+                        "title": "Google Calendar Sync",
+                        "description": "Two-way synchronization with Google Calendar to avoid double bookings and keep the schedule always updated.",
+                        "details": [
+                            "Automatic import of external events.",
+                            "Real-time blocking of busy times.",
+                            "Automatic update upon cancellations or rescheduling."
+                        ]
+                    },
+                    {
+                        "title": "Integrated Payments and Monetization",
+                        "description": "Complete payment system with Stripe allowing upfront charges, automatic payouts, and a scalable SaaS model.",
+                        "details": [
+                            "Upfront payments to confirm bookings.",
+                            "Stripe Connect Express for direct provider payouts.",
+                            "Support for platform fees per transaction.",
+                            "Monthly or annual subscription plans for providers."
+                        ]
+                    },
+                    {
+                        "title": "Recurring Bookings Management",
+                        "description": "Native support for periodic bookings, ideal for classes, therapies, and continuous services.",
+                        "details": [
+                            "Weekly or monthly configuration.",
+                            "Automatic generation of future sessions.",
+                            "Centralized management of cancellations and changes."
+                        ]
+                    },
+                    {
+                        "title": "Internationalization (i18n)",
+                        "description": "Platform ready for international audiences with full multi-language support.",
+                        "details": [
+                            "Interface fully translated to English and Spanish.",
+                            "Automatic language detection via middleware.",
+                            "Localized emails and error messages."
+                        ]
+                    },
+                    {
+                        "title": "Automation and Notifications",
+                        "description": "Automation system reducing manual tasks and keeping clients and providers informed.",
+                        "details": [
+                            "Automatic reminders 24h and 1h before the appointment.",
+                            "Transactional emails for confirmations and cancellations.",
+                            "Serverless cron jobs."
+                        ]
+                    },
+                    {
+                        "title": "Analytics and Dashboard",
+                        "description": "Interactive dashboard for providers to understand their business performance.",
+                        "details": [
+                            "Revenue and booking volume metrics.",
+                            "Most popular services.",
+                            "Clear visualizations using interactive charts."
+                        ]
+                    }
+                ]
+            },
+            "challenges": [
+                {
+                    "title": "Handling Webhook Idempotency",
+                    "description": "Ensuring Stripe webhooks are processed exactly once. Network retries could cause duplicate records if not handled correctly."
+                }
+            ]
+        }
+    },
+    "cta": {
+        "title": "Ready to create <1/> <2>something extraordinary?</2>",
+        "description": "Don't let your next big idea stay on paper. Let's transform complex visions into high-impact digital experiences.",
+        "button": "Start Project"
+    },
+    "footer": {
+        "rights": "All rights reserved."
+    },
+    "about": {
+        "hero": {
+            "title": "Building products, <1/> <2>not just features.</2>",
+            "role": "Software Engineer & Full-Stack Developer",
+            "description": "I bridge engineering with product. Code is the tool; value lies in the real impact the product generates for users and business."
+        },
+        "me": {
+            "label": "About me",
+            "p1": "<0>I don't write code just for the sake of it.</0> I design and build scalable, maintainable web products aligned with real business goals, prioritizing user experience, technical simplicity, and sustainable growth.",
+            "p2": "As a Software Engineer, I have the academic foundation to understand complex systems. Professionally, my approach is totally pragmatic: building solutions that work in production, scale over time, and solve real problems.",
+            "p3": "I have worked on SaaS products, MVPs, and production platforms, facing challenges in architecture, collaboration, scalability, and continuous product evolution."
+        },
+        "pillars": {
+            "label": "Pillars",
+            "product": {
+                "title": "Product Mindset",
+                "desc": "Understanding the why before the how. Every technical decision is evaluated by its impact on the final product and the user."
+            },
+            "problem": {
+                "title": "Problem Solving",
+                "desc": "Structured thinking and pragmatic architecture. Breaking down complex problems into clear, maintainable, and scalable solutions."
+            },
+            "agile": {
+                "title": "Agile Execution",
+                "desc": "Fast iteration without sacrificing quality. Build, measure, and improve continuously, keeping code clean and ready to grow."
+            }
+        },
+        "process": {
+            "label": "Work Process",
+            "s1": {
+                "title": "Discovery & Strategy",
+                "desc": "Clear definition of goals, users, and success metrics. Nothing is built without first understanding the problem."
+            },
+            "s2": {
+                "title": "Architecture & Design",
+                "desc": "Design of data structures, APIs, and systems prepared to scale and adapt to future growth."
+            },
+            "s3": {
+                "title": "Agile Development",
+                "desc": "Iterative construction with constant feedback. Clean, tested, and documented code."
+            },
+            "s4": {
+                "title": "Deployment & Scaling",
+                "desc": "CI/CD pipelines, monitoring, and continuous improvement. Work doesn't end at commit; it ends in production."
+            }
+        },
+        "stack_label": "Tech Stack",
+        "cta": {
+            "title": "Ready to build something impactful?",
+            "description": "Specialized in MVPs, SaaS products, and improving existing systems. Let's talk about how engineering can drive your product.",
+            "button": "Contact now"
+        }
+    },
+    "projects_page": {
+        "badge": "Portfolio 2026",
+        "title": "Featured",
+        "highlight": "Projects",
+        "description": "Here you will find a collection of projects that have proven to be successful in the business world."
+    },
+    "project_page": {
+        "on_this_page": "On this page",
+        "summary": "Summary",
+        "problem": "The Problem",
+        "solution": "The Solution",
+        "stack": "Tech Stack",
+        "challenges": "Technical Challenges",
+        "timeline": "Timeline",
+        "role": "Role",
+        "view_demo": "View Demo",
+        "repository": "Repository",
+        "prev_project": "Previous Project",
+        "next_project": "Next Project",
+        "image_unavailable": "Image unavailable"
+    },
+    "contact": {
+        "badge": "Contact",
+        "page_title": "Let's build a product <1/> <2>with real impact</2>",
+        "page_desc": "I collaborate on freelance and consulting projects, helping to transform ideas into real, scalable products aligned with business goals. <1/> If you have an MVP, a SaaS product, or a system that needs to evolve, let's talk.",
+        "direct_label": "Prefer something direct:",
+        "social": {
+            "github_desc": "Real code and production systems",
+            "linkedin_desc": "Career path and product focus",
+            "twitter_desc": "Thoughts on architecture and dev"
+        },
+        "title": "Tell me about your product",
+        "description": "Help me understand what you want to build or solve.",
+        "name_label": "Your Name",
+        "email_label": "Your Email",
+        "message_label": "Your Message",
+        "name_placeholder": "Ex. Sarah Connor",
+        "email_placeholder": "sarah@company.com",
+        "message_placeholder": "What problem do you want to solve? Where are you now and what would you like to build or improve?",
+        "response_promise": "I personally respond to all messages.",
+        "send_btn": "Start conversation",
+        "sending": "Sending...",
+        "success": "Message sent successfully",
+        "success_desc": "Thanks for contacting me. I'll get back to you soon.",
+        "error": "Error sending message",
+        "error_desc": "Please try again later."
+    }
+}

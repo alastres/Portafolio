@@ -3,8 +3,8 @@ import { Project } from '@/types';
 export const projects: Project[] = [
     {
         slug: 'taskmaster-pro',
-        title: 'TaskMaster Pro',
-        description: 'Gestor de tareas fullstack con arquitectura profesional y enfoque en equipos reales.',
+        title: 'projects.taskmaster-pro.title',
+        description: 'projects.taskmaster-pro.description',
         version: 'v1.0',
         tags: ['React', 'Vite', 'Node.js', 'PostgreSQL', 'TypeScript'],
         image: '/images/taskmasterpro/PromoTaskManagerPro.png',
@@ -23,68 +23,67 @@ export const projects: Project[] = [
         link: 'https://task-master-pro-xi-seven.vercel.app/login',
         github: 'https://github.com/example/taskmaster-pro',
 
-        timeline: '2 Semanas',
-        role: 'Full Stack Developer',
+        timeline: 'projects.taskmaster-pro.timeline',
+        role: 'projects.taskmaster-pro.role',
 
         problem: {
-            description:
-                'Muchos equipos de producto gestionan su trabajo con herramientas que no se adaptan bien a su flujo real, generando fricción operativa, pérdida de visibilidad y problemas de escalabilidad a medida que el equipo crece.',
+            description: 'projects.taskmaster-pro.problem.description',
             painPoints: [
-                'Roles y permisos poco flexibles que no reflejan la estructura real del equipo.',
-                'Sobrecarga de información que dificulta la adopción por parte de perfiles no técnicos.',
-                'Falta de visibilidad clara sobre el estado real del trabajo y cuellos de botella.',
-                'Dificultad para escalar proyectos y equipos sin perder control ni trazabilidad.',
-                'Dependencia de múltiples herramientas para cubrir necesidades básicas (tareas, comunicación, seguimiento).'
+                'projects.taskmaster-pro.problem.painPoints.0',
+                'projects.taskmaster-pro.problem.painPoints.1',
+                'projects.taskmaster-pro.problem.painPoints.2',
+                'projects.taskmaster-pro.problem.painPoints.3',
+                'projects.taskmaster-pro.problem.painPoints.4'
             ]
         },
 
 
         solution: {
-            description: 'Diseñé y desarrollé una plataforma SaaS fullstack que centraliza la gestión de tareas, equipos y proyectos, priorizando una arquitectura limpia y una experiencia de usuario fluida.',
+            description: 'projects.taskmaster-pro.solution.description',
             features: [
                 {
-                    title: 'Tablero Kanban',
-                    description: 'Visualización intuitiva de tareas con funcionalidad de arrastrar y soltar (Drag & Drop).',
+                    title: 'projects.taskmaster-pro.solution.features.0.title',
+                    description: 'projects.taskmaster-pro.solution.features.0.description',
                     icon: 'kanban'
                 },
                 {
-                    title: 'Internacionalización (i18n)',
-                    description: 'Soporte completo para español e inglés, con detección automática de idioma.',
+                    title: 'projects.taskmaster-pro.solution.features.1.title',
+                    description: 'projects.taskmaster-pro.solution.features.1.description',
                     icon: 'globe'
                 },
                 {
-                    title: 'Gestión de Proyectos',
-                    description: 'Organiza tus tareas en diferentes proyectos para un mejor seguimiento.',
+                    title: 'projects.taskmaster-pro.solution.features.2.title',
+                    description: 'projects.taskmaster-pro.solution.features.2.description',
                     icon: 'monitor'
                 },
                 {
-                    title: 'Gestión de Equipos',
-                    description: 'Colabora con otros usuarios dentro de proyectos específicos.',
+                    title: 'projects.taskmaster-pro.solution.features.3.title',
+                    description: 'projects.taskmaster-pro.solution.features.3.description',
                     icon: 'users'
                 },
                 {
-                    title: 'Sistema de Notificaciones',
-                    description: 'Mantente al día con las actualizaciones de tus tareas y menciones.',
+                    title: 'projects.taskmaster-pro.solution.features.4.title',
+                    description: 'projects.taskmaster-pro.solution.features.4.description',
                     icon: 'bell'
                 },
                 {
-                    title: 'Autenticación Segura',
-                    description: 'Inicio de sesión y registro basados en JWT con protección de rutas.',
+                    title: 'projects.taskmaster-pro.solution.features.5.title',
+                    description: 'projects.taskmaster-pro.solution.features.5.description',
                     icon: 'shield'
                 },
                 {
-                    title: 'Búsqueda y Filtrado',
-                    description: 'Localiza tareas rápidamente por título, estado o prioridad.',
+                    title: 'projects.taskmaster-pro.solution.features.6.title',
+                    description: 'projects.taskmaster-pro.solution.features.6.description',
                     icon: 'search'
                 },
                 {
-                    title: 'Clasificado automático de prioridad de tareas',
-                    description: 'Se puede activar en la configuración la autogestión de prioridad de tareas (bajo, medio, alto) según el margen de tiempo configurada.',
+                    title: 'projects.taskmaster-pro.solution.features.7.title',
+                    description: 'projects.taskmaster-pro.solution.features.7.description',
                     icon: 'priority'
                 },
                 {
-                    title: 'Diseño Premium',
-                    description: 'Interfaz moderna, responsiva y con animaciones fluidas (Framer Motion).',
+                    title: 'projects.taskmaster-pro.solution.features.8.title',
+                    description: 'projects.taskmaster-pro.solution.features.8.description',
                     icon: 'palette'
                 }
             ]
@@ -94,7 +93,7 @@ export const projects: Project[] = [
             { name: 'React 18', category: 'Frontend', icon: 'react' },
             { name: 'Vite', category: 'Frontend', icon: 'vite' },
             { name: 'TypeScript', category: 'Frontend', icon: 'typescript' },
-            { name: 'Zustand', category: 'State', icon: 'react' }, // Using React as fallback/proxy for now
+            { name: 'Zustand', category: 'State', icon: 'react' },
             { name: 'TanStack Query', category: 'Data', icon: 'reactquery' },
             { name: 'TailwindCSS', category: 'Styling', icon: 'tailwindcss' },
             { name: 'Radix UI', category: 'UI', icon: 'shadcn' },
@@ -109,8 +108,8 @@ export const projects: Project[] = [
 
         challenges: [
             {
-                title: 'Gestión de Estado Kanban',
-                description: 'Mantener la consistencia del orden de las tareas tras múltiples movimientos de drag-and-drop y sincronizarlos con la DB.',
+                title: 'projects.taskmaster-pro.challenges.0.title',
+                description: 'projects.taskmaster-pro.challenges.0.description',
                 codeSnippet: {
                     language: 'typescript',
                     fileName: 'board-store.ts',
@@ -135,15 +134,15 @@ const moveTaskOptimistic = (move: TaskMove) => {
                 }
             },
             {
-                title: 'Performance de Tablero',
-                description: 'Renderizado eficiente de cientos de tareas usando virtualización y memoización selectiva.',
+                title: 'projects.taskmaster-pro.challenges.1.title',
+                description: 'projects.taskmaster-pro.challenges.1.description',
             }
         ]
     },
     {
         slug: 'reserva-saas',
-        title: 'Plataforma de Reservas SaaS', // Renamed to match image example slightly or keep original concept
-        description: 'Sistema de reservas online con pagos integrados para profesionales y pequeños negocios de servicios.',
+        title: 'projects.reserva-saas.title',
+        description: 'projects.reserva-saas.description',
         version: 'v1.0',
         tags: ['Next.js', 'Stripe', 'PostgreSQL', 'Prisma', 'Tailwind', 'shadcn/ui', 'typescript'],
         image: '/images/scheduler/PromoScheduler.png',
@@ -171,117 +170,102 @@ const moveTaskOptimistic = (move: TaskMove) => {
         link: 'https://reservation-system-delta.vercel.app/es',
         github: 'https://github.com/example/reserva-saas',
 
-        timeline: '3 Semanas',
-        role: 'Full Stack Developer',
+        timeline: 'projects.reserva-saas.timeline',
+        role: 'projects.reserva-saas.role',
 
         problem: {
-            description: 'Muchos profesionales de servicios (clases, consultas, sesiones creativas) gestionan sus reservas de forma manual a través de WhatsApp, email o calendarios no sincronizados, lo que genera errores, pérdidas de tiempo y citas desaprovechadas.',
+            description: 'projects.reserva-saas.problem.description',
             painPoints: [
-                'Reservas desorganizadas entre múltiples canales.',
-                'Cancelaciones y no-shows sin control.',
-                'Falta de pagos anticipados o señalización.',
-                'Herramientas genéricas poco adaptadas a su flujo real.'
+                'projects.reserva-saas.problem.painPoints.0',
+                'projects.reserva-saas.problem.painPoints.1',
+                'projects.reserva-saas.problem.painPoints.2',
+                'projects.reserva-saas.problem.painPoints.3'
             ]
         },
 
         solution: {
-            description: 'Diseñé y desarrollé una plataforma SaaS que centraliza la gestión de reservas, clientes y pagos en un único sistema, permitiendo a los profesionales automatizar su agenda y reducir fricción operativa.',
+            description: 'projects.reserva-saas.solution.description',
             features: [
                 {
-                    title: 'Autenticación y Control de Acceso',
-                    description:
-                        'Sistema de autenticación flexible y seguro que soporta múltiples métodos de acceso y separa claramente los roles de administradores, proveedores y clientes.',
+                    title: 'projects.reserva-saas.solution.features.0.title',
+                    description: 'projects.reserva-saas.solution.features.0.description',
                     details: [
-                        'Login con Google OAuth, Email/Password y Magic Links.',
-                        'Verificación OTP en registros por email.',
-                        'RBAC con portales diferenciados (Admin, Provider, Client).',
-                        'Protecciones activas contra abuso: rate limiting, CAPTCHA y honeypots.'
+                        'projects.reserva-saas.solution.features.0.details.0',
+                        'projects.reserva-saas.solution.features.0.details.1',
+                        'projects.reserva-saas.solution.features.0.details.2',
+                        'projects.reserva-saas.solution.features.0.details.3'
                     ],
                     icon: 'shield'
                 },
-
                 {
-                    title: 'Motor de Reservas Avanzado',
-                    description:
-                        'Motor de reservas configurable que permite a los profesionales definir servicios, disponibilidad y reglas complejas sin fricción para el cliente final.',
+                    title: 'projects.reserva-saas.solution.features.1.title',
+                    description: 'projects.reserva-saas.solution.features.1.description',
                     details: [
-                        'Servicios flexibles: duración, precio, capacidad (1-on-1 o grupos).',
-                        'Disponibilidad híbrida con reglas semanales y excepciones por fecha.',
-                        'Buffers automáticos entre citas para evitar solapamientos.',
-                        'Gestión de concurrencia por servicio y límites globales.'
+                        'projects.reserva-saas.solution.features.1.details.0',
+                        'projects.reserva-saas.solution.features.1.details.1',
+                        'projects.reserva-saas.solution.features.1.details.2',
+                        'projects.reserva-saas.solution.features.1.details.3'
                     ],
                     icon: 'calendar'
                 },
-
                 {
-                    title: 'Sincronización con Google Calendar',
-                    description:
-                        'Sincronización bidireccional con Google Calendar para evitar dobles reservas y mantener la agenda siempre actualizada.',
+                    title: 'projects.reserva-saas.solution.features.2.title',
+                    description: 'projects.reserva-saas.solution.features.2.description',
                     details: [
-                        'Importación automática de eventos externos.',
-                        'Bloqueo de horarios ocupados en tiempo real.',
-                        'Actualización automática ante cancelaciones o reprogramaciones.'
+                        'projects.reserva-saas.solution.features.2.details.0',
+                        'projects.reserva-saas.solution.features.2.details.1',
+                        'projects.reserva-saas.solution.features.2.details.2'
                     ],
                     icon: 'calendar-sync'
                 },
-
                 {
-                    title: 'Pagos y Monetización Integrada',
-                    description:
-                        'Sistema de pagos completo con Stripe que permite cobros anticipados, payouts automáticos y un modelo SaaS escalable.',
+                    title: 'projects.reserva-saas.solution.features.3.title',
+                    description: 'projects.reserva-saas.solution.features.3.description',
                     details: [
-                        'Pagos upfront para confirmar reservas.',
-                        'Stripe Connect Express para que cada proveedor cobre directamente.',
-                        'Soporte para comisiones de plataforma por transacción.',
-                        'Planes de suscripción mensual o anual para proveedores.'
+                        'projects.reserva-saas.solution.features.3.details.0',
+                        'projects.reserva-saas.solution.features.3.details.1',
+                        'projects.reserva-saas.solution.features.3.details.2',
+                        'projects.reserva-saas.solution.features.3.details.3'
                     ],
                     icon: 'credit-card'
                 },
-
                 {
-                    title: 'Gestión de Reservas Recurrentes',
-                    description:
-                        'Soporte nativo para reservas periódicas, ideal para clases, terapias y servicios continuos.',
+                    title: 'projects.reserva-saas.solution.features.4.title',
+                    description: 'projects.reserva-saas.solution.features.4.description',
                     details: [
-                        'Configuración semanal o mensual.',
-                        'Generación automática de sesiones futuras.',
-                        'Gestión centralizada de cancelaciones y cambios.'
+                        'projects.reserva-saas.solution.features.4.details.0',
+                        'projects.reserva-saas.solution.features.4.details.1',
+                        'projects.reserva-saas.solution.features.4.details.2'
                     ],
                     icon: 'repeat'
                 },
-
                 {
-                    title: 'Internacionalización (i18n)',
-                    description:
-                        'Plataforma preparada para audiencias internacionales con soporte completo multi-idioma.',
+                    title: 'projects.reserva-saas.solution.features.5.title',
+                    description: 'projects.reserva-saas.solution.features.5.description',
                     details: [
-                        'Interfaz totalmente traducida a inglés y español.',
-                        'Detección automática de idioma mediante middleware.',
-                        'Emails y mensajes de error localizados.'
+                        'projects.reserva-saas.solution.features.5.details.0',
+                        'projects.reserva-saas.solution.features.5.details.1',
+                        'projects.reserva-saas.solution.features.5.details.2'
                     ],
                     icon: 'globe'
                 },
-
                 {
-                    title: 'Automatización y Notificaciones',
-                    description:
-                        'Sistema de automatización que reduce tareas manuales y mantiene informados a clientes y proveedores.',
+                    title: 'projects.reserva-saas.solution.features.6.title',
+                    description: 'projects.reserva-saas.solution.features.6.description',
                     details: [
-                        'Recordatorios automáticos 24h y 1h antes de la cita.',
-                        'Emails transaccionales para confirmaciones y cancelaciones.',
-                        'Cron jobs ejecutados de forma serverless.'
+                        'projects.reserva-saas.solution.features.6.details.0',
+                        'projects.reserva-saas.solution.features.6.details.1',
+                        'projects.reserva-saas.solution.features.6.details.2'
                     ],
                     icon: 'bell'
                 },
-
                 {
-                    title: 'Analíticas y Panel de Control',
-                    description:
-                        'Dashboard interactivo para que los proveedores entiendan el rendimiento de su negocio.',
+                    title: 'projects.reserva-saas.solution.features.7.title',
+                    description: 'projects.reserva-saas.solution.features.7.description',
                     details: [
-                        'Métricas de ingresos y volumen de reservas.',
-                        'Servicios más populares.',
-                        'Visualizaciones claras mediante gráficos interactivos.'
+                        'projects.reserva-saas.solution.features.7.details.0',
+                        'projects.reserva-saas.solution.features.7.details.1',
+                        'projects.reserva-saas.solution.features.7.details.2'
                     ],
                     icon: 'chart'
                 }
@@ -306,8 +290,8 @@ const moveTaskOptimistic = (move: TaskMove) => {
 
         challenges: [
             {
-                title: 'Handling Webhook Idempotency',
-                description: 'Asegurar que los webhooks de Stripe se procesen exactamente una vez. Retries de red podían causar registros duplicados si no se manejaban correctamente.',
+                title: 'projects.reserva-saas.challenges.0.title',
+                description: 'projects.reserva-saas.challenges.0.description',
                 codeSnippet: {
                     language: 'javascript',
                     fileName: 'webhook-handler.ts',

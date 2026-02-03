@@ -11,8 +11,10 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { toast } from 'sonner';
+import { useTranslation, Trans } from 'react-i18next';
 
 export default function ContactPage() {
+    const { t } = useTranslation('translation');
     const [isLoading, setIsLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -36,18 +38,18 @@ export default function ContactPage() {
             });
 
             if (response.ok) {
-                toast.success('Mensaje enviado correctamente', {
-                    description: 'Gracias por contactarme. Te responderé pronto.',
+                toast.success(t('contact.success'), {
+                    description: t('contact.success_desc', 'Gracias por contactarme. Te responderé pronto.'),
                 });
                 (e.target as HTMLFormElement).reset();
             } else {
-                toast.error('Error al enviar el mensaje', {
-                    description: 'Por favor, inténtalo de nuevo más tarde.',
+                toast.error(t('contact.error'), {
+                    description: t('contact.error_desc', 'Por favor, inténtalo de nuevo más tarde.'),
                 });
             }
         } catch (error) {
-            toast.error('Error al enviar el mensaje', {
-                description: 'Por favor, inténtalo de nuevo más tarde.',
+            toast.error(t('contact.error'), {
+                description: t('contact.error_desc', 'Por favor, inténtalo de nuevo más tarde.'),
             });
         } finally {
             setIsLoading(false);
@@ -67,7 +69,7 @@ export default function ContactPage() {
                         transition={{ duration: 0.5 }}
                         className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-[0.2em] uppercase"
                     >
-                        Contacto
+                        {t('contact.badge')}
                     </motion.div>
 
                     <motion.h1
@@ -76,10 +78,16 @@ export default function ContactPage() {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-foreground leading-[1.1]"
                     >
-                        Construyamos un producto <br className="hidden sm:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-sky-600">
-                            con impacto real
-                        </span>
+                        {/* 
+                            title: "Construyamos un producto <1/> <2>con impacto real</2>" 
+                            indices: 0=text, 1=<br/>, 2=<span>
+                        */}
+                        <Trans i18nKey="contact.page_title">
+                            Construyamos un producto <br className="hidden sm:block" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-sky-600">
+                                con impacto real
+                            </span>
+                        </Trans>
                     </motion.h1>
 
                     <motion.p
@@ -88,8 +96,10 @@ export default function ContactPage() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
                     >
-                        Colaboro en proyectos freelance y de consultoría, ayudando a transformar ideas en productos reales, escalables y alineados con objetivos de negocio.
-                        <br className="hidden md:block" /> Si tienes un MVP, un producto SaaS o un sistema que necesita evolucionar, hablemos.
+                        <Trans i18nKey="contact.page_desc">
+                            Colaboro en proyectos freelance y de consultoría, ayudando a transformar ideas en productos reales, escalables y alineados con objetivos de negocio.
+                            <br className="hidden md:block" /> Si tienes un MVP, un producto SaaS o un sistema que necesita evolucionar, hablemos.
+                        </Trans>
                     </motion.p>
 
                     <motion.div
@@ -98,7 +108,7 @@ export default function ContactPage() {
                         transition={{ duration: 0.5, delay: 0.3 }}
                         className="pt-4"
                     >
-                        <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest mb-4">Prefieres algo directo:</p>
+                        <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest mb-4">{t('contact.direct_label')}</p>
                         <Link
                             href="mailto:adrian47388@gmail.com"
                             className="inline-flex items-center text-2xl md:text-3xl font-black text-foreground hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/50"
@@ -121,19 +131,19 @@ export default function ContactPage() {
                             icon: Github,
                             label: 'GitHub',
                             href: 'https://github.com/alastres',
-                            desc: 'Código real y sistemas en producción'
+                            desc: t('contact.social.github_desc')
                         },
                         {
                             icon: Linkedin,
                             label: 'LinkedIn',
                             href: 'https://linkedin.com/in/alas3s',
-                            desc: 'Trayectoria y enfoque a producto'
+                            desc: t('contact.social.linkedin_desc')
                         },
                         {
                             icon: Twitter,
                             label: 'Twitter',
                             href: 'https://twitter.com/adrian',
-                            desc: 'Reflexiones sobre arquitectura y dev'
+                            desc: t('contact.social.twitter_desc')
                         },
                     ].map((social, idx) => (
                         <a
@@ -166,31 +176,31 @@ export default function ContactPage() {
                     className="bg-card/80 backdrop-blur-md border border-border rounded-3xl p-8 md:p-12 mb-20 shadow-2xl max-w-3xl mx-auto"
                 >
                     <div className="mb-10 text-center md:text-left">
-                        <h2 className="text-3xl font-bold text-foreground mb-2">Cuéntame sobre tu producto</h2>
-                        <p className="text-muted-foreground">Ayúdame a entender qué quieres construir o resolver.</p>
+                        <h2 className="text-3xl font-bold text-foreground mb-2">{t('contact.title')}</h2>
+                        <p className="text-muted-foreground">{t('contact.description', 'Ayúdame a entender qué quieres construir o resolver.')}</p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="space-y-3">
-                                <label htmlFor="name" className="text-sm font-bold text-foreground">Tu Nombre</label>
+                                <label htmlFor="name" className="text-sm font-bold text-foreground">{t('contact.name_label')}</label>
                                 <Input
                                     id="name"
                                     name="name"
                                     required
-                                    placeholder="Ej. Ana García"
+                                    placeholder={t('contact.name_placeholder', 'Ej. Ana García')}
                                     className="h-12 border-border bg-secondary/30 focus:bg-background focus:border-primary transition-all"
                                     disabled={isLoading}
                                 />
                             </div>
                             <div className="space-y-3">
-                                <label htmlFor="email" className="text-sm font-bold text-foreground">Tu Email</label>
+                                <label htmlFor="email" className="text-sm font-bold text-foreground">{t('contact.email_label')}</label>
                                 <Input
                                     id="email"
                                     name="email"
                                     type="email"
                                     required
-                                    placeholder="ana@empresa.com"
+                                    placeholder={t('contact.email_placeholder', 'ana@empresa.com')}
                                     className="h-12 border-border bg-secondary/30 focus:bg-background focus:border-primary transition-all"
                                     disabled={isLoading}
                                 />
@@ -198,12 +208,12 @@ export default function ContactPage() {
                         </div>
 
                         <div className="space-y-3">
-                            <label htmlFor="message" className="text-sm font-bold text-foreground">Tu Mensaje</label>
+                            <label htmlFor="message" className="text-sm font-bold text-foreground">{t('contact.message_label')}</label>
                             <Textarea
                                 id="message"
                                 name="message"
                                 required
-                                placeholder="¿Qué problema quieres resolver? ¿En qué punto estás ahora y qué te gustaría construir o mejorar?"
+                                placeholder={t('contact.message_placeholder', '¿Qué problema quieres resolver? ¿En qué punto estás ahora y qué te gustaría construir o mejorar?')}
                                 className="min-h-[180px] border-border bg-secondary/30 focus:bg-background focus:border-primary transition-all resize-none p-4 leading-relaxed"
                                 disabled={isLoading}
                             />
@@ -212,7 +222,7 @@ export default function ContactPage() {
                         <div className="pt-2 flex flex-col md:flex-row items-center gap-6 justify-between">
                             <p className="text-xs text-muted-foreground order-2 md:order-1 flex items-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                                Respondo personalmente a todos los mensajes.
+                                {t('contact.response_promise', 'Respondo personalmente a todos los mensajes.')}
                             </p>
 
                             <div className="flex flex-col items-end gap-2 order-1 md:order-2 w-full md:w-auto">
@@ -225,11 +235,11 @@ export default function ContactPage() {
                                     {isLoading ? (
                                         <>
                                             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                            Enviando...
+                                            {t('contact.sending')}
                                         </>
                                     ) : (
                                         <>
-                                            Iniciar conversación <ArrowRight className="ml-2 h-4 w-4" />
+                                            {t('contact.send_btn')} <ArrowRight className="ml-2 h-4 w-4" />
                                         </>
                                     )}
                                 </Button>

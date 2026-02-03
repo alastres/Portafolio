@@ -6,8 +6,11 @@ import { Badge } from '@/components/ui/badge-ui';
 import Link from 'next/link';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import HeroIDEAnimation from '@/components/ui/hero-ide-animation';
+import { useTranslation, Trans } from 'react-i18next';
 
 export default function Hero() {
+    const { t } = useTranslation('translation');
+
     return (
         <section className="relative overflow-hidden pt-28 pb-16 md:pt-40 md:pb-32 bg-background">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -25,7 +28,7 @@ export default function Hero() {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                             </span>
-                            DISPONIBLE PARA NUEVOS PROYECTOS
+                            {t('hero.badge')}
                         </Badge>
                     </motion.div>
 
@@ -35,7 +38,9 @@ export default function Hero() {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.1]"
                     >
-                        Construyo y optimizo <span className="text-primary">productos web</span> listos para escalar
+                        <Trans i18nKey="hero.title">
+                            Construyo y optimizo <span className="text-primary">productos web</span> listos para escalar
+                        </Trans>
                     </motion.h1>
                 </div>
 
@@ -50,19 +55,18 @@ export default function Hero() {
                         className="text-center lg:text-left order-2 lg:order-1 min-w-0"
                     >
                         <p className="text-lg sm:text-xl text-muted-foreground mb-8 md:mb-10 leading-relaxed">
-                            Fullstack Developer especializado en React, Next.js y Node.js.
-                            Ayudo a startups y equipos de producto a lanzar, mejorar y mantener aplicaciones reales en producción.
+                            {t('hero.description')}
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
                             <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 text-base bg-primary hover:bg-primary/90 text-primary-foreground border-0 shadow-[0_0_20px_rgba(59,130,246,0.5)] shadow-primary/20">
                                 <Link href="/contact">
-                                    Trabajemos juntos <ArrowRight className="ml-2 h-4 w-4" />
+                                    {t('hero.btn_contact')} <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
                             </Button>
                             <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 text-base bg-secondary hover:bg-secondary/90 text-secondary-foreground border-0 shadow-[0_0_20px_rgba(59,130,246,0.5)] shadow-secondary/20">
                                 <Link href="/projects">
-                                    Ver proyectos <ArrowRight className="ml-2 h-4 w-4" />
+                                    {t('hero.btn_projects')} <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
                             </Button>
                         </div>
@@ -93,16 +97,16 @@ export default function Hero() {
                     className="flex flex-wrap gap-4 md:gap-6 justify-center text-sm font-medium text-muted-foreground"
                 >
                     <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-full border border-border/50">
-                        <CheckCircle2 className="h-5 w-5 text-primary" /> Proyectos SaaS completos
+                        <CheckCircle2 className="h-5 w-5 text-primary" /> {t('hero.stats.saas')}
                     </div>
                     <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-full border border-border/50">
-                        <CheckCircle2 className="h-5 w-5 text-primary" /> Arquitectura limpia
+                        <CheckCircle2 className="h-5 w-5 text-primary" /> {t('hero.stats.architecture')}
                     </div>
                     <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-full border border-border/50">
-                        <CheckCircle2 className="h-5 w-5 text-primary" /> Código mantenible
+                        <CheckCircle2 className="h-5 w-5 text-primary" /> {t('hero.stats.maintainable')}
                     </div>
                     <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-full border border-border/50">
-                        <CheckCircle2 className="h-5 w-5 text-primary" /> Especializado en escalar MVPs a productos
+                        <CheckCircle2 className="h-5 w-5 text-primary" /> {t('hero.stats.mvp')}
                     </div>
                 </motion.div>
 

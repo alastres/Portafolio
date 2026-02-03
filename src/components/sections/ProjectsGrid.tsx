@@ -7,12 +7,15 @@ import { Project } from '@/types';
 import { Badge } from '@/components/ui/badge-ui';
 import { ArrowRight, MoveRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface ProjectsGridProps {
     projects: Project[];
 }
 
 export default function ProjectsGrid({ projects }: ProjectsGridProps) {
+    const { t } = useTranslation('translation');
+
     return (
         <div className="relative py-20 space-y-20 md:space-y-32">
             {/* Central Line (Desktop) */}
@@ -37,28 +40,32 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
                                 isEven ? "md:items-end" : "md:items-start"
                             )}>
                                 <span className="text-blue-500 text-xs font-bold tracking-[0.2em] uppercase">
-                                    {String(index + 1).padStart(2, '0')} / {project.role || 'Project'}
+                                    {String(index + 1).padStart(2, '0')} / {t(project.role || 'home.projects.number')}
                                 </span>
                                 <h2 className="text-3xl md:text-4xl font-black text-foreground tracking-tight">
-                                    {project.title}
+                                    {t(project.title)}
                                 </h2>
                             </div>
 
                             <div className={cn("space-y-4 text-muted-foreground", isEven ? "md:mr-0 md:ml-auto" : "")}>
                                 {project.problem && (
                                     <div>
-                                        <strong className="text-foreground block mb-1">El Problema:</strong>
+                                        <strong className="text-foreground block mb-1">{t('projects.problem')}</strong>
                                         <p className="text-sm leading-relaxed max-w-md ml-auto mr-0">
-                                            {typeof project.problem === 'string' ? project.problem : project.problem.description.substring(0, 150) + '...'}
+                                            {project.problem && (typeof project.problem === 'string'
+                                                ? t(project.problem)
+                                                : t(project.problem.description).substring(0, 150) + '...')}
                                         </p>
                                     </div>
                                 )}
 
                                 {project.solution && (
                                     <div>
-                                        <strong className="text-foreground block mb-1">La Solución:</strong>
+                                        <strong className="text-foreground block mb-1">{t('projects.solution')}</strong>
                                         <p className="text-sm leading-relaxed max-w-md ml-auto mr-0">
-                                            {typeof project.solution === 'string' ? project.solution : project.solution.description.substring(0, 150) + '...'}
+                                            {project.solution && (typeof project.solution === 'string'
+                                                ? t(project.solution)
+                                                : t(project.solution.description).substring(0, 150) + '...')}
                                         </p>
                                     </div>
                                 )}
@@ -80,7 +87,7 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
                                     href={`/projects/${project.slug}`}
                                     className="group inline-flex items-center text-sm font-bold text-foreground hover:text-blue-400 transition-colors uppercase tracking-widest gap-2"
                                 >
-                                    Explorar Historia del Proyecto
+                                    {t('projects.explore')}
                                     <MoveRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </div>

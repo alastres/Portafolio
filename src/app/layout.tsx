@@ -7,7 +7,8 @@ import { constructMetadata } from '@/lib/seo';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { Breadcrumbs } from '@/components/ui/breadcrumbs';
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
+import I18nProvider from '@/components/i18n-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,25 +35,27 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col font-sans bg-background text-foreground`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
-          <Header />
-          <main className="flex-grow relative">
-            <div className="absolute top-20 left-0 w-full z-30 pointer-events-none">
-              <div className="pointer-events-auto">
-                <Breadcrumbs />
+        <I18nProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange={false}
+          >
+            <Header />
+            <main className="flex-grow relative">
+              <div className="absolute top-20 left-0 w-full z-30 pointer-events-none">
+                <div className="pointer-events-auto">
+                  <Breadcrumbs />
+                </div>
               </div>
-            </div>
-            {children}
-          </main>
-          <Footer />
-          <ThemeToggle />
-          <Toaster />
-        </ThemeProvider>
+              {children}
+            </main>
+            <Footer />
+            <ThemeToggle />
+            <Toaster />
+          </ThemeProvider>
+        </I18nProvider>
       </body>
     </html>
   );

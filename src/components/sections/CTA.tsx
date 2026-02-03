@@ -47,7 +47,7 @@ export default function CTA({ lang, dict }: CTAProps) {
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-blue-500/20 blur-[100px] -z-10 rounded-full pointer-events-none" />
                     <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 tracking-tight text-foreground">
                         {dict.cta.title}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 pr-2 pb-1 inline-block">
                             {dict.cta.subtitle}
                         </span>
                     </h2>

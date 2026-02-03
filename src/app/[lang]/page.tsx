@@ -83,7 +83,7 @@ export default async function Home({
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
                         {skills.map((category) => (
-                            <Card key={category.title} className="bg-card border-border/50 hover:border-primary/30 transition-all hover:shadow-xl hover:-translate-y-1">
+                            <Card key={category.title} className="bg-card border-neutral-200 dark:border-border hover:border-primary/30 transition-all hover:shadow-xl hover:-translate-y-1">
                                 <CardHeader>
                                     <div className="mb-6 bg-primary/10 w-14 h-14 rounded-2xl flex items-center justify-center border border-primary/20">
                                         {category.icon}

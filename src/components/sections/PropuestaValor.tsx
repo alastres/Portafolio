@@ -76,7 +76,7 @@ export default function PropuestaValor({ lang, dict }: PropuestaValorProps) {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
-                            <Card className="h-full border-border/50 bg-background/50 hover:bg-muted/50 transition-colors duration-300 hover:border-primary/20 group">
+                            <Card className="h-full border-neutral-200 dark:border-border/50 bg-background/50 hover:bg-muted/50 transition-colors duration-300 hover:border-primary/20 group">
                                 <CardContent className="p-6 flex flex-col items-start h-full">
                                     <div className="mb-6 p-3 rounded-2xl bg-primary/10 border border-primary/20 group-hover:scale-110 transition-transform duration-300">
                                         {feature.icon}

@@ -61,10 +61,8 @@ export default function ContactClientPage({ lang, dict }: ContactClientPageProps
     }
 
     const socialLinks = [
-        { icon: Mail, label: dict.contact.email || 'Email', href: 'mailto:adrian47388@gmail.com', username: 'adrian47388@gmail.com' },
         { icon: Github, label: 'GitHub', href: 'https://github.com/alastres', username: '@alastres' },
-        { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/adrian-matos', username: 'Adrian Matos' },
-        { icon: Twitter, label: 'Twitter', href: 'https://twitter.com/alastres_', username: '@alastres_' },
+        { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/alas3s', username: 'Adrian Roidel' },
     ];
 
     return (
@@ -192,6 +190,12 @@ export default function ContactClientPage({ lang, dict }: ContactClientPageProps
                     <h2 className="text-2xl font-black text-foreground mb-8 text-center">
                         {dict.contact.or_connect || 'O conéctate conmigo en'}
                     </h2>
+                    <div className="flex justify-center mb-8">
+                        <a href="mailto:adrian47388@gmail.com" className="flex items-center gap-3 px-6 py-3 bg-secondary/30 hover:bg-secondary/50 border border-border/50 hover:border-primary/50 rounded-full transition-all group">
+                            <Mail className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+                            <span className="text-foreground font-medium">adrian47388@gmail.com</span>
+                        </a>
+                    </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {socialLinks.map((link) => (
                             <Link

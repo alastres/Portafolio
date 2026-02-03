@@ -86,7 +86,7 @@ export default function ProjectsGrid({ projects, lang, dict }: ProjectsGridProps
                                 isEven ? "md:justify-end" : "md:justify-start"
                             )}>
                                 {project.tags.slice(0, 4).map((tag) => (
-                                    <Badge key={tag} variant="secondary" className="bg-secondary/50 border-border/50 text-xs">
+                                    <Badge key={tag} variant="secondary" className="bg-secondary/50 border-neutral-200 dark:border-border/50 text-xs">
                                         {tag}
                                     </Badge>
                                 ))}

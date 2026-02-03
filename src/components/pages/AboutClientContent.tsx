@@ -104,7 +104,7 @@ export default function AboutClientContent({ lang, dict }: AboutClientContentPro
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {pillars.map((item, idx) => (
-                            <div key={idx} className="bg-secondary/20 p-8 rounded-2xl border border-border/50 hover:border-primary/30 transition-colors">
+                            <div key={idx} className="bg-secondary/20 p-8 rounded-2xl border border-neutral-200 dark:border-border hover:border-primary/30 transition-colors">
                                 <item.icon className="h-8 w-8 text-primary mb-6" />
                                 <h3 className="text-xl font-bold text-foreground mb-3">{resolveKey(item.titleKey, dict)}</h3>
                                 <p className="text-muted-foreground leading-relaxed">{resolveKey(item.descKey, dict)}</p>
@@ -123,7 +123,7 @@ export default function AboutClientContent({ lang, dict }: AboutClientContentPro
                         </div>
                         <div className="md:col-span-8 space-y-12">
                             {processes.map((process, idx) => (
-                                <div key={idx} className="group flex gap-6 items-start border-b border-border/40 pb-12 last:border-0 last:pb-0">
+                                <div key={idx} className="group flex gap-6 items-start border-b border-neutral-200 dark:border-border pb-12 last:border-0 last:pb-0">
                                     <span className="text-4xl font-black text-border group-hover:text-primary/20 transition-colors">
                                         {process.step}
                                     </span>
@@ -138,7 +138,7 @@ export default function AboutClientContent({ lang, dict }: AboutClientContentPro
                 </motion.div>
 
                 {/* Stack */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-32 border-y border-border/50 py-16">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-32 border-y border-neutral-200 dark:border-border py-16">
                     <div className="text-center mb-10">
                         <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-widest">{dict.about.stack_label}</h2>
                     </div>

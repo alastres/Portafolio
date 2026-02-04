@@ -53,7 +53,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                             <Terminal className="h-5 w-5 text-primary" />
                         </div>
                         <Link href={`/${lang}`} className="text-xl font-bold tracking-tight text-foreground">
-                            Alas3s
+                            Adrian R.L.M
                         </Link>
                     </div>
 

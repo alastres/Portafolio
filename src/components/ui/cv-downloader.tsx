@@ -55,7 +55,7 @@ export default function CVDownloader({ dict }: CVDownloaderProps) {
 
     const triggerFileDownload = () => {
         const link = document.createElement('a');
-        link.href = '/cv.pdf';
+        link.href = '/Adrian_Roidel_CV.pdf';
         link.download = 'Adrian_Roidel_CV.pdf';
         document.body.appendChild(link);
         link.click();

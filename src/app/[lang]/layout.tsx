@@ -25,8 +25,9 @@ export async function generateStaticParams() {
     return i18n.locales.map((locale) => ({ lang: locale }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
-    const { lang } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+    const { lang: langStr } = await params;
+    const lang = langStr as Locale;
     const title = lang === 'es' ? 'Portafolio Adrian Roidel' : 'Portfolio Adrian Roidel';
     const description = lang === 'es'
         ? 'Portafolio Profesional de Desarrollador Fullstack'
@@ -43,9 +44,10 @@ export default async function RootLayout({
     params,
 }: Readonly<{
     children: React.ReactNode;
-    params: Promise<{ lang: Locale }>;
+    params: Promise<{ lang: string }>;
 }>) {
-    const { lang } = await params;
+    const { lang: langStr } = await params;
+    const lang = langStr as Locale;
     const dict = await getDictionary(lang);
 
     return (

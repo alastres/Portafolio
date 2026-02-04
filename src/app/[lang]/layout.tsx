@@ -25,10 +25,18 @@ export async function generateStaticParams() {
     return i18n.locales.map((locale) => ({ lang: locale }))
 }
 
-export const metadata: Metadata = constructMetadata({
-    title: 'Portfolio',
-    description: 'Professional Portfolio for Fullstack Developer',
-});
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+    const { lang } = await params;
+    const title = lang === 'es' ? 'Portafolio Adrian Roidel' : 'Portfolio Adrian Roidel';
+    const description = lang === 'es'
+        ? 'Portafolio Profesional de Desarrollador Fullstack'
+        : 'Professional Portfolio for Fullstack Developer';
+
+    return constructMetadata({
+        title,
+        description,
+    });
+}
 
 export default async function RootLayout({
     children,

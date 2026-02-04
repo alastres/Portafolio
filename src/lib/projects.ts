@@ -21,7 +21,7 @@ export const projects: Project[] = [
             '/images/taskmasterpro/chrome-capture-2026-01-31 (8).png',
         ],
         link: 'https://task-master-pro-xi-seven.vercel.app/login',
-        github: 'https://github.com/example/taskmaster-pro',
+        github: 'https://github.com/alastres/TaskMasterPro',
 
         timeline: 'projects.taskmaster-pro.timeline',
         role: 'projects.taskmaster-pro.role',
@@ -168,7 +168,7 @@ const moveTaskOptimistic = (move: TaskMove) => {
             '/images/scheduler/chrome-capture-2026-01-31 (25).png',
         ],
         link: 'https://reservation-system-delta.vercel.app/es',
-        github: 'https://github.com/example/reserva-saas',
+        github: 'https://github.com/alastres/reservation-system',
 
         timeline: 'projects.reserva-saas.timeline',
         role: 'projects.reserva-saas.role',

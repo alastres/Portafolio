@@ -1,66 +1,81 @@
-# Portfolio - Adrián Lastra
+# Portafolio Profesional - Adrian Roidel (Alias: Alas3s)
 
-A modern, high-performance professional portfolio website built with **Next.js 15**, **React 19**, and **Tailwind CSS**. Designed to showcase projects, skills, and experience with a focus on seamless user experience, accessibility, and internationalization.
+Un portafolio web moderno y de alto rendimiento construido con **Next.js 15**, **React 19** y **Tailwind CSS**. Diseñado para mostrar proyectos, habilidades y experiencia profesional con un enfoque en la experiencia de usuario (UX), accesibilidad y una arquitectura escalable.
 
-## 🚀 Teach Stack
+## 🚀 Tecnologías Clave
 
 - **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
-- **Library**: [React 19](https://react.dev/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Internationalization**: Route-based i18n with Server Components (custom implementation)
-- **Icons**: [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)
-- **UI Components**: Custom components inspired by Shadcn UI
-- **Email**: Nodemailer (via API Routes)
+- **Biblioteca**: [React 19](https://react.dev/)
+- **Lenguaje**: [TypeScript](https://www.typescriptlang.org/)
+- **Estilos**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animaciones**: [Framer Motion](https://www.framer.com/motion/)
+- **Internacionalización**: Implementación personalizada de i18n basada en rutas (`/[lang]`) con Server Components.
+- **Iconos**: [Lucide React](https://lucide.dev/)
+- **Correo**: Integración con Nodemailer.
 
-## ✨ Key Features
+## ✨ Características Destacadas
 
-- **Bi-lingual Support**: Fully translated into English and Spanish with seamless switching.
-- **Dynamic Project Showcase**: Detailed project pages with rich content, generated dynamically from project data.
-- **Interactive UI**: Smooth animations, micro-interactions, and responsive design for all devices.
-- **Dark/Light Mode**: System-aware theme switching with persistent user preference.
-- **Contact Form**: Functional contact form integrated with email delivery services.
-- **SEO Optimized**:
-    - Semantic HTML structure.
-    - Dynamic metadata generation for every page.
-    - Automated `sitemap.xml` and `robots.txt` generation.
-    - Open Graph and Twitter Card integration.
-- **Security**: Hardened with HTTP security headers (CSP, HSTS, X-Frame-Options).
+- **Soporte Bilingüe Completo**: Navegación fluida entre Español (`/es`) e Inglés (`/en`) con detección automática basada en preferencias del usuario.
+- **Descarga de CV Interactiva**: Una experiencia única tipo "Terminal" que simula la compilación de habilidades antes de descargar el CV.
+- **Modo Oscuro Premium**: Tema visual adaptable (Claro/Oscuro) con una paleta de colores "Slate" profesional y persistencia de preferencias.
+- **Showcase de Proyectos**: Páginas de detalle dinámicas para cada proyecto, generadas estáticamente para máximo rendimiento.
+- **SEO Optimizado**:
+    - Generación dinámica de `sitemap.xml` y `robots.txt`.
+    - Metadatos bilingües y etiquetas Open Graph dinámicas.
+    - Favicon generado dinámicamente (`ImageResponse`) que se adapta al tema.
+- **Accesibilidad**: Componentes construidos siguiendo estándares WCAG.
 
-## 🛠️ Getting Started
+## 🛠️ Instalación y Uso
 
-First, install dependencies:
+1.  **Clonar el repositorio**:
+    ```bash
+    git clone https://github.com/tu-usuario/portafolio.git
+    cd portafolio
+    ```
 
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-```
+2.  **Instalar dependencias**:
+    ```bash
+    npm install
+    ```
 
-Run the development server:
+3.  **Configurar variables de entorno**:
+    Crea un archivo `.env` en la raíz basado en `.env.example` (si aplica) o configura las credenciales de correo:
+    ```env
+    EMAIL_SERVER_USER=tu@email.com
+    EMAIL_SERVER_PASSWORD=tu_password_app
+    EMAIL_FROM=tu@email.com
+    NEXT_PUBLIC_APP_URL=http://localhost:3000
+    ```
 
-```bash
-npm run dev
-```
+4.  **Iniciar servidor de desarrollo**:
+    ```bash
+    npm run dev
+    ```
+    Visita [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📦 Despliegue
 
-## 📦 Deployment
+El proyecto está optimizado para **Vercel**.
 
-The project is optimized for deployment on **Vercel** or **Netlify**.
-
-1.  Build the project:
+1.  Construir para producción:
     ```bash
     npm run build
     ```
-2.  Start the production server:
+    *Nota: Asegúrate de que no haya servidores de desarrollo corriendo para evitar conflictos de archivos durante el build.*
+
+2.  Iniciar servidor de producción:
     ```bash
     npm start
     ```
 
-## 📄 License
+## 📂 Estructura del Proyecto
 
-This project is open source and available under the [MIT License](LICENSE).
+- `src/app/[lang]`: Rutas dinámicas para la internacionalización.
+- `src/components`: Componentes reutilizables (UI, Layout, Secciones).
+- `src/locales`: Archivos de traducción JSON (`es`, `en`).
+- `src/lib`: Utilidades, helpers de SEO y lógica de negocio.
+- `public`: Activos estáticos (imágenes, PDF del CV).
+
+## 📄 Licencia
+
+Este proyecto es de código abierto y está disponible bajo la [Licencia MIT](LICENSE).

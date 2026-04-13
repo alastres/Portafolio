@@ -321,6 +321,137 @@ const moveTaskOptimistic = (move: TaskMove) => {
                 }
             }
         ]
+    },
+    {
+        slug: 'fivem-store',
+        title: 'projects.fivem-store.title',
+        description: 'projects.fivem-store.description',
+        version: 'v1.0',
+        tags: ['Next.js', 'React', 'PostgreSQL', 'Prisma', 'Stripe', 'Socket.io', 'TypeScript', 'Tailwind'],
+        image: '/images/fivemstore/fivemstore cover.png',
+        gallery: [
+            '/images/fivemstore/fivemstore cover.png',
+            '/images/fivemstore/FireShot Capture 002 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 003 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 005 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 006 - Sandbox - [checkout.stripe.com].png',
+            '/images/fivemstore/FireShot Capture 007 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 008 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 009 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 010 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 011 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 013 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 014 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 015 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 016 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 017 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 018 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 019 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 020 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+            '/images/fivemstore/FireShot Capture 021 - FiveM Store - Premium Scripts & Assets - [fivem-store-theta.vercel.app].png',
+        ],
+        link: 'https://fivem-store-theta.vercel.app/es',
+        github: 'https://github.com/alastres/fivem-store',
+
+        timeline: 'projects.fivem-store.timeline',
+        role: 'projects.fivem-store.role',
+
+        problem: {
+            description: 'projects.fivem-store.problem.description',
+            painPoints: [
+                'projects.fivem-store.problem.painPoints.0',
+                'projects.fivem-store.problem.painPoints.1',
+                'projects.fivem-store.problem.painPoints.2',
+                'projects.fivem-store.problem.painPoints.3',
+            ]
+        },
+
+        solution: {
+            description: 'projects.fivem-store.solution.description',
+            features: [
+                {
+                    title: 'projects.fivem-store.solution.features.0.title',
+                    description: 'projects.fivem-store.solution.features.0.description',
+                    icon: 'credit-card'
+                },
+                {
+                    title: 'projects.fivem-store.solution.features.1.title',
+                    description: 'projects.fivem-store.solution.features.1.description',
+                    icon: 'shield'
+                },
+                {
+                    title: 'projects.fivem-store.solution.features.2.title',
+                    description: 'projects.fivem-store.solution.features.2.description',
+                    icon: 'monitor'
+                },
+                {
+                    title: 'projects.fivem-store.solution.features.3.title',
+                    description: 'projects.fivem-store.solution.features.3.description',
+                    icon: 'bell'
+                },
+                {
+                    title: 'projects.fivem-store.solution.features.4.title',
+                    description: 'projects.fivem-store.solution.features.4.description',
+                    icon: 'globe'
+                },
+                {
+                    title: 'projects.fivem-store.solution.features.5.title',
+                    description: 'projects.fivem-store.solution.features.5.description',
+                    icon: 'palette'
+                }
+            ]
+        },
+
+        techStack: [
+            { name: 'Next.js 16', category: 'Framework', icon: 'nextjs' },
+            { name: 'React 19', category: 'Frontend', icon: 'react' },
+            { name: 'TypeScript', category: 'Language', icon: 'typescript' },
+            { name: 'PostgreSQL', category: 'Database', icon: 'postgresql' },
+            { name: 'Prisma', category: 'ORM', icon: 'prisma' },
+            { name: 'Stripe', category: 'Payments', icon: 'stripe' },
+            { name: 'Socket.io', category: 'Realtime', icon: 'socketio' },
+            { name: 'TailwindCSS', category: 'Styling', icon: 'tailwindcss' },
+            { name: 'next-intl', category: 'i18n', icon: 'globe' },
+            { name: 'Nodemailer', category: 'Email', icon: 'nodemailer' },
+        ],
+
+        challenges: [
+            {
+                title: 'projects.fivem-store.challenges.0.title',
+                description: 'projects.fivem-store.challenges.0.description',
+                codeSnippet: {
+                    language: 'typescript',
+                    fileName: 'download-token.ts',
+                    code: `// Generate a one-time signed download token
+export async function generateDownloadToken(orderId: string, productId: string) {
+  const token = crypto.randomUUID();
+  const expiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 min
+
+  await db.downloadToken.create({
+    data: { token, orderId, productId, expiresAt, used: false },
+  });
+
+  return token;
+}
+
+// Validate and consume the token (one-time use)
+export async function consumeDownloadToken(token: string) {
+  const record = await db.downloadToken.findUnique({ where: { token } });
+
+  if (!record || record.used || record.expiresAt < new Date()) {
+    throw new Error('Invalid or expired download token');
+  }
+
+  await db.downloadToken.update({ where: { token }, data: { used: true } });
+  return record;
+}`
+                }
+            },
+            {
+                title: 'projects.fivem-store.challenges.1.title',
+                description: 'projects.fivem-store.challenges.1.description',
+            }
+        ]
     }
 ];
 

@@ -235,6 +235,60 @@
                     "description": "Ensuring Stripe webhooks are processed exactly once. Network retries could cause duplicate records if not handled correctly."
                 }
             ]
+        },
+        "fivem-store": {
+            "title": "FiveM Store",
+            "description": "Premium marketplace for the FiveM community: buy and download scripts, assets, and resources for your server.",
+            "timeline": "3 Weeks",
+            "role": "Full Stack Developer",
+            "problem": {
+                "description": "The FiveM community lacks a centralized, trustworthy platform for acquiring premium server resources. Content creators have no professional channel to monetize their work, and server administrators must search scattered forums, risking malicious or outdated downloads.",
+                "painPoints": [
+                    "No reliable, secure marketplace specifically built for FiveM.",
+                    "No protection for digital content: files could be freely redistributed.",
+                    "Lack of real-time support to resolve purchase or installation questions.",
+                    "Manual inventory and order management with no centralized admin panel."
+                ]
+            },
+            "solution": {
+                "description": "I designed and developed a full-featured e-commerce platform for the FiveM community, combining secure payments, protected digital content downloads, and real-time support via WebSockets.",
+                "features": [
+                    {
+                        "title": "Full E-commerce",
+                        "description": "Shopping cart, discount system, and secure payment gateway integrated with Stripe Checkout."
+                    },
+                    {
+                        "title": "Secure Downloads",
+                        "description": "One-time-use temporary token system to protect digital content and prevent unauthorized redistribution."
+                    },
+                    {
+                        "title": "Admin Panel",
+                        "description": "Complete management of products, categories, orders, and customer support from a single dashboard."
+                    },
+                    {
+                        "title": "Real-time Support",
+                        "description": "Integrated ticket chat with instant notifications via Socket.io for seamless customer service."
+                    },
+                    {
+                        "title": "Multi-language",
+                        "description": "Full support for Spanish and English via next-intl with automatic language detection."
+                    },
+                    {
+                        "title": "Premium Design",
+                        "description": "Responsive interface with dark mode, smooth animations, and a high-quality user experience."
+                    }
+                ]
+            },
+            "challenges": [
+                {
+                    "title": "Secure Download System",
+                    "description": "Protecting digital content required implementing one-time download tokens with temporal expiration. Each token is generated after payment confirmation, stored in the database, and automatically invalidated after first use, preventing unauthorized redistribution."
+                },
+                {
+                    "title": "WebSockets in a Serverless Environment",
+                    "description": "Maintaining persistent Socket.io connections on a serverless platform like Vercel was the biggest challenge. The solution was migrating to Pusher as a managed WebSocket provider, enabling real-time notifications without a dedicated server."
+                }
+            ]
         }
     },
     "cta": {

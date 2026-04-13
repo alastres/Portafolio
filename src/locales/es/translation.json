@@ -235,6 +235,60 @@
                     "description": "Asegurar que los webhooks de Stripe se procesen exactamente una vez. Retries de red podían causar registros duplicados si no se manejaban correctamente."
                 }
             ]
+        },
+        "fivem-store": {
+            "title": "FiveM Store",
+            "description": "Marketplace premium para la comunidad de FiveM: compra y descarga scripts, assets y recursos para servidores.",
+            "timeline": "3 Semanas",
+            "role": "Full Stack Developer",
+            "problem": {
+                "description": "La comunidad de FiveM carece de una plataforma centralizada y de confianza donde adquirir recursos premium para servidores. Los creadores de contenido no tienen un canal profesional para monetizar su trabajo y los administradores de servidores deben buscar en foros dispersos con riesgo de descargar contenido malicioso o desactualizado.",
+                "painPoints": [
+                    "Ausencia de un marketplace confiable y seguro específico para FiveM.",
+                    "Sin protección para el contenido digital: los archivos podían redistribuirse libremente.",
+                    "Falta de soporte en tiempo real para resolver dudas de compra o instalación.",
+                    "Gestión manual de inventario y pedidos sin panel de administración centralizado."
+                ]
+            },
+            "solution": {
+                "description": "Diseñé y desarrollé una plataforma e-commerce completa orientada a la comunidad de FiveM, combinando pagos seguros, descarga protegida de contenido digital y soporte en tiempo real mediante WebSockets.",
+                "features": [
+                    {
+                        "title": "E-commerce Completo",
+                        "description": "Carrito de compras, sistema de descuentos y pasarela de pago segura integrada con Stripe Checkout."
+                    },
+                    {
+                        "title": "Descargas Seguras",
+                        "description": "Sistema de tokens temporales de un solo uso para proteger el contenido digital y evitar redistribuciones no autorizadas."
+                    },
+                    {
+                        "title": "Panel de Administración",
+                        "description": "Gestión completa de productos, categorías, pedidos y soporte al cliente desde un único dashboard."
+                    },
+                    {
+                        "title": "Soporte Real-time",
+                        "description": "Chat de tickets integrado con notificaciones instantáneas vía Socket.io para una atención al cliente fluida."
+                    },
+                    {
+                        "title": "Multi-idioma",
+                        "description": "Soporte completo para Español e Inglés mediante next-intl con detección automática de idioma."
+                    },
+                    {
+                        "title": "Diseño Premium",
+                        "description": "Interfaz responsive con modo oscuro, animaciones fluidas y una experiencia de usuario de alto nivel."
+                    }
+                ]
+            },
+            "challenges": [
+                {
+                    "title": "Sistema de Descarga Segura",
+                    "description": "Proteger el contenido digital requirió implementar tokens de descarga de un solo uso con expiración temporal. Cada token se genera tras confirmar el pago, se almacena en base de datos y se invalida automáticamente tras su primer uso, impidiendo la redistribución no autorizada."
+                },
+                {
+                    "title": "WebSockets en Entorno Serverless",
+                    "description": "Mantener conexiones Socket.io persistentes en un entorno serverless como Vercel fue el mayor reto. La solución pasó por migrar a Pusher como proveedor de WebSockets gestionado, permitiendo notificaciones en tiempo real sin necesidad de un servidor dedicado."
+                }
+            ]
         }
     },
     "cta": {

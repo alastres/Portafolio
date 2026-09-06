@@ -108,7 +108,7 @@ export default function ProjectsGrid({ projects, lang, dict }: ProjectsGridProps
                             "relative group",
                             isEven ? "md:pl-16 order-1 md:order-2" : "md:pr-16 order-1"
                         )}>
-                            <Link href={`/projects/${project.slug}`} className="block">
+                            <Link href={`/${lang}/projects/${project.slug}`} className="block">
                                 <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-card/5 backdrop-blur-sm transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] group-hover:border-blue-500/30">
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent opacity-60 z-10" />
 

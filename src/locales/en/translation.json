@@ -289,6 +289,60 @@
                     "description": "Maintaining persistent Socket.io connections on a serverless platform like Vercel was the biggest challenge. The solution was migrating to Pusher as a managed WebSocket provider, enabling real-time notifications without a dedicated server."
                 }
             ]
+        },
+        "rutafacil": {
+            "title": "RutaFácil",
+            "description": "PWA for delivery couriers: capture locations from WhatsApp and generate the shortest delivery route right on the device.",
+            "timeline": "2 Weeks",
+            "role": "Frontend & PWA Developer",
+            "problem": {
+                "description": "Independent delivery couriers receive dozens of orders daily via WhatsApp or messaging apps. Manually planning the sequence of stops leads to significant fuel and time waste, while commercial routing tools require expensive subscriptions or heavy APIs.",
+                "painPoints": [
+                    "Wasted fuel and delivery time from estimating stop sequences manually.",
+                    "High friction when copying and pasting addresses between chat apps and navigation tools.",
+                    "Expensive routing subscriptions and API fees that are unviable for independent couriers and local stores.",
+                    "Fragile internet connectivity on the road requiring offline-first capabilities."
+                ]
+            },
+            "solution": {
+                "description": "I designed and engineered RutaFácil, an ultra-fast mobile-first PWA with $0 infrastructure cost. It empowers delivery riders to share addresses directly from WhatsApp to their system Share menu, optimizing delivery sequences locally via heuristic algorithms.",
+                "features": [
+                    {
+                        "title": "On-Device TSP Optimization",
+                        "description": "Nearest Neighbor heuristic combined with 2-opt local search running in milliseconds on-device, minimizing travel distance without server dependencies."
+                    },
+                    {
+                        "title": "Web Share Target Integration",
+                        "description": "Leverages the Web Share Target API to receive location links directly from WhatsApp, Google Maps, or Waze in two taps."
+                    },
+                    {
+                        "title": "Offline-First PWA",
+                        "description": "Installable as a standalone app on mobile devices with local state persistence via Zustand, working reliably in low-connectivity areas."
+                    },
+                    {
+                        "title": "Zero-Cost Vector Maps",
+                        "description": "Powered by MapLibre GL and Esri World Street Map tiles, delivering smooth vector mapping without recurring commercial API keys."
+                    },
+                    {
+                        "title": "Turn-by-Turn Delivery Workflow",
+                        "description": "Stop-by-stop guidance with instant Google Maps/Waze launching and one-tap delivery completion."
+                    },
+                    {
+                        "title": "Cash Collection & Dispatch Tools",
+                        "description": "Track cash-on-delivery payments per stop, generate WhatsApp dispatch notifications, and export route traces to GPX."
+                    }
+                ]
+            },
+            "challenges": [
+                {
+                    "title": "Zero-Cost On-Device TSP Optimization",
+                    "description": "Solving the Traveling Salesperson Problem (TSP) without paying for Google Directions or cloud matrix APIs required implementing a client-side solution combining a Nearest Neighbor greedy baseline with 2-opt segment reversals on Haversine distances. It computes near-optimal routes for up to 30 stops in under 5ms right on the courier's phone."
+                },
+                {
+                    "title": "Multi-Format Location Parsing & Share Target",
+                    "description": "Couriers receive locations in wildly varied formats: shortened Google Maps URLs, raw coordinate pairs, Waze links, or copied chat transcripts. Built a resilient regex parser capable of scanning full multi-line conversations and extracting every stop in one pass."
+                }
+            ]
         }
     },
     "cta": {

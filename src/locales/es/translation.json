@@ -289,6 +289,60 @@
                     "description": "Mantener conexiones Socket.io persistentes en un entorno serverless como Vercel fue el mayor reto. La solución pasó por migrar a Pusher como proveedor de WebSockets gestionado, permitiendo notificaciones en tiempo real sin necesidad de un servidor dedicado."
                 }
             ]
+        },
+        "rutafacil": {
+            "title": "RutaFácil",
+            "description": "PWA para repartidores: captura ubicaciones desde WhatsApp y genera la ruta de entregas más corta en el dispositivo.",
+            "timeline": "2 Semanas",
+            "role": "Frontend & PWA Developer",
+            "problem": {
+                "description": "Los repartidores urbanos independientes reciben decenas de pedidos diarios por WhatsApp u otras mensajerías. Coordinar el orden de visita manualmente causa pérdidas considerables de tiempo y combustible, mientras que las soluciones comerciales de ruteo implican suscripciones costosas o complejas apps con dependencias de APIs de pago.",
+                "painPoints": [
+                    "Pérdida de tiempo y combustible ordenando paradas de forma intuitiva o desordenada.",
+                    "Fricción al copiar y pegar direcciones individuales entre WhatsApp y aplicaciones de mapas.",
+                    "Costosas suscripciones y APIs de ruteo que no son viables para trabajadores independientes o pequeños negocios.",
+                    "Falta de funcionamiento sin conexión o consumo excesivo de datos móviles en la calle."
+                ]
+            },
+            "solution": {
+                "description": "Diseñé y desarrollé RutaFácil, una PWA mobile-first ultra rápida y de coste operativo $0. Permite a los repartidores compartir ubicaciones directamente desde WhatsApp al menú Compartir de su dispositivo, optimizando la ruta con algoritmos heurísticos en local.",
+                "features": [
+                    {
+                        "title": "Optimización Heurística TSP",
+                        "description": "Algoritmo de vecino más cercano con mejora 2-opt que corre en milisegundos en el navegador, minimizando la distancia total sin costes de servidor."
+                    },
+                    {
+                        "title": "Integración con Menú Compartir",
+                        "description": "Uso de la Web Share Target API para recibir ubicaciones desde WhatsApp, Google Maps o Waze en un par de toques."
+                    },
+                    {
+                        "title": "PWA Offline-First",
+                        "description": "Instalable como app nativa en Android/iOS con persistencia local mediante Zustand, funcionando sin interrupciones incluso sin conexión."
+                    },
+                    {
+                        "title": "Mapas Vectoriales $0",
+                        "description": "Integración con MapLibre GL y teselas Esri World Street Map, ofreciendo renderizado de mapas fluido sin requerir API keys comerciales."
+                    },
+                    {
+                        "title": "Navegación Turn-by-Turn",
+                        "description": "Modo guiado parada a parada con apertura directa en Google Maps/Waze y marcado de entregas con feedback auditivo y háptico."
+                    },
+                    {
+                        "title": "Gestión de Despachos y Cobros",
+                        "description": "Control de montos a cobrar en efectivo por parada, generación de mensajes para clientes y exportación de rutas en formato GPX."
+                    }
+                ]
+            },
+            "challenges": [
+                {
+                    "title": "Algoritmo TSP On-Device a Coste Cero",
+                    "description": "Resolver el problema del viajante de comercio (TSP) sin depender de servidores o APIs de pago como Google Directions requirió implementar una solución en el cliente combinando la heurística del vecino más cercano con optimización 2-opt sobre distancias Haversine. Esta solución calcula la ruta óptima para hasta 30 paradas en menos de 5ms directamente en el smartphone del repartidor."
+                },
+                {
+                    "title": "Parser Multiformato y Web Share Target",
+                    "description": "Los repartidores reciben ubicaciones en formatos dispares: enlaces cortos de Google Maps, coordenadas en texto plano, enlaces de Waze o cadenas de texto complejas. Se diseñó un parser regex resiliente capaz de procesar conversaciones completas pegadas de una sola vez y extraer todas las paradas automáticamente."
+                }
+            ]
         }
     },
     "cta": {

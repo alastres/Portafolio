@@ -33,7 +33,14 @@ import {
     Palette,
     Monitor,
     Mail,
-    Lock
+    Lock,
+    MapPin,
+    Route,
+    Navigation,
+    Zap,
+    Smartphone,
+    Share2,
+    Clock
 } from 'lucide-react';
 import type { Locale } from '@/i18n-config';
 import {
@@ -53,7 +60,9 @@ import {
     SiFramer,
     SiReactquery,
     SiI18Next,
-    SiReacthookform
+    SiReacthookform,
+    SiPwa,
+    SiVitest
 } from "react-icons/si";
 
 import ProjectSlider from '@/components/ui/project-slider';
@@ -108,6 +117,13 @@ export default function ProjectDetail({ project, previous, next, lang, dict }: P
             case 'palette': return <Palette className="h-4 w-4" />;
             case 'monitor': return <Monitor className="h-4 w-4" />;
             case 'priority': return <AlertTriangle className="h-4 w-4" />;
+            case 'route': return <Route className="h-4 w-4" />;
+            case 'map-pin': return <MapPin className="h-4 w-4" />;
+            case 'navigation': return <Navigation className="h-4 w-4" />;
+            case 'smartphone': return <Smartphone className="h-4 w-4" />;
+            case 'share': return <Share2 className="h-4 w-4" />;
+            case 'zap': return <Zap className="h-4 w-4" />;
+            case 'clock': return <Clock className="h-4 w-4" />;
             default: return <Layers className="h-4 w-4" />;
         }
     };
@@ -135,6 +151,8 @@ export default function ProjectDetail({ project, previous, next, lang, dict }: P
             case 'resend': return <Mail className={className} />;
             case 'hookform': return <SiReacthookform className={className} />;
             case 'globe': return <Globe className={className} />;
+            case 'pwa': return <SiPwa className={className} />;
+            case 'vitest': return <SiVitest className={className} />;
             default: return null;
         }
     }

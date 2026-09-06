@@ -452,6 +452,162 @@ export async function consumeDownloadToken(token: string) {
                 description: 'projects.fivem-store.challenges.1.description',
             }
         ]
+    },
+    {
+        slug: 'rutafacil',
+        title: 'projects.rutafacil.title',
+        description: 'projects.rutafacil.description',
+        version: 'v1.0',
+        tags: ['React 18', 'Vite', 'TypeScript', 'PWA', 'Zustand', 'MapLibre GL'],
+        image: '/images/rutafacil/rutafacil-cover.png',
+        gallery: [
+            '/images/rutafacil/rutafacil-cover.png',
+            '/images/rutafacil/rutafacil-map.png',
+            '/images/rutafacil/rutafacil-mobile-stops.png',
+            '/images/rutafacil/rutafacil-mobile-map.png',
+            '/images/rutafacil/rutafacil-dispatch.png',
+            '/images/rutafacil/rutafacil-history.png',
+        ],
+        link: 'https://rutafacil-ten.vercel.app',
+        github: 'https://github.com/alastres/rutafacil',
+
+        timeline: 'projects.rutafacil.timeline',
+        role: 'projects.rutafacil.role',
+
+        problem: {
+            description: 'projects.rutafacil.problem.description',
+            painPoints: [
+                'projects.rutafacil.problem.painPoints.0',
+                'projects.rutafacil.problem.painPoints.1',
+                'projects.rutafacil.problem.painPoints.2',
+                'projects.rutafacil.problem.painPoints.3',
+            ]
+        },
+
+        solution: {
+            description: 'projects.rutafacil.solution.description',
+            features: [
+                {
+                    title: 'projects.rutafacil.solution.features.0.title',
+                    description: 'projects.rutafacil.solution.features.0.description',
+                    icon: 'route'
+                },
+                {
+                    title: 'projects.rutafacil.solution.features.1.title',
+                    description: 'projects.rutafacil.solution.features.1.description',
+                    icon: 'share'
+                },
+                {
+                    title: 'projects.rutafacil.solution.features.2.title',
+                    description: 'projects.rutafacil.solution.features.2.description',
+                    icon: 'smartphone'
+                },
+                {
+                    title: 'projects.rutafacil.solution.features.3.title',
+                    description: 'projects.rutafacil.solution.features.3.description',
+                    icon: 'map-pin'
+                },
+                {
+                    title: 'projects.rutafacil.solution.features.4.title',
+                    description: 'projects.rutafacil.solution.features.4.description',
+                    icon: 'navigation'
+                },
+                {
+                    title: 'projects.rutafacil.solution.features.5.title',
+                    description: 'projects.rutafacil.solution.features.5.description',
+                    icon: 'chart'
+                }
+            ]
+        },
+
+        techStack: [
+            { name: 'React 18', category: 'Frontend', icon: 'react' },
+            { name: 'Vite 6', category: 'Build Tool', icon: 'vite' },
+            { name: 'TypeScript', category: 'Language', icon: 'typescript' },
+            { name: 'PWA', category: 'Mobile & Offline', icon: 'pwa' },
+            { name: 'MapLibre GL', category: 'Mapping / GIS', icon: 'globe' },
+            { name: 'Zustand', category: 'State Management', icon: 'react' },
+            { name: 'Framer Motion', category: 'Animations', icon: 'framer' },
+            { name: 'Vitest', category: 'Testing', icon: 'vitest' },
+        ],
+
+        challenges: [
+            {
+                title: 'projects.rutafacil.challenges.0.title',
+                description: 'projects.rutafacil.challenges.0.description',
+                codeSnippet: {
+                    language: 'typescript',
+                    fileName: 'tsp.ts',
+                    code: `// Heurística de Vecino Más Cercano + Mejora 2-Opt (Cálculo On-Device $0)
+export function optimizeOrder(
+  origin: LatLng,
+  stops: LatLng[],
+  fixedEnd?: LatLng,
+): number[] {
+  const n = stops.length;
+  if (n <= 1) return stops.map((_, i) => i);
+
+  const points = fixedEnd ? [origin, ...stops, fixedEnd] : [origin, ...stops];
+  const dist: number[][] = points.map((a) =>
+    points.map((b) => haversineKm(a, b)),
+  );
+  const endIdx = fixedEnd ? n + 1 : null;
+
+  // 1. Vecino más cercano desde el origen
+  const visited = new Array<boolean>(n + 1).fill(false);
+  visited[0] = true;
+  const path: number[] = [0];
+  let current = 0;
+  for (let step = 0; step < n; step++) {
+    let best = -1;
+    let bestDist = Infinity;
+    for (let j = 1; j <= n; j++) {
+      if (!visited[j] && dist[current][j] < bestDist) {
+        bestDist = dist[current][j];
+        best = j;
+      }
+    }
+    visited[best] = true;
+    path.push(best);
+    current = best;
+  }
+  if (endIdx !== null) path.push(endIdx);
+
+  // 2. Optimización 2-opt: invierte segmentos mientras acorte el camino
+  let improved = true;
+  while (improved) {
+    improved = false;
+    for (let i = 1; i < n; i++) {
+      for (let k = i + 1; k <= n; k++) {
+        const a = path[i - 1];
+        const b = path[i];
+        const c = path[k];
+        const d = k + 1 <= n ? path[k + 1] : endIdx;
+        const before = dist[a][b] + (d !== null ? dist[c][d] : 0);
+        const after = dist[a][c] + (d !== null ? dist[b][d] : 0);
+        if (after < before - 1e-9) {
+          let lo = i;
+          let hi = k;
+          while (lo < hi) {
+            [path[lo], path[hi]] = [path[hi], path[lo]];
+            lo++;
+            hi--;
+          }
+          improved = true;
+        }
+      }
+    }
+  }
+
+  return path.slice(1, n + 1).map((p) => p - 1);
+}`
+                }
+            },
+            {
+                title: 'projects.rutafacil.challenges.1.title',
+                description: 'projects.rutafacil.challenges.1.description',
+            }
+        ]
     }
 ];
 

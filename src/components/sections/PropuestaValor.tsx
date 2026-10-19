@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { fadeUp, scaleIn, viewportOnce } from '@/lib/motion';
 import { Target, Layers, Zap, MessageSquareText } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card-ui';
 import type { Locale } from '@/i18n-config';
@@ -50,19 +51,20 @@ export default function PropuestaValor({ lang, dict }: PropuestaValorProps) {
 
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={viewportOnce}
                         className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4"
                     >
                         {dict.value_prop.title}
                     </motion.h2>
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
+                        variants={scaleIn}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={viewportOnce}
+                        custom={0.2}
                         className="h-1 w-20 bg-primary mx-auto rounded-full"
                     />
                 </div>
@@ -71,10 +73,11 @@ export default function PropuestaValor({ lang, dict }: PropuestaValorProps) {
                     {features.map((feature, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={viewportOnce}
+                            custom={index * 0.1}
                         >
                             <Card className="h-full border-neutral-200 dark:border-border/50 bg-background/50 hover:bg-muted/50 transition-colors duration-300 hover:border-primary/20 group">
                                 <CardContent className="p-6 flex flex-col items-start h-full">

@@ -356,64 +356,82 @@
     },
     "about": {
         "hero": {
-            "title_part1": "Construyendo productos, ",
-            "title_part2": "no solo funcionalidades.",
-            "role": "Ingeniero Informático & Full-Stack Developer",
-            "description": "Conecto la ingeniería con el producto. El código es la herramienta; el valor está en el impacto real que el producto genera en usuarios y negocio."
+            "title_part1": "Resuelvo problemas de negocio ",
+            "title_part2": "con tecnología.",
+            "role": "Desarrollador web en Albacete",
+            "description": "Trabajo con negocios que pierden tiempo o clientes por cosas que se pueden automatizar: reservas, pedidos, hojas de cálculo, una web que nadie encuentra. Lo convierto en un sistema que funciona solo."
         },
         "me": {
             "label": "Sobre mí",
-            "p0": "No escribo código por escribir.",
-            "p1": " Diseño y construyo productos web escalables, mantenibles y alineados con objetivos reales de negocio, priorizando experiencia de usuario, simplicidad técnica y crecimiento sostenible.",
-            "p2": "Como Ingeniero Informático, tengo la base académica para entender sistemas complejos. A nivel profesional, mi enfoque es totalmente pragmático: construir soluciones que funcionen en producción, escalen con el tiempo y resuelvan problemas reales.",
-            "p3": "He trabajado en productos tipo SaaS, MVPs y plataformas en producción, enfrentando retos de arquitectura, colaboración, escalabilidad y evolución continua del producto."
+            "p0": "No hago webs por hacerlas.",
+            "p1": " Empiezo por entender cómo ganas dinero y dónde lo pierdes, y construyo solo lo que mueve esos números: más clientes, menos gastos o menos horas perdidas.",
+            "p2": "Soy Ingeniero Informático y llevo años en tecnología, sobre todo ayudando a personas a resolver problemas reales. Me gusta explicar las cosas claro, sin jerga.",
+            "p3": "Vivo en Barrax (Albacete) y trabajo con negocios de la zona y a distancia."
         },
         "pillars": {
             "label": "Pilares",
             "product": {
-                "title": "Mentalidad de Producto",
-                "desc": "Entender el por qué antes del cómo. Cada decisión técnica se evalúa por su impacto en el producto final y en el usuario."
+                "title": "Primero tu negocio",
+                "desc": "Antes de tocar nada, entiendo cómo ganas dinero y qué te está frenando."
             },
             "problem": {
-                "title": "Resolución de Problemas",
-                "desc": "Pensamiento estructurado y arquitectura pragmática. Descomponer problemas complejos en soluciones claras, mantenibles y escalables."
+                "title": "Soluciones simples",
+                "desc": "Hago lo mínimo que resuelve el problema, para que sea fácil de usar y de mantener."
             },
             "agile": {
-                "title": "Ejecución Ágil",
-                "desc": "Iteración rápida sin sacrificar calidad. Construir, medir y mejorar de forma continua, manteniendo el código limpio y preparado para crecer."
+                "title": "Entregas por partes",
+                "desc": "Vas viendo avances reales y puedes corregir el rumbo pronto, en vez de esperar meses."
             }
         },
         "process": {
             "label": "Proceso de Trabajo",
             "s1": {
-                "title": "Descubrimiento y Estrategia",
-                "desc": "Definición clara de objetivos, usuarios y métricas de éxito. Nada se construye sin entender primero el problema."
+                "title": "Hablamos del problema",
+                "desc": "Me cuentas qué te cuesta tiempo o dinero y qué quieres conseguir."
             },
             "s2": {
-                "title": "Arquitectura y Diseño",
-                "desc": "Diseño de estructuras de datos, APIs y sistemas preparados para escalar y adaptarse al crecimiento futuro."
+                "title": "Propongo un plan",
+                "desc": "Te explico qué haría, en qué orden y qué cambiaría en tu día a día."
             },
             "s3": {
-                "title": "Desarrollo Ágil",
-                "desc": "Construcción iterativa con feedback constante. Código limpio, testado y documentado."
+                "title": "Lo construyo contigo",
+                "desc": "Entregas por partes, con avances que puedes probar y comentar."
             },
             "s4": {
-                "title": "Despliegue y Escalado",
-                "desc": "Pipelines CI/CD, monitorización y mejora continua. El trabajo no termina en el commit, termina en producción."
+                "title": "Lo dejo funcionando",
+                "desc": "Lo publico, compruebo que funciona y sigo mejorándolo cuando lo necesites."
             }
         },
-        "stack_label": "Stack Tecnológico",
+        "stack_label": "Con qué trabajo",
         "cta": {
-            "title": "¿Listo para construir algo impactante?",
-            "description": "Especializado en MVPs, productos SaaS y mejora de sistemas existentes. Hablemos de cómo la ingeniería puede impulsar tu producto.",
-            "button": "Contactar ahora"
-        }
+            "title": "¿Hablamos de tu problema?",
+            "description": "Cuéntame qué te frena y te digo con claridad si puedo ayudarte.",
+            "button": "Contactar"
+        },
+        "facts": [
+            {
+                "k": "7",
+                "l": "años en el mundo TIC"
+            },
+            {
+                "k": "Ing.",
+                "l": "Grado en Ingeniería Informática"
+            },
+            {
+                "k": "B2",
+                "l": "Nivel de inglés"
+            },
+            {
+                "k": "Albacete",
+                "l": "Negocios de la zona y a distancia"
+            }
+        ]
     },
     "projects_page": {
-        "badge": "Portafolio 2026",
-        "title": "Proyectos",
-        "highlight": "destacados",
-        "description": "Aquí encontrarás una colección de proyectos que han demostrado ser exitosos en el mundo empresarial."
+        "badge": "Casos reales",
+        "title": "Problemas resueltos",
+        "highlight": "y en producción",
+        "description": "Cada proyecto empezó con un problema de negocio concreto. Aquí ves el problema, la solución y cómo se ve por dentro."
     },
     "project_page": {
         "on_this_page": "En esta página",
@@ -428,14 +446,26 @@
         "repository": "Repositorio",
         "prev_project": "Proyecto Anterior",
         "next_project": "Siguiente Proyecto",
-        "image_unavailable": "Imagen no disponible"
+        "image_unavailable": "Imagen no disponible",
+        "gallery": "Capturas reales del proyecto",
+        "gallery_prev": "Captura anterior",
+        "gallery_next": "Captura siguiente",
+        "gallery_open": "Ampliar captura",
+        "gallery_close": "Cerrar",
+        "gallery_of": "de",
+        "back": "Todos los proyectos",
+        "cta_title": "¿Tienes un problema parecido?",
+        "cta_text": "Cuéntame cómo lo resuelves hoy y te digo qué se puede automatizar o mejorar.",
+        "swipe": "Desliza",
+        "stack_lead": "Construido con {n} tecnologías modernas, elegidas para que sea rápido, seguro y fácil de mantener.",
+        "stack_more": "Ver todo el detalle técnico"
     },
     "contact": {
         "badge": "Contacto",
-        "page_title_part1": "Construyamos un producto",
-        "page_title_part2": "con impacto real",
-        "page_desc_part1": "Colaboro en proyectos freelance y de consultoría, ayudando a transformar ideas en productos reales, escalables y alineados con objetivos de negocio. Si tienes un MVP, un producto SaaS o un sistema que necesita evolucionar, ",
-        "page_desc_highlight": "hablemos.",
+        "page_title_part1": "¿Cuál es el problema",
+        "page_title_part2": "que quieres resolver?",
+        "page_desc_part1": "Cuéntame con tus palabras qué te frena: reservas, pedidos, tareas repetidas o una web que no trae clientes. Te diré con claridad si puedo ayudarte y cómo lo haría. ",
+        "page_desc_highlight": "Empecemos por ahí.",
         "direct_label": "Prefieres algo directo:",
         "social": {
             "github_desc": "Código real y sistemas en producción",
@@ -449,15 +479,196 @@
         "message_label": "Tu Mensaje",
         "name_placeholder": "Ej. Ana García",
         "email_placeholder": "ana@empresa.com",
-        "message_placeholder": "¿Qué problema quieres resolver? ¿En qué punto estás ahora y qué te gustaría construir o mejorar?",
+        "message_placeholder": "¿Qué te está costando tiempo o dinero ahora mismo? Cuéntalo sin tecnicismos.",
         "response_promise": "Respondo personalmente a todos los mensajes.",
-        "send_btn": "Iniciar conversación",
+        "send_btn": "Enviar mensaje",
         "sending": "Enviando...",
         "success": "Mensaje enviado correctamente",
         "success_desc": "Gracias por contactarme. Te responderé pronto.",
         "error": "Error al enviar el mensaje",
         "error_desc": "Por favor, inténtalo de nuevo más tarde.",
-        "or_connect": "O conéctate conmigo en",
+        "or_connect": "O escríbeme por aquí",
         "email": "Email"
+    },
+    "pf": {
+        "meta": {
+            "title": "Adrian Roidel | Desarrollador web en Albacete: reservas online, tiendas y apps a medida",
+            "description": "Resuelvo problemas de negocio con webs y apps a medida: reservas online con pagos, tiendas online, herramientas de gestión y automatizaciones. Más clientes y menos trabajo manual."
+        },
+        "role": "Desarrollador web fullstack",
+        "location": "Albacete, España",
+        "status": "Disponible para nuevos proyectos",
+        "years": "7 años en TIC",
+        "h1": [
+            "Webs y apps que",
+            "te traen *clientes*",
+            "y te quitan trabajo manual"
+        ],
+        "lead": "Soy Adrian, desarrollador web en Albacete. Convierto lo que hoy te cuesta tiempo y dinero (reservas por WhatsApp, pedidos a mano, hojas de cálculo) en sistemas que funcionan solos.",
+        "cta_primary": "Cuéntame qué te frena",
+        "cta_secondary": "Ver lo que he resuelto",
+        "outcomes": [
+            {
+                "t": "Ganas más",
+                "d": "Reservas y ventas online a cualquier hora, con el cobro integrado."
+            },
+            {
+                "t": "Gastas menos",
+                "d": "Tareas repetitivas automatizadas en lugar de horas de trabajo manual."
+            },
+            {
+                "t": "Pierdes menos tiempo",
+                "d": "Todo en un solo sistema, sin saltar entre chats y hojas de cálculo."
+            }
+        ],
+        "nav": {
+            "home": "Inicio",
+            "problems": "Problemas",
+            "cases": "Casos",
+            "stack": "Tecnología",
+            "contact": "Contacto"
+        },
+        "ui": {
+            "search": "Buscar o ir a…",
+            "searchPlaceholder": "Ir a una sección o a un caso…",
+            "noResults": "Sin resultados",
+            "section": "Sección",
+            "case": "Caso",
+            "theme": "Cambiar entre tema claro y oscuro",
+            "close": "Cerrar",
+            "main_nav": "Navegación principal",
+            "profile_nav": "Perfil y navegación",
+            "open_case": "Abrir el caso",
+            "about": "Sobre mí",
+            "photo_alt": "Retrato de Adrian Roidel",
+            "all_cases": "Ver todos los proyectos"
+        },
+        "tags": {
+            "income": "Más ingresos",
+            "cost": "Menos costes",
+            "time": "Menos tiempo perdido"
+        },
+        "problems": {
+            "eyebrow": "Problemas que resuelvo",
+            "title": "¿Te suena alguno de estos problemas?",
+            "sub": "Cada proyecto empieza por un problema de tu negocio, no por una tecnología. Toca uno para ver cómo se convierte en ingresos o en ahorro.",
+            "how": "Cómo te hace ganar dinero",
+            "build": "Lo que construyo",
+            "see_case": "Ver el caso real",
+            "items": [
+                {
+                    "q": "¿Pierdes citas y tiempo gestionando reservas por WhatsApp y llamadas?",
+                    "tag": "income",
+                    "how": "Tus clientes reservan y pagan online a cualquier hora. Hay menos huecos vacíos, menos ausencias y cobras antes de prestar el servicio. Tú dejas de contestar mensajes para cuadrar la agenda.",
+                    "build": "Sistema de reservas online con pagos integrados",
+                    "case": "reserva-saas"
+                },
+                {
+                    "q": "¿Vendes poco porque no tienes tienda online, o la que tienes no convierte?",
+                    "tag": "income",
+                    "how": "Una tienda que vende mientras duermes: pago seguro, entrega o descarga automática del producto y atención al cliente en el mismo sitio. Cada venta se procesa sola, sin que tengas que intervenir.",
+                    "build": "Tienda online y marketplace con pagos seguros",
+                    "case": "fivem-store"
+                },
+                {
+                    "q": "¿Tu equipo pierde horas coordinando tareas con hojas de cálculo y chats?",
+                    "tag": "time",
+                    "how": "Todo el trabajo, quién lo hace y para cuándo, en un solo tablero. Menos reuniones para preguntar en qué estamos, menos errores y más entregas a tiempo, que es lo que al final cobra tu cliente.",
+                    "build": "Herramienta de gestión de tareas y equipos a medida",
+                    "case": "taskmaster-pro"
+                },
+                {
+                    "q": "¿Tus repartos o visitas te cuestan demasiado tiempo y combustible?",
+                    "tag": "cost",
+                    "how": "Una app en el móvil ordena las paradas y calcula la ruta más corta. Haces más entregas por jornada con el mismo vehículo y gastas menos en gasolina.",
+                    "build": "App móvil de rutas que funciona desde el navegador, sin costes de servidor",
+                    "case": "rutafacil"
+                },
+                {
+                    "q": "¿Repites a mano tareas como registrar pedidos, enviar avisos o preparar informes?",
+                    "tag": "cost",
+                    "how": "Automatizo esas tareas para que se hagan solas: un pedido que entra por mensaje se registra, se avisa al cliente y se actualiza el stock sin que nadie escriba. Las horas que ahorras vuelven a ser horas que sí puedes facturar.",
+                    "build": "Automatizaciones y bots a medida para tu negocio"
+                },
+                {
+                    "q": "¿Tu web es lenta, está desactualizada o no te trae clientes desde Google?",
+                    "tag": "income",
+                    "how": "Una web rápida y bien estructurada carga al instante, se ve bien en el móvil y es fácil de encontrar para quien busca justo lo que vendes. Más visitas que acaban en una consulta.",
+                    "build": "Web profesional rápida y optimizada para buscadores"
+                }
+            ]
+        },
+        "cases": {
+            "eyebrow": "Casos reales",
+            "title": "Problemas resueltos y en producción",
+            "sub": "Cada caso explica el problema, la solución y las tecnologías, por si te interesa el detalle técnico.",
+            "problem": "El problema",
+            "solution": "La solución",
+            "tech": "Tecnologías",
+            "demo": "Ver demo",
+            "code": "Código",
+            "full": "Caso completo",
+            "prev": "Anterior",
+            "next": "Siguiente",
+            "go": "Ver el caso",
+            "for": {
+                "taskmaster-pro": "Para equipos que pierden horas coordinando tareas.",
+                "reserva-saas": "Para negocios que viven de reservas y citas.",
+                "fivem-store": "Para quien quiere vender productos digitales online.",
+                "rutafacil": "Para repartidores que quieren ahorrar tiempo y combustible."
+            },
+            "filter": "Casos con {tech}",
+            "clear": "Quitar filtro"
+        },
+        "stack": {
+            "eyebrow": "Tecnología",
+            "title": "Las herramientas, al servicio del negocio",
+            "sub": "Las uso para que todo sea rápido, seguro y fácil de mantener. El número indica en cuántos casos la he usado; toca una para verlos.",
+            "tabs": [
+                "Frontend",
+                "Backend",
+                "DevOps"
+            ],
+            "items": [
+                [
+                    "React",
+                    "Next.js",
+                    "TypeScript",
+                    "Tailwind CSS",
+                    "Framer Motion"
+                ],
+                [
+                    "Node.js",
+                    "Express",
+                    "PostgreSQL",
+                    "Prisma",
+                    "Redis",
+                    "Python / Django"
+                ],
+                [
+                    "Docker",
+                    "AWS (S3, Lambda)",
+                    "CI/CD",
+                    "Vercel"
+                ]
+            ]
+        },
+        "contact": {
+            "eyebrow": "Contacto",
+            "title": "¿Cuál es el problema que quieres resolver?",
+            "accent": "Cuéntamelo.",
+            "sub": "Explícame tu caso con tus palabras. Te diré con claridad si puedo ayudarte y cómo lo haría.",
+            "email": "Escríbeme un correo",
+            "form": "Usar el formulario de contacto",
+            "form_sub": "Cuéntame tu caso paso a paso",
+            "linkedin": "LinkedIn",
+            "linkedin_sub": "Trayectoria y enfoque a producto",
+            "github": "GitHub",
+            "github_sub": "Código real y sistemas en producción",
+            "cv": "Descargar CV",
+            "cv_sub": "PDF"
+        },
+        "footer": "Todos los derechos reservados.",
+        "faq_title": "Preguntas frecuentes"
     }
 }

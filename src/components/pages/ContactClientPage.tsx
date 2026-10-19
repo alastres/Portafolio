@@ -1,229 +1,104 @@
 'use client';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Button } from '@/components/ui/button-ui';
-import { Card, CardContent } from '@/components/ui/card-ui';
-import { Input } from '@/components/ui/input-ui';
-import { Textarea } from '@/components/ui/textarea-ui';
-import { Mail, Github, Linkedin, Twitter, ArrowRight, Loader2 } from 'lucide-react';
-import Link from 'next/link';
-import AnimatedBackgroundVectors from '@/components/ui/animated-background-vectors';
-import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import type { Locale } from '@/i18n-config';
+
+const EMAIL = 'adrian47388@gmail.com';
+const LINKEDIN = 'https://linkedin.com/in/alas3s';
+const GITHUB = 'https://github.com/alastres';
+const CV = '/Adrian_Roidel_CV.pdf';
 
 interface ContactClientPageProps {
     lang: Locale;
     dict: any;
 }
 
-export default function ContactClientPage({ lang, dict }: ContactClientPageProps) {
+const Up = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>;
+
+export default function ContactClientPage({ dict }: ContactClientPageProps) {
     const [isLoading, setIsLoading] = useState(false);
+    const t = dict.contact;
+    const c = dict.pf.contact;
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        const form = e.currentTarget;
         setIsLoading(true);
-
-        const formData = new FormData(e.currentTarget);
-        const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            message: formData.get('message'),
-        };
+        const fd = new FormData(form);
+        const data = { name: fd.get('name'), email: fd.get('email'), message: fd.get('message') };
 
         try {
             const response = await fetch('/api/contact', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
             });
-
             if (response.ok) {
-                toast.success(dict.contact.success || 'Mensaje enviado', {
-                    description: dict.contact.success_desc || 'Gracias por contactarme. Te responderé pronto.',
-                });
-                (e.target as HTMLFormElement).reset();
+                toast.success(t.success, { description: t.success_desc });
+                form.reset();
             } else {
-                toast.error(dict.contact.error || 'Error', {
-                    description: dict.contact.error_desc || 'Por favor, inténtalo de nuevo más tarde.',
-                });
+                toast.error(t.error, { description: t.error_desc });
             }
-        } catch (error) {
-            toast.error(dict.contact.error || 'Error', {
-                description: dict.contact.error_desc || 'Por favor, inténtalo de nuevo más tarde.',
-            });
+        } catch {
+            toast.error(t.error, { description: t.error_desc });
         } finally {
             setIsLoading(false);
         }
     }
 
-    const socialLinks = [
-        { icon: Github, label: 'GitHub', href: 'https://github.com/alastres', username: '@alastres' },
-        { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/alas3s', username: 'Adrian Roidel' },
-    ];
-
     return (
-        <section className="py-24 sm:py-32 pt-32 sm:pt-40 min-h-screen relative overflow-hidden">
-            <AnimatedBackgroundVectors />
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10">
+        <div className="pg">
+            <section>
+                <p className="eyebrow">{t.badge}</p>
+                <h1 className="ph1">{t.page_title_part1} <em>{t.page_title_part2}</em></h1>
+                <p className="lead">{t.page_desc_part1}<b>{t.page_desc_highlight}</b></p>
 
-                {/* Header Section */}
-                <div className="text-center mb-16 space-y-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-[0.2em] uppercase"
-                    >
-                        {dict.contact.badge || 'Contacto'}
-                    </motion.div>
+                <div className="cgrid">
+                    <form className="form" onSubmit={handleSubmit}>
+                        <div className="fld">
+                            <label htmlFor="name">{t.name_label}</label>
+                            <input id="name" name="name" type="text" required autoComplete="name" placeholder={t.name_placeholder} />
+                        </div>
+                        <div className="fld">
+                            <label htmlFor="email">{t.email_label}</label>
+                            <input id="email" name="email" type="email" required autoComplete="email" inputMode="email" placeholder={t.email_placeholder} />
+                        </div>
+                        <div className="fld">
+                            <label htmlFor="message">{t.message_label}</label>
+                            <textarea id="message" name="message" required rows={6} placeholder={t.message_placeholder} />
+                        </div>
+                        <button type="submit" className="btn p" disabled={isLoading}>
+                            {isLoading ? t.sending : t.send_btn}
+                            {!isLoading && <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>}
+                        </button>
+                        {t.response_promise && <p className="mono" style={{ margin: 0, color: 'var(--mut)', fontSize: 12 }}>{t.response_promise}</p>}
+                    </form>
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-foreground leading-[1.1]"
-                    >
-                        {dict.contact.page_title_part1 || 'Construyamos un producto'} <br className="hidden sm:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-sky-600">
-                            {dict.contact.page_title_part2 || 'con impacto real'}
-                        </span>
-                    </motion.h1>
-
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
-                    >
-                        {dict.contact.page_desc_part1}
-                        <span className="font-bold text-foreground underline decoration-primary/50 hover:decoration-primary transition-colors cursor-pointer">
-                            {dict.contact.page_desc_highlight}
-                        </span>
-                    </motion.p>
+                    <div className="cside">
+                        <h2>{t.or_connect}</h2>
+                        <div className="rows">
+                            <a className="row" href={`mailto:${EMAIL}`}>
+                                <span><b>{c.email}</b><small>{EMAIL}</small></span>
+                                <span className="ar"><Up /></span>
+                            </a>
+                            <a className="row" href={LINKEDIN} target="_blank" rel="noopener noreferrer">
+                                <span><b>{c.linkedin}</b><small>{c.linkedin_sub}</small></span>
+                                <span className="ar"><Up /></span>
+                            </a>
+                            <a className="row" href={GITHUB} target="_blank" rel="noopener noreferrer">
+                                <span><b>{c.github}</b><small>{c.github_sub}</small></span>
+                                <span className="ar"><Up /></span>
+                            </a>
+                            <a className="row" href={CV} download>
+                                <span><b>{c.cv}</b><small>{c.cv_sub}</small></span>
+                                <span className="ar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14" /></svg></span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-
-                {/* Contact Form */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                    <Card className="border-border/50 backdrop-blur-sm bg-background/50 shadow-xl">
-                        <CardContent className="p-8 sm:p-12">
-                            <form onSubmit={handleSubmit} className="space-y-8">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="space-y-2">
-                                        <label htmlFor="name" className="text-sm font-bold text-foreground uppercase tracking-wide">
-                                            {dict.contact.name_label || 'Nombre'}
-                                        </label>
-                                        <Input
-                                            id="name"
-                                            name="name"
-                                            type="text"
-                                            required
-                                            placeholder={dict.contact.name_placeholder || 'Tu nombre'}
-                                            className="border-border/50 focus:border-primary transition-colors bg-background/50 backdrop-blur-sm"
-                                        />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="email" className="text-sm font-bold text-foreground uppercase tracking-wide">
-                                            {dict.contact.email_label || 'Email'}
-                                        </label>
-                                        <Input
-                                            id="email"
-                                            name="email"
-                                            type="email"
-                                            required
-                                            placeholder={dict.contact.email_placeholder || 'tu@email.com'}
-                                            className="border-border/50 focus:border-primary transition-colors bg-background/50 backdrop-blur-sm"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label htmlFor="message" className="text-sm font-bold text-foreground uppercase tracking-wide">
-                                        {dict.contact.message_label || 'Mensaje'}
-                                    </label>
-                                    <Textarea
-                                        id="message"
-                                        name="message"
-                                        required
-                                        rows={6}
-                                        placeholder={dict.contact.message_placeholder || 'Cuéntame sobre tu proyecto...'}
-                                        className="border-border/50 focus:border-primary transition-colors resize-none bg-background/50 backdrop-blur-sm"
-                                    />
-                                </div>
-
-                                <Button
-                                    type="submit"
-                                    disabled={isLoading}
-                                    className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
-                                >
-                                    {isLoading ? (
-                                        <>
-                                            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                                            {dict.contact.sending || 'Enviando...'}
-                                        </>
-                                    ) : (
-                                        <>
-                                            {dict.contact.send_btn || 'Enviar mensaje'}
-                                            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                                        </>
-                                    )}
-                                </Button>
-                            </form>
-                        </CardContent>
-                    </Card>
-                </motion.div>
-
-                {/* Social Links */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="mt-16"
-                >
-                    <h2 className="text-2xl font-black text-foreground mb-8 text-center">
-                        {dict.contact.or_connect || 'O conéctate conmigo en'}
-                    </h2>
-                    <div className="flex justify-center mb-8">
-                        <a href="mailto:adrian47388@gmail.com" className="flex items-center gap-3 px-6 py-3 bg-secondary/30 hover:bg-secondary/50 border border-border/50 hover:border-primary/50 rounded-full transition-all group">
-                            <Mail className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
-                            <span className="text-foreground font-medium">adrian47388@gmail.com</span>
-                        </a>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {socialLinks.map((link) => (
-                            <Link
-                                key={link.label}
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={cn(
-                                    "group flex items-center gap-4 p-6 rounded-xl",
-                                    "border border-border/50 hover:border-primary/50",
-                                    "bg-background/30 hover:bg-background/50 backdrop-blur-sm",
-                                    "transition-all duration-300",
-                                    "hover:shadow-lg hover:-translate-y-1"
-                                )}
-                            >
-                                <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                                    <link.icon className="h-6 w-6 text-primary" />
-                                </div>
-                                <div className="flex-1">
-                                    <div className="font-bold text-foreground">{link.label}</div>
-                                    <div className="text-sm text-muted-foreground">{link.username}</div>
-                                </div>
-                                <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                            </Link>
-                        ))}
-                    </div>
-                </motion.div>
-            </div>
-        </section>
+            </section>
+        </div>
     );
 }

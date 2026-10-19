@@ -1,6 +1,10 @@
 'use client';
 
+import { useRef } from 'react';
 import Link from 'next/link';
+import { motion, useScroll, useTransform, useReducedMotion, type Variants } from 'framer-motion';
+import { TiltCard } from '@/components/ui/tilt-card';
+import { EASE_OUT, slideInLeft, slideInRight, stagger, viewportOnce } from '@/lib/motion';
 import Image from 'next/image';
 import BlurImage from '@/components/ui/blur-image';
 import { Project } from '@/types';
@@ -25,23 +29,44 @@ function resolveKey(key: string, dict: any): string {
     return typeof result === 'string' ? result : key;
 }
 
+const rowVariants = stagger(0.15);
+
+// El punto de la línea de tiempo aparece con un pequeño rebote.
+const dotVariants: Variants = {
+    hidden: { scale: 0, opacity: 0 },
+    show: { scale: [0, 1.4, 1], opacity: 1, transition: { duration: 0.6, ease: EASE_OUT, delay: 0.1 } },
+};
+
 export default function ProjectsGrid({ projects, lang, dict }: ProjectsGridProps) {
+    const ref = useRef<HTMLDivElement>(null);
+    const reduce = useReducedMotion();
+    const { scrollYProgress } = useScroll({ target: ref, offset: ['start 75%', 'end 60%'] });
+    // La línea central se dibuja a medida que se hace scroll.
+    const lineScale = useTransform(scrollYProgress, [0, 1], [reduce ? 1 : 0, 1]);
+
     return (
-        <div className="relative py-20 space-y-20 md:space-y-32">
+        <div ref={ref} className="relative py-20 space-y-20 md:space-y-32 overflow-x-clip">
             {/* Central Line (Desktop) */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-blue-500/50 to-transparent hidden md:block" />
+            <motion.div style={{ scaleY: lineScale, transformOrigin: 'top' }} className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-blue-500/50 to-transparent hidden md:block" />
 
             {projects.map((project, index) => {
                 const isEven = index % 2 === 0;
 
                 return (
-                    <div key={project.slug} className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                    <motion.div
+                        key={project.slug}
+                        variants={rowVariants}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={viewportOnce}
+                        className="relative z-10 grid md:grid-cols-2 gap-12 items-center"
+                    >
 
                         {/* Timeline Dot (Desktop) */}
-                        <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-background border-2 border-blue-500 hidden md:block shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+                        <motion.div variants={dotVariants} className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-background border-2 border-blue-500 hidden md:block shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
 
                         {/* Content Section */}
-                        <div className={cn(
+                        <motion.div variants={isEven ? slideInLeft : slideInRight} className={cn(
                             "space-y-6",
                             isEven ? "md:text-right md:pr-16 order-2 md:order-1" : "md:text-left md:pl-16 order-2"
                         )}>
@@ -101,14 +126,15 @@ export default function ProjectsGrid({ projects, lang, dict }: ProjectsGridProps
                                     <MoveRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* Image Section */}
-                        <div className={cn(
+                        <motion.div variants={isEven ? slideInRight : slideInLeft} className={cn(
                             "relative group",
                             isEven ? "md:pl-16 order-1 md:order-2" : "md:pr-16 order-1"
                         )}>
                             <Link href={`/${lang}/projects/${project.slug}`} className="block">
+                                <TiltCard>
                                 <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-card/5 backdrop-blur-sm transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] group-hover:border-blue-500/30">
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent opacity-60 z-10" />
 
@@ -118,7 +144,7 @@ export default function ProjectsGrid({ projects, lang, dict }: ProjectsGridProps
                                                 src={project.image}
                                                 alt={project.title}
                                                 fill
-                                                className="object-cover object-top"
+                                                className="object-cover object-top transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                                                 sizes="(max-width: 768px) 100vw, 50vw"
                                             />
                                         </div>
@@ -148,10 +174,11 @@ export default function ProjectsGrid({ projects, lang, dict }: ProjectsGridProps
                                         </div>
                                     )}
                                 </div>
+                                </TiltCard>
                             </Link>
-                        </div>
+                        </motion.div>
 
-                    </div>
+                    </motion.div>
                 );
             })}
         </div>

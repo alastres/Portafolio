@@ -1,40 +1,65 @@
-import ProjectsGrid from '@/components/sections/ProjectsGrid';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import Image from 'next/image';
+import Link from 'next/link';
 import { projects } from '@/lib/projects';
 import { getDictionary } from '@/lib/get-dictionary';
+import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n-config';
+import Timeline from '@/components/projects/Timeline';
 
-export default async function ProjectsPage({
-    params,
-}: {
-    params: Promise<{ lang: Locale }>;
-}) {
+function resolveKey(key: string, dict: any): string {
+    let result = dict;
+    for (const k of key.split('.')) {
+        result = result?.[k];
+        if (!result) return key;
+    }
+    return typeof result === 'string' ? result : key;
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }) {
     const { lang } = await params;
     const dict = await getDictionary(lang);
+    return pageMetadata({ lang, path: '/projects', title: `${dict.projects_page.title} ${dict.projects_page.highlight}`, description: dict.projects_page.description });
+}
+
+export default async function ProjectsPage({ params }: { params: Promise<{ lang: Locale }> }) {
+    const { lang } = await params;
+    const dict = await getDictionary(lang);
+    const c = dict.pf;
+    const pad = (n: number) => String(n).padStart(2, '0');
 
     return (
-        <div className="relative min-h-screen w-full bg-background overflow-hidden transition-colors duration-500">
-            {/* Ambient Background Effects - Theme Aware */}
-            <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-primary/5 via-primary/5 to-transparent pointer-events-none dark:from-blue-900/10 dark:via-purple-900/5" />
-            <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none mix-blend-multiply dark:mix-blend-normal" />
-            <div className="absolute bottom-[10%] left-[-10%] w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none mix-blend-multiply dark:mix-blend-normal" />
+        <div className="pg">
+            <section>
+                <p className="eyebrow">{dict.projects_page.badge}</p>
+                <h1 className="ph1">{dict.projects_page.title} <em>{dict.projects_page.highlight}</em></h1>
+                <p className="lead">{dict.projects_page.description}</p>
 
-            <section className="relative py-32 sm:py-40">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-                    <header className="mb-32 text-center md:text-center max-w-4xl mx-auto">
-                        <div className="inline-block mb-4 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-[0.2em] uppercase">
-                            {dict.projects_page.badge}
-                        </div>
-                        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter text-foreground mb-8 leading-[0.9]">
-                            {dict.projects_page.title} <br className="hidden sm:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-sky-600 dark:from-blue-400 dark:via-cyan-400 dark:to-sky-400">{dict.projects_page.highlight}</span>
-                        </h1>
-                        <p className="text-xl sm:text-2xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
-                            {dict.projects_page.description}
-                        </p>
-                    </header>
-
-                    <ProjectsGrid projects={projects} lang={lang} dict={dict} />
-                </div>
+                <Timeline>
+                    {projects.map((p, i) => (
+                        <li className="tl-item" key={p.slug}>
+                            <div className="tl-rail" aria-hidden="true">
+                                <span className="tl-num">{pad(i + 1)}</span>
+                                <span className="tl-node" />
+                            </div>
+                            <Link href={`/${lang}/projects/${p.slug}`} className="card" aria-label={`${c.ui.open_case}: ${resolveKey(p.title, dict)}`}>
+                                <div className="ph">
+                                    <span className="n">{pad(i + 1)}</span>
+                                    {p.image && <Image src={p.image} alt="" fill sizes="(max-width:1023px) 100vw, 60vw" priority={i === 0} />}
+                                </div>
+                                <div className="b">
+                                    <h3>{resolveKey(p.title, dict)}</h3>
+                                    <span className="for">{c.cases.for[p.slug as keyof typeof c.cases.for]}</span>
+                                    <p>{resolveKey(p.description, dict)}</p>
+                                    <div className="chips">{p.tags.slice(0, 4).map((tg) => <span key={tg}>{tg}</span>)}</div>
+                                    <div className="go">{c.cases.full}
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+                                    </div>
+                                </div>
+                            </Link>
+                        </li>
+                    ))}
+                </Timeline>
             </section>
         </div>
     );

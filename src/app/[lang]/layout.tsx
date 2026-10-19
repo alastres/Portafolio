@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '@/styles/globals.css';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import { constructMetadata } from '@/lib/seo';
 import { ThemeProvider } from '@/components/theme-provider';
-import { ThemeToggle } from '@/components/ui/theme-toggle';
-import { Breadcrumbs } from '@/components/ui/breadcrumbs';
+import { MotionProvider } from '@/components/motion-provider';
 import { Toaster } from "@/components/ui/sonner";
 import { i18n, type Locale } from '@/i18n-config';
 import { getDictionary } from '@/lib/get-dictionary';
+import { projects } from '@/lib/projects';
+import SiteShell from '@/components/shell/SiteShell';
+import { display } from '@/components/shell/fonts';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -49,16 +49,13 @@ export default async function RootLayout({
     const { lang: langStr } = await params;
     const lang = langStr as Locale;
     const dict = await getDictionary(lang);
+    const t = (key: string) => key.split('.').reduce<unknown>((o, k) => (o as Record<string, unknown> | undefined)?.[k], dict as unknown);
+    const shellProjects = projects.map((p) => ({ slug: p.slug, title: String(t(p.title) ?? p.slug) }));
 
     return (
         <html lang={lang} className="scroll-smooth" suppressHydrationWarning>
-            <head>
-                <link rel="alternate" hrefLang="es" href={`${process.env.NEXT_PUBLIC_APP_URL || 'https://portfolio-adrian-lastra.vercel.app'}/es`} />
-                <link rel="alternate" hrefLang="en" href={`${process.env.NEXT_PUBLIC_APP_URL || 'https://portfolio-adrian-lastra.vercel.app'}/en`} />
-                <link rel="alternate" hrefLang="x-default" href={`${process.env.NEXT_PUBLIC_APP_URL || 'https://portfolio-adrian-lastra.vercel.app'}/es`} />
-            </head>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col font-sans bg-background text-foreground`}
+                className={`${geistSans.variable} ${geistMono.variable} ${display.variable} antialiased min-h-screen flex flex-col font-sans bg-background text-foreground`}
             >
                 <ThemeProvider
                     attribute="class"
@@ -66,18 +63,12 @@ export default async function RootLayout({
                     enableSystem
                     disableTransitionOnChange={false}
                 >
-                    <Header lang={lang} dict={dict} />
-                    <main className="flex-grow relative">
-                        <div className="absolute top-20 left-0 w-full z-30 pointer-events-none">
-                            <div className="pointer-events-auto">
-                                <Breadcrumbs lang={lang} dict={dict} />
-                            </div>
-                        </div>
+                    <MotionProvider>
+                    <SiteShell lang={lang} c={dict.pf} projects={shellProjects}>
                         {children}
-                    </main>
-                    <Footer lang={lang} dict={dict} />
-                    <ThemeToggle />
+                    </SiteShell>
                     <Toaster />
+                    </MotionProvider>
                 </ThemeProvider>
             </body>
         </html>

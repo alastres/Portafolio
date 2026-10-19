@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import Image from 'next/image';
 import BlurImage from '@/components/ui/blur-image';
@@ -16,10 +16,11 @@ export default function ProjectSlider({ images }: ProjectSliderProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
     const [autoplay, setAutoplay] = useState(true);
+    const reduce = useReducedMotion();
 
     const slideVariants = {
         enter: (direction: number) => ({
-            x: direction > 0 ? 1000 : -1000,
+            x: direction > 0 ? '100%' : '-100%',
             opacity: 0,
             scale: 0.95
         }),
@@ -31,7 +32,7 @@ export default function ProjectSlider({ images }: ProjectSliderProps) {
         },
         exit: (direction: number) => ({
             zIndex: 0,
-            x: direction < 0 ? 1000 : -1000,
+            x: direction < 0 ? '100%' : '-100%',
             opacity: 0,
             scale: 0.95
         })
@@ -51,14 +52,14 @@ export default function ProjectSlider({ images }: ProjectSliderProps) {
     };
 
     useEffect(() => {
-        if (!autoplay) return;
+        if (!autoplay || reduce) return;
 
         const timer = setInterval(() => {
             paginate(1);
         }, 3000);
 
         return () => clearInterval(timer);
-    }, [currentIndex, autoplay]);
+    }, [currentIndex, autoplay, reduce]);
 
     if (!images || images.length === 0) return null;
 
@@ -69,6 +70,8 @@ export default function ProjectSlider({ images }: ProjectSliderProps) {
                 className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/50 bg-muted/30 shadow-2xl group"
                 onMouseEnter={() => setAutoplay(false)}
                 onMouseLeave={() => setAutoplay(true)}
+                onFocus={() => setAutoplay(false)}
+                onBlur={() => setAutoplay(true)}
             >
                 <AnimatePresence initial={false} custom={direction}>
                     <motion.div
@@ -107,6 +110,17 @@ export default function ProjectSlider({ images }: ProjectSliderProps) {
                     </motion.div>
                 </AnimatePresence>
 
+                {/* Progress bar: muestra cuánto falta para la siguiente imagen */}
+                {!reduce && (
+                    <motion.div
+                        key={`progress-${currentIndex}-${autoplay}`}
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: autoplay ? 1 : 0 }}
+                        transition={{ duration: 3, ease: 'linear' }}
+                        className="absolute bottom-0 left-0 z-10 h-0.5 w-full origin-left bg-primary/80"
+                    />
+                )}
+
                 {/* Navigation Buttons */}
                 <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                     <Button
@@ -114,6 +128,7 @@ export default function ProjectSlider({ images }: ProjectSliderProps) {
                         size="icon"
                         className="pointer-events-auto h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 hover:bg-background/90"
                         onClick={() => paginate(-1)}
+                        aria-label="Imagen anterior"
                     >
                         <ChevronLeft className="h-5 w-5" />
                     </Button>
@@ -122,6 +137,7 @@ export default function ProjectSlider({ images }: ProjectSliderProps) {
                         size="icon"
                         className="pointer-events-auto h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 hover:bg-background/90"
                         onClick={() => paginate(1)}
+                        aria-label="Imagen siguiente"
                     >
                         <ChevronRight className="h-5 w-5" />
                     </Button>

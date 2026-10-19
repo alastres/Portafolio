@@ -125,9 +125,9 @@ export default function CVDownloader({ dict }: CVDownloaderProps) {
                         {/* Progress Bar */}
                         <div className="h-1 bg-white/10 rounded-full overflow-hidden">
                             <motion.div
-                                className={cn("h-full", status === 'complete' ? "bg-green-500" : "bg-blue-500")}
-                                initial={{ width: 0 }}
-                                animate={{ width: `${progress}%` }}
+                                className={cn("h-full w-full origin-left", status === 'complete' ? "bg-green-500" : "bg-blue-500")}
+                                initial={{ scaleX: 0 }}
+                                animate={{ scaleX: progress / 100 }}
                                 transition={{ ease: "linear" }}
                             />
                         </div>

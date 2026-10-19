@@ -5,7 +5,8 @@ import { Button } from '@/components/ui/button-ui';
 import { Terminal, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import { EASE_OUT } from '@/lib/motion';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import type { Locale } from '@/i18n-config';
 
@@ -13,6 +14,22 @@ interface HeaderProps {
     lang: Locale;
     dict: any;
 }
+
+const menuVariants: Variants = {
+    hidden: { opacity: 0, y: -12 },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.25, ease: EASE_OUT, staggerChildren: 0.06, delayChildren: 0.05 },
+    },
+    exit: { opacity: 0, y: -12, transition: { duration: 0.18 } },
+};
+
+const menuItem: Variants = {
+    hidden: { opacity: 0, x: -16 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.35, ease: EASE_OUT } },
+    exit: { opacity: 0, transition: { duration: 0.1 } },
+};
 
 export default function Header({ lang, dict }: HeaderProps) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -25,6 +42,9 @@ export default function Header({ lang, dict }: HeaderProps) {
         { label: 'Stack', href: `/${lang}/#stack` },
         { label: dict.header.about, href: `/${lang}/about` },
     ];
+
+    const isActive = (href: string) =>
+        !href.includes('#') && (pathname === href || (href !== `/${lang}` && pathname.startsWith(href)));
 
     // Close mobile menu when route changes
     useEffect(() => {
@@ -63,9 +83,16 @@ export default function Header({ lang, dict }: HeaderProps) {
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                                className={`relative text-sm font-medium transition-colors ${isActive(item.href) ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
                             >
                                 {item.label}
+                                {isActive(item.href) && (
+                                    <motion.span
+                                        layoutId="nav-active"
+                                        className="absolute inset-x-0 -bottom-1 h-px bg-primary"
+                                        transition={{ duration: 0.35, ease: EASE_OUT }}
+                                    />
+                                )}
                             </Link>
                         ))}
                     </nav>
@@ -82,8 +109,20 @@ export default function Header({ lang, dict }: HeaderProps) {
                             className="md:hidden p-2 text-foreground hover:bg-muted rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             aria-label="Toggle menu"
+                            aria-expanded={mobileMenuOpen}
                         >
-                            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                            <AnimatePresence initial={false} mode="wait">
+                                <motion.span
+                                    key={mobileMenuOpen ? 'close' : 'open'}
+                                    initial={{ opacity: 0, rotate: -90 }}
+                                    animate={{ opacity: 1, rotate: 0 }}
+                                    exit={{ opacity: 0, rotate: 90 }}
+                                    transition={{ duration: 0.15 }}
+                                    className="block"
+                                >
+                                    {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                                </motion.span>
+                            </AnimatePresence>
                         </button>
                     </div>
                 </div>
@@ -95,30 +134,33 @@ export default function Header({ lang, dict }: HeaderProps) {
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.2 }}
+                        variants={menuVariants}
+                        initial="hidden"
+                        animate="show"
+                        exit="exit"
                         className="fixed inset-0 top-[80px] z-40 bg-background border-t border-border md:hidden flex flex-col p-6 overflow-y-auto min-h-screen"
                     >
                         <nav className="flex flex-col gap-6 mt-4">
                             {navItems.map((item) => (
+                                <motion.div key={item.href} variants={menuItem}>
+                                    <Link
+                                        href={item.href}
+                                        className="block text-lg font-medium text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border/50"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </motion.div>
+                            ))}
+                            <motion.div variants={menuItem}>
                                 <Link
-                                    key={item.href}
-                                    href={item.href}
-                                    className="text-lg font-medium text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border/50"
+                                    href={`/${lang}/contact`}
+                                    className="block text-lg font-medium text-primary hover:text-primary/80 transition-colors py-2"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    {item.label}
+                                    {dict.header.contact}
                                 </Link>
-                            ))}
-                            <Link
-                                href={`/${lang}/contact`}
-                                className="text-lg font-medium text-primary hover:text-primary/80 transition-colors py-2"
-                                onClick={() => setMobileMenuOpen(false)}
-                            >
-                                {dict.header.contact}
-                            </Link>
+                            </motion.div>
                         </nav>
 
 

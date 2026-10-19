@@ -459,9 +459,9 @@ export async function consumeDownloadToken(token: string) {
         description: 'projects.rutafacil.description',
         version: 'v1.0',
         tags: ['React 18', 'Vite', 'TypeScript', 'PWA', 'Zustand', 'MapLibre GL'],
-        image: '/images/rutafacil/rutafacil-cover.png',
+        image: '/images/rutafacil/rutafacil-cover.webp',
         gallery: [
-            '/images/rutafacil/rutafacil-cover.png',
+            '/images/rutafacil/rutafacil-cover.webp',
             '/images/rutafacil/rutafacil-map.png',
             '/images/rutafacil/rutafacil-mobile-stops.png',
             '/images/rutafacil/rutafacil-mobile-map.png',

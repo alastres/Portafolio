@@ -1,173 +1,106 @@
-'use client';
-
-import { Button } from '@/components/ui/button-ui';
-import { Brain, Puzzle, Zap } from 'lucide-react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 import type { Locale } from '@/i18n-config';
-import type { LucideIcon } from 'lucide-react';
+import Timeline from '@/components/projects/Timeline';
 
 interface AboutClientContentProps {
     lang: Locale;
     dict: any;
 }
 
-function resolveKey(key: string, dict: any): string {
-    const keys = key.split('.');
-    let result = dict;
-    for (const k of keys) {
-        result = result?.[k];
-        if (!result) return key;
-    }
-    return typeof result === 'string' ? result : key;
-}
-
 export default function AboutClientContent({ lang, dict }: AboutClientContentProps) {
-    // Define pillars with icons inside the client component
-    const pillars = [
-        {
-            icon: Brain,
-            titleKey: 'about.pillars.product.title',
-            descKey: 'about.pillars.product.desc'
-        },
-        {
-            icon: Puzzle,
-            titleKey: 'about.pillars.problem.title',
-            descKey: 'about.pillars.problem.desc'
-        },
-        {
-            icon: Zap,
-            titleKey: 'about.pillars.agile.title',
-            descKey: 'about.pillars.agile.desc'
-        },
-    ];
-
-    const processes = [
-        { step: '01', titleKey: 'about.process.s1.title', descKey: 'about.process.s1.desc' },
-        { step: '02', titleKey: 'about.process.s2.title', descKey: 'about.process.s2.desc' },
-        { step: '03', titleKey: 'about.process.s3.title', descKey: 'about.process.s3.desc' },
-        { step: '04', titleKey: 'about.process.s4.title', descKey: 'about.process.s4.desc' },
-    ];
-
-    const fadeIn = {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.5 }
-    };
+    const a = dict.about;
+    const pf = dict.pf;
+    const pillars = [a.pillars.product, a.pillars.problem, a.pillars.agile];
+    const steps = [a.process.s1, a.process.s2, a.process.s3, a.process.s4];
+    const stack = (pf.stack.items.flat() as string[]);
+    const pad = (n: number) => String(n).padStart(2, '0');
 
     return (
-        <section className="bg-background min-h-screen pt-32 pb-24 overflow-hidden">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-                {/* Hero */}
-                <motion.div initial="initial" animate="animate" variants={fadeIn} className="mb-24 md:mb-32">
-                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-foreground mb-6 leading-[1.1] tracking-tight">
-                        {dict.about.hero.title_part1} <br className="hidden md:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
-                            {dict.about.hero.title_part2}
-                        </span>
-                    </h1>
+        <div className="pg about">
+            <section className="ab-hero">
+                <div className="ab-copy">
+                    <p className="eyebrow">{a.me.label}</p>
+                    <h1 className="ph1">{a.hero.title_part1}<em>{a.hero.title_part2}</em></h1>
+                    <p className="mono">Adrian Roidel · {a.hero.role}</p>
+                    <p className="lead">{a.hero.description}</p>
+                    <div className="ab-cta">
+                        <Link className="btn p" href={`/${lang}/contact`}>{pf.cta_primary}
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                        </Link>
+                        <a className="btn" href="/Adrian_Roidel_CV.pdf" download>{pf.contact.cv}</a>
+                    </div>
+                </div>
+                <div className="ab-portrait">
+                    <span className="ab-ring" aria-hidden="true" />
+                    <div className="avatar"><Image src="/images/profile/adrian.webp" alt={pf.ui.photo_alt} width={600} height={600} priority /></div>
+                    <span className="ab-chip c2"><i />{pf.status}</span>
+                    <span className="ab-chip c1">{pf.location}</span>
+                </div>
+            </section>
 
-                    <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 mb-8 border-l-4 border-primary pl-6">
-                        <div>
-                            <h2 className="text-xl md:text-2xl font-bold text-foreground">Adrian</h2>
-                            <p className="text-muted-foreground font-medium">{dict.about.hero.role}</p>
+            <section className="rv">
+                <div className="facts2">
+                    {(a.facts as { k: string; l: string }[]).map((f) => (
+                        <div key={f.l}><b>{f.k}</b><span>{f.l}</span></div>
+                    ))}
+                </div>
+            </section>
+
+            <section className="rv">
+                <div className="twocol">
+                    <h2 className="lab">{a.me.label}</h2>
+                    <div className="txt">
+                        <p><b>{a.me.p0}</b>{a.me.p1}</p>
+                        <p>{a.me.p2}</p>
+                        <p>{a.me.p3}</p>
+                    </div>
+                </div>
+            </section>
+
+            <section className="rv">
+                <p className="eyebrow">{a.pillars.label}</p>
+                <div className="pillars">
+                    {pillars.map((p, i) => (
+                        <div className="pillar" key={p.title}>
+                            <span className="no">{pad(i + 1)}</span>
+                            <h3>{p.title}</h3>
+                            <p>{p.desc}</p>
                         </div>
-                    </div>
+                    ))}
+                </div>
+            </section>
 
-                    <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-3xl">
-                        {dict.about.hero.description}
-                    </p>          </motion.div>
-
-                {/* About Me */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="grid md:grid-cols-12 gap-12 mb-32 items-start"
-                >
-                    <div className="md:col-span-4">
-                        <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-widest sticky top-32">
-                            {dict.about.me.label}
-                        </h2>
-                    </div>
-                    <div className="md:col-span-8 space-y-6 text-lg text-muted-foreground leading-relaxed">
-                        <p><span className="font-bold text-foreground">{dict.about.me.p0}</span>{dict.about.me.p1}</p>
-                        <p>{dict.about.me.p2}</p>
-                        <p>{dict.about.me.p3}</p>
-                    </div>
-                </motion.div>
-
-                {/* Pillars */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-32">
-                    <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-widest mb-10 block md:hidden">
-                        {dict.about.pillars.label}
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {pillars.map((item, idx) => (
-                            <div key={idx} className="bg-secondary/20 p-8 rounded-2xl border border-neutral-200 dark:border-border hover:border-primary/30 transition-colors">
-                                <item.icon className="h-8 w-8 text-primary mb-6" />
-                                <h3 className="text-xl font-bold text-foreground mb-3">{resolveKey(item.titleKey, dict)}</h3>
-                                <p className="text-muted-foreground leading-relaxed">{resolveKey(item.descKey, dict)}</p>
+            <section>
+                <p className="eyebrow">{a.process.label}</p>
+                <Timeline>
+                    {steps.map((s, i) => (
+                        <li className="tl-item" key={s.title}>
+                            <div className="tl-rail" aria-hidden="true">
+                                <span className="tl-num">{pad(i + 1)}</span>
+                                <span className="tl-node" />
                             </div>
-                        ))}
-                    </div>
-                </motion.div>
+                            <div className="step"><h3>{s.title}</h3><p>{s.desc}</p></div>
+                        </li>
+                    ))}
+                </Timeline>
+            </section>
 
-                {/* Process */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-32">
-                    <div className="grid md:grid-cols-12 gap-12">
-                        <div className="md:col-span-4">
-                            <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-widest sticky top-32">
-                                {dict.about.process.label}
-                            </h2>
-                        </div>
-                        <div className="md:col-span-8 space-y-12">
-                            {processes.map((process, idx) => (
-                                <div key={idx} className="group flex gap-6 items-start border-b border-neutral-200 dark:border-border pb-12 last:border-0 last:pb-0">
-                                    <span className="text-4xl font-black text-border group-hover:text-primary/20 transition-colors">
-                                        {process.step}
-                                    </span>
-                                    <div>
-                                        <h3 className="text-2xl font-bold text-foreground mb-3">{resolveKey(process.titleKey, dict)}</h3>
-                                        <p className="text-muted-foreground text-lg leading-relaxed">{resolveKey(process.descKey, dict)}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+            <section className="rv">
+                <p className="eyebrow">{a.stack_label}</p>
+                <div className="marq" aria-label={stack.join(', ')}>
+                    <div className="marq-t" aria-hidden="true">
+                        {[...stack, ...stack].map((s, i) => <span key={`${s}-${i}`}>{s}</span>)}
                     </div>
-                </motion.div>
+                </div>
+            </section>
 
-                {/* Stack */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-32 border-y border-neutral-200 dark:border-border py-16">
-                    <div className="text-center mb-10">
-                        <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-widest">{dict.about.stack_label}</h2>
-                    </div>
-                    <div className="flex flex-wrap justify-center gap-x-12 gap-y-8 grayscale hover:grayscale-0 transition-all duration-500">
-                        {["React", "Next.js", "Node.js", "PostgreSQL", "AWS", "Tailwind", "TypeScript"].map((tech, idx) => (
-                            <span key={idx} className="text-xl md:text-2xl font-bold text-foreground/80 hover:text-primary cursor-default transition-colors">
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
-                </motion.div>
-
-                {/* CTA */}
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="bg-card border border-border rounded-3xl p-8 md:p-16 text-center relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
-                        <Zap className="w-96 h-96 -rotate-12" />
-                    </div>
-
-                    <div className="relative z-10 max-w-2xl mx-auto space-y-8">
-                        <h2 className="text-3xl md:text-4xl font-black text-foreground">{dict.about.cta.title}</h2>
-                        <p className="text-xl text-muted-foreground leading-relaxed">{dict.about.cta.description}</p>
-                        <div className="flex justify-center pt-4">
-                            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 h-14 rounded-full shadow-xl shadow-primary/20 transition-all hover:scale-105">
-                                <Link href={`/${lang}/contact`}>{dict.about.cta.button}</Link>
-                            </Button>
-                        </div>
-                    </div>
-                </motion.div>
+            <div className="cta-card">
+                <h2>{a.cta.title}</h2>
+                <p>{a.cta.description}</p>
+                <Link className="btn p" href={`/${lang}/contact`}>{a.cta.button}</Link>
             </div>
-        </section>
+        </div>
     );
 }

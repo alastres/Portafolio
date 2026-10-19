@@ -356,64 +356,82 @@
     },
     "about": {
         "hero": {
-            "title_part1": "Building products, ",
-            "title_part2": "not just features.",
-            "role": "Software Engineer & Full-Stack Developer",
-            "description": "I bridge engineering with product. Code is the tool; value lies in the real impact the product generates for users and business."
+            "title_part1": "I solve business problems ",
+            "title_part2": "with technology.",
+            "role": "Web developer in Albacete, Spain",
+            "description": "I work with businesses that lose time or customers to things that can be automated: bookings, orders, spreadsheets, a website nobody finds. I turn that into a system that runs by itself."
         },
         "me": {
             "label": "About me",
-            "p0": "I don't write code just for the sake of it.",
-            "p1": " I design and build scalable, maintainable web products aligned with real business goals, prioritizing user experience, technical simplicity, and sustainable growth.",
-            "p2": "As a Software Engineer, I have the academic foundation to understand complex systems. Professionally, my approach is totally pragmatic: building solutions that work in production, scale over time, and solve real problems.",
-            "p3": "I have worked on SaaS products, MVPs, and production platforms, facing challenges in architecture, collaboration, scalability, and continuous product evolution."
+            "p0": "I don't build websites for the sake of it.",
+            "p1": " I start by understanding how you make money and where you lose it, then build only what moves those numbers: more customers, lower costs or fewer lost hours.",
+            "p2": "I am a Computer Engineer with years in tech, mostly helping people solve real problems. I like explaining things clearly, without jargon.",
+            "p3": "I live in Barrax (Albacete) and work with local businesses and remotely."
         },
         "pillars": {
             "label": "Pillars",
             "product": {
-                "title": "Product Mindset",
-                "desc": "Understanding the why before the how. Every technical decision is evaluated by its impact on the final product and the user."
+                "title": "Your business first",
+                "desc": "Before touching anything, I understand how you make money and what is holding you back."
             },
             "problem": {
-                "title": "Problem Solving",
-                "desc": "Structured thinking and pragmatic architecture. Breaking down complex problems into clear, maintainable, and scalable solutions."
+                "title": "Simple solutions",
+                "desc": "I do the minimum that solves the problem, so it is easy to use and to maintain."
             },
             "agile": {
-                "title": "Agile Execution",
-                "desc": "Fast iteration without sacrificing quality. Build, measure, and improve continuously, keeping code clean and ready to grow."
+                "title": "Delivered in parts",
+                "desc": "You see real progress and can correct course early, instead of waiting months."
             }
         },
         "process": {
             "label": "Work Process",
             "s1": {
-                "title": "Discovery & Strategy",
-                "desc": "Clear definition of goals, users, and success metrics. Nothing is built without first understanding the problem."
+                "title": "We talk about the problem",
+                "desc": "You tell me what costs you time or money and what you want to achieve."
             },
             "s2": {
-                "title": "Architecture & Design",
-                "desc": "Design of data structures, APIs, and systems prepared to scale and adapt to future growth."
+                "title": "I propose a plan",
+                "desc": "I explain what I would do, in what order and what would change in your day to day."
             },
             "s3": {
-                "title": "Agile Development",
-                "desc": "Iterative construction with constant feedback. Clean, tested, and documented code."
+                "title": "I build it with you",
+                "desc": "Delivered in parts, with progress you can try and comment on."
             },
             "s4": {
-                "title": "Deployment & Scaling",
-                "desc": "CI/CD pipelines, monitoring, and continuous improvement. Work doesn't end at commit; it ends in production."
+                "title": "I leave it running",
+                "desc": "I publish it, check that it works and keep improving it whenever you need."
             }
         },
-        "stack_label": "Tech Stack",
+        "stack_label": "What I work with",
         "cta": {
-            "title": "Ready to build something impactful?",
-            "description": "Specialized in MVPs, SaaS products, and improving existing systems. Let's talk about how engineering can drive your product.",
-            "button": "Contact now"
-        }
+            "title": "Shall we talk about your problem?",
+            "description": "Tell me what is holding you back and I will tell you clearly whether I can help.",
+            "button": "Get in touch"
+        },
+        "facts": [
+            {
+                "k": "7",
+                "l": "years in IT"
+            },
+            {
+                "k": "Eng.",
+                "l": "Computer Engineering degree"
+            },
+            {
+                "k": "B2",
+                "l": "English level"
+            },
+            {
+                "k": "Albacete",
+                "l": "Local businesses and remote"
+            }
+        ]
     },
     "projects_page": {
-        "badge": "Portfolio 2026",
-        "title": "Featured",
-        "highlight": "Projects",
-        "description": "Here you will find a collection of projects that have proven to be successful in the business world."
+        "badge": "Real cases",
+        "title": "Problems solved",
+        "highlight": "and in production",
+        "description": "Every project started with a concrete business problem. Here you see the problem, the solution and how it looks inside."
     },
     "project_page": {
         "on_this_page": "On this page",
@@ -428,14 +446,26 @@
         "repository": "Repository",
         "prev_project": "Previous Project",
         "next_project": "Next Project",
-        "image_unavailable": "Image unavailable"
+        "image_unavailable": "Image unavailable",
+        "gallery": "Real project screenshots",
+        "gallery_prev": "Previous screenshot",
+        "gallery_next": "Next screenshot",
+        "gallery_open": "Enlarge screenshot",
+        "gallery_close": "Close",
+        "gallery_of": "of",
+        "back": "All projects",
+        "cta_title": "Have a similar problem?",
+        "cta_text": "Tell me how you handle it today and I will tell you what can be automated or improved.",
+        "swipe": "Swipe",
+        "stack_lead": "Built with {n} modern technologies, chosen to be fast, secure and easy to maintain.",
+        "stack_more": "See the full technical breakdown"
     },
     "contact": {
         "badge": "Contact",
-        "page_title_part1": "Let's build a product",
-        "page_title_part2": "with real impact",
-        "page_desc_part1": "I collaborate on freelance and consulting projects, helping to transform ideas into real, scalable products aligned with business goals. If you have an MVP, a SaaS product, or a system that needs to evolve, ",
-        "page_desc_highlight": "let's talk.",
+        "page_title_part1": "What problem",
+        "page_title_part2": "do you want to solve?",
+        "page_desc_part1": "Tell me in your own words what is holding you back: bookings, orders, repetitive tasks or a website that brings no customers. I will tell you clearly whether I can help and how I would do it. ",
+        "page_desc_highlight": "Let's start there.",
         "direct_label": "Prefer something direct:",
         "social": {
             "github_desc": "Real code and production systems",
@@ -449,15 +479,196 @@
         "message_label": "Your Message",
         "name_placeholder": "Ex. Sarah Connor",
         "email_placeholder": "sarah@company.com",
-        "message_placeholder": "What problem do you want to solve? Where are you now and what would you like to build or improve?",
+        "message_placeholder": "What is costing you time or money right now? Say it without technical terms.",
         "response_promise": "I personally respond to all messages.",
-        "send_btn": "Start conversation",
+        "send_btn": "Send message",
         "sending": "Sending...",
         "success": "Message sent successfully",
         "success_desc": "Thanks for contacting me. I'll get back to you soon.",
         "error": "Error sending message",
         "error_desc": "Please try again later.",
-        "or_connect": "Or connect with me on",
+        "or_connect": "Or reach me here",
         "email": "Email"
+    },
+    "pf": {
+        "meta": {
+            "title": "Adrian Roidel | Web developer in Spain: online booking, online stores and custom apps",
+            "description": "I solve business problems with custom websites and apps: online booking with payments, online stores, management tools and automations. More customers and less manual work."
+        },
+        "role": "Fullstack web developer",
+        "location": "Albacete, Spain",
+        "status": "Available for new projects",
+        "years": "7 years in IT",
+        "h1": [
+            "Websites and apps that",
+            "bring you *customers*",
+            "and cut manual work"
+        ],
+        "lead": "I'm Adrian, a web developer based in Albacete, Spain. I turn what costs you time and money today (bookings over WhatsApp, orders by hand, spreadsheets) into systems that run on their own.",
+        "cta_primary": "Tell me what's holding you back",
+        "cta_secondary": "See what I've solved",
+        "outcomes": [
+            {
+                "t": "You earn more",
+                "d": "Online bookings and sales at any hour, with payment built in."
+            },
+            {
+                "t": "You spend less",
+                "d": "Repetitive tasks automated instead of hours of manual work."
+            },
+            {
+                "t": "You lose less time",
+                "d": "Everything in one system, no more jumping between chats and spreadsheets."
+            }
+        ],
+        "nav": {
+            "home": "Home",
+            "problems": "Problems",
+            "cases": "Cases",
+            "stack": "Tech",
+            "contact": "Contact"
+        },
+        "ui": {
+            "search": "Search or jump to…",
+            "searchPlaceholder": "Jump to a section or a case…",
+            "noResults": "No results",
+            "section": "Section",
+            "case": "Case",
+            "theme": "Switch between light and dark theme",
+            "close": "Close",
+            "main_nav": "Main navigation",
+            "profile_nav": "Profile and navigation",
+            "open_case": "Open the case",
+            "about": "About me",
+            "photo_alt": "Portrait of Adrian Roidel",
+            "all_cases": "View all projects"
+        },
+        "tags": {
+            "income": "More revenue",
+            "cost": "Lower costs",
+            "time": "Less wasted time"
+        },
+        "problems": {
+            "eyebrow": "Problems I solve",
+            "title": "Do any of these sound familiar?",
+            "sub": "Every project starts with a problem in your business, not with a technology. Tap one to see how it turns into revenue or savings.",
+            "how": "How it makes you money",
+            "build": "What I build",
+            "see_case": "See the real case",
+            "items": [
+                {
+                    "q": "Are you losing appointments and time managing bookings over WhatsApp and phone calls?",
+                    "tag": "income",
+                    "how": "Your customers book and pay online at any hour. You get fewer empty slots, fewer no-shows, and you get paid before the service. You stop answering messages just to sort out the calendar.",
+                    "build": "Online booking system with built-in payments",
+                    "case": "reserva-saas"
+                },
+                {
+                    "q": "Are you selling less because you have no online store, or yours doesn't convert?",
+                    "tag": "income",
+                    "how": "A store that sells while you sleep: secure payment, automatic delivery or download of the product, and customer support in the same place. Each sale is processed on its own, without you stepping in.",
+                    "build": "Online store and marketplace with secure payments",
+                    "case": "fivem-store"
+                },
+                {
+                    "q": "Is your team losing hours coordinating tasks across spreadsheets and chats?",
+                    "tag": "time",
+                    "how": "All the work, who is doing it and by when, on a single board. Fewer meetings to ask where things stand, fewer mistakes and more on-time deliveries, which is what your client ends up paying for.",
+                    "build": "Custom task and team management tool",
+                    "case": "taskmaster-pro"
+                },
+                {
+                    "q": "Do your deliveries or visits cost too much time and fuel?",
+                    "tag": "cost",
+                    "how": "A phone app orders the stops and calculates the shortest route. You make more deliveries per day with the same vehicle and spend less on fuel.",
+                    "build": "Mobile route app that runs from the browser, with no server costs",
+                    "case": "rutafacil"
+                },
+                {
+                    "q": "Do you repeat tasks by hand, like logging orders, sending notices or preparing reports?",
+                    "tag": "cost",
+                    "how": "I automate those tasks so they run on their own: an order that arrives by message gets logged, the customer is notified and stock is updated without anyone typing. The hours you save become hours you can bill.",
+                    "build": "Custom automations and bots for your business"
+                },
+                {
+                    "q": "Is your website slow, outdated, or not bringing you customers from Google?",
+                    "tag": "income",
+                    "how": "A fast, well-structured website loads instantly, looks right on mobile and is easy to find for people searching for exactly what you sell. More visits that end in an inquiry.",
+                    "build": "Fast professional website optimized for search engines"
+                }
+            ]
+        },
+        "cases": {
+            "eyebrow": "Real cases",
+            "title": "Problems solved and running in production",
+            "sub": "Each case explains the problem, the solution and the technologies, in case you want the technical detail.",
+            "problem": "The problem",
+            "solution": "The solution",
+            "tech": "Technologies",
+            "demo": "View demo",
+            "code": "Code",
+            "full": "Full case",
+            "prev": "Previous",
+            "next": "Next",
+            "go": "View the case",
+            "for": {
+                "taskmaster-pro": "For teams that lose hours coordinating tasks.",
+                "reserva-saas": "For businesses that live on bookings and appointments.",
+                "fivem-store": "For anyone who wants to sell digital products online.",
+                "rutafacil": "For delivery drivers who want to save time and fuel."
+            },
+            "filter": "Cases using {tech}",
+            "clear": "Clear filter"
+        },
+        "stack": {
+            "eyebrow": "Tech",
+            "title": "Tools, at the service of the business",
+            "sub": "I use them to keep everything fast, secure and easy to maintain. The number shows how many cases use each one; tap to see them.",
+            "tabs": [
+                "Frontend",
+                "Backend",
+                "DevOps"
+            ],
+            "items": [
+                [
+                    "React",
+                    "Next.js",
+                    "TypeScript",
+                    "Tailwind CSS",
+                    "Framer Motion"
+                ],
+                [
+                    "Node.js",
+                    "Express",
+                    "PostgreSQL",
+                    "Prisma",
+                    "Redis",
+                    "Python / Django"
+                ],
+                [
+                    "Docker",
+                    "AWS (S3, Lambda)",
+                    "CI/CD",
+                    "Vercel"
+                ]
+            ]
+        },
+        "contact": {
+            "eyebrow": "Contact",
+            "title": "What's the problem you want to solve?",
+            "accent": "Tell me about it.",
+            "sub": "Explain your case in your own words. I'll tell you clearly whether I can help and how I would do it.",
+            "email": "Send me an email",
+            "form": "Use the contact form",
+            "form_sub": "Tell me your case step by step",
+            "linkedin": "LinkedIn",
+            "linkedin_sub": "Background and product focus",
+            "github": "GitHub",
+            "github_sub": "Real code and systems in production",
+            "cv": "Download CV",
+            "cv_sub": "PDF"
+        },
+        "footer": "All rights reserved.",
+        "faq_title": "Frequently asked questions"
     }
 }

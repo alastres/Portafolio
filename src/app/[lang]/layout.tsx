@@ -10,6 +10,7 @@ import { getDictionary } from '@/lib/get-dictionary';
 import { projects } from '@/lib/projects';
 import SiteShell from '@/components/shell/SiteShell';
 import { display } from '@/components/shell/fonts';
+import { Analytics } from '@vercel/analytics/next';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -70,6 +71,7 @@ export default async function RootLayout({
                     <Toaster />
                     </MotionProvider>
                 </ThemeProvider>
+                <Analytics />
             </body>
         </html>
     );
